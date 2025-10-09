@@ -5,12 +5,12 @@ import HowWeWork from "../components/landing/how_we_work";
 import Reviews from "../components/landing/reviews";
 export default function Home() {
   return (
-    <section>
+    <>
       <Hero />
       <WhatWeDeliver />
       <OurResults />
       <HowWeWork />
       <Reviews />
-    </section>
+    </>
   );
 }

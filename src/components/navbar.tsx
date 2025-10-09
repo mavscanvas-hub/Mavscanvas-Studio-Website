@@ -1,6 +1,7 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import logo from "../assets/company/logo.png";
 import Button from "./custom/button";
+import { useEffect, useState } from "react";
 
 const links = [
   {
@@ -9,7 +10,7 @@ const links = [
   },
   {
     name: "About",
-    href: "/a",
+    href: "/about",
   },
   {
     name: "Services",
@@ -26,6 +27,13 @@ const links = [
 ];
 
 export default function Navbar() {
+  const location = useLocation();
+  const [activeLink, setActiveLink] = useState(location.pathname);
+
+  useEffect(() => {
+    setActiveLink(location.pathname);
+  }, [location.pathname]);
+
   return (
     <nav className="glass_effect max-h-[116px] navbar_blur_border">
       <ul className="flex justify-between items-center py-3.5 px-2.5">
@@ -39,7 +47,7 @@ export default function Navbar() {
                 <Link
                   to={link.href}
                   className={`${
-                    link.href === window.location.pathname
+                    link.href === activeLink
                       ? "text-primary font-medium navbar_shadow "
                       : "text-white font-thin"
                   }`}
