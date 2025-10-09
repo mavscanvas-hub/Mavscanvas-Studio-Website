@@ -1,8 +1,8 @@
-import displayBg from "../../assets/company/discover.png";
-import Discoverbg from "../../assets/company/discoverbg.png";
-import displayWide from "../../assets/company/discoverwide.png";
-import Team from "../../assets/company/team.png";
-import TeamBG from "../../assets/company/teambg.png";
+import displayBg from "../../assets/company_op/discover.webp";
+import Discoverbg from "../../assets/company_op/discoverbg.webp";
+import displayWide from "../../assets/company_op/discoverwide.webp";
+import Team from "../../assets/company_op/team.webp";
+import TeamBG from "../../assets/company_op/teambg.webp";
 import Button from "../custom/button";
 import { FaArrowRight } from "react-icons/fa6";
 import { useState } from "react";

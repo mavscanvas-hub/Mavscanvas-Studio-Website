@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import logo from "../assets/company/logo.png";
+import logo from "../assets/company_op/logo.webp";
 import Button from "./custom/button";
 import { useEffect, useState } from "react";
 

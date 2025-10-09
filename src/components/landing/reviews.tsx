@@ -1,6 +1,6 @@
 import { FaArrowRightLong } from "react-icons/fa6";
 import Button from "../custom/button";
-import Review from "../../assets/company/reviewbg.png";
+import Review from "../../assets/company_op/reviewbg.webp";
 
 export default function Reviews() {
   return (

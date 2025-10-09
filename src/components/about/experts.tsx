@@ -1,8 +1,8 @@
 import Herobg from "../../assets/about/expertbg.png";
-import Team from "../../assets/company/team.png";
+import Team from "../../assets/company_op/team.webp";
 import ProcessBg from "../../assets/about/processbg.png";
 import Zbg from "../../assets/about/zillowbg.png";
-import TeamBG from "../../assets/company/teambg.png";
+import TeamBG from "../../assets/company_op/teambg.webp";
 
 const team = [
   {

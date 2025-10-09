@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import cardBg from "../../assets/company/card-bg.png";
-import sectionBg from "../../assets/company/result-bg.png";
+import cardBg from "../../assets/company_op/card-bg.webp";
+import sectionBg from "../../assets/company_op/result-bg.webp";
 import Button from "../custom/button";
 import { FaArrowRight } from "react-icons/fa6";
 

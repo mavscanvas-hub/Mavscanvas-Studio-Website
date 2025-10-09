@@ -1,5 +1,5 @@
-import bg from "../../assets/company/whatwebg.png";
-import mask from "../../assets/company/deliver_mask.png";
+import bg from "../../assets/company_op/whatwebg.webp";
+import mask from "../../assets/company_op/deliver_mask.webp";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { useState } from "react";
 

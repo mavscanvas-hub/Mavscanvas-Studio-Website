@@ -1,12 +1,12 @@
-import hero from "../../assets/company/Hero1.png";
+import hero from "../../assets/company_op/hero1.webp";
 import Button from "../custom/button";
 import { FaArrowRightLong } from "react-icons/fa6";
-import adobe from "../../assets/company/adobe.png";
-import spotify from "../../assets/company/spotify.png";
-import google from "../../assets/company/google.png";
-import samsung from "../../assets/company/samsung.png";
-import microsoft from "../../assets/company/microsoft.png";
-import amazon from "../../assets/company/amazon.png";
+import adobe from "../../assets/company_op/adobe.webp";
+import spotify from "../../assets/company_op/spotify.png";
+import google from "../../assets/company_op/google.png";
+import samsung from "../../assets/company_op/samsung.png";
+import microsoft from "../../assets/company_op/microsoft.png";
+import amazon from "../../assets/company_op/amazon.webp";
 
 const logos = [google, adobe, spotify, samsung, microsoft, amazon];
 

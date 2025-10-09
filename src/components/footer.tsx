@@ -1,4 +1,4 @@
-import FooterBg from "../assets/company/footerbg.png";
+import FooterBg from "../assets/company_op/footerbg.webp";
 import { IoMdCall, IoMdMail } from "react-icons/io";
 import { FaFacebookF } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
