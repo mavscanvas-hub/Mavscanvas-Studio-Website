@@ -14,7 +14,7 @@ const links = [
   },
   {
     name: "Services",
-    href: "/b",
+    href: "/services",
   },
   {
     name: "Work",
@@ -43,13 +43,22 @@ export default function Navbar() {
         <div className="flex gap-12 items-center">
           <ul className="flex items-center gap-12">
             {links.map((link) => (
-              <li key={link.name} className="text-white">
+              <li
+                key={link.name}
+                className={`${
+                  activeLink.includes("services") ? "text-black" : "text-white"
+                }`}
+              >
                 <Link
                   to={link.href}
                   className={`${
                     link.href === activeLink
-                      ? "text-primary font-medium navbar_shadow "
-                      : "text-white font-thin"
+                      ? `font-medium ${
+                          activeLink.includes("services")
+                            ? "navbar_shadow_white text-black"
+                            : "navbar_shadow_black text-white"
+                        }`
+                      : "font-thin"
                   }`}
                 >
                   {link.name}

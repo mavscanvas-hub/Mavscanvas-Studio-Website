@@ -1,3 +1,8 @@
+import Main from "../components/service/main";
 export default function Service() {
-  return <div>Service Page</div>;
+  return (
+    <>
+      <Main />
+    </>
+  );
 }
