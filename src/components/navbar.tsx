@@ -76,7 +76,7 @@ export default function Navbar() {
               console.log("Get Started");
             }}
             className={`${
-              activeLink.includes("services")
+              activeLink.includes("services") || activeLink.includes("pricing")
                 ? "bg-black text-white"
                 : "bg-white text-black"
             }  py-2.5 px-6 rounded-full font-medium text-2lg`}
