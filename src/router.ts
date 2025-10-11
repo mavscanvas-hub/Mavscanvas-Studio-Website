@@ -3,6 +3,8 @@ import LandingLayout from "./layout/landing_layout";
 import Home from "./pages/home";
 import About from "./pages/about";
 import Service from "./pages/service";
+import Work from "./pages/work";
+import Pricing from "./pages/pricing";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +22,14 @@ const router = createBrowserRouter([
       {
         path: "/services",
         Component: Service,
+      },
+      {
+        path: "/work",
+        Component: Work,
+      },
+      {
+        path: "/pricing",
+        Component: Pricing,
       },
     ],
   },

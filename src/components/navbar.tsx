@@ -18,17 +18,18 @@ const links = [
   },
   {
     name: "Work",
-    href: "/c",
+    href: "/work",
   },
   {
     name: "Pricing",
-    href: "/d",
+    href: "/pricing",
   },
 ];
 
 export default function Navbar() {
   const location = useLocation();
   const [activeLink, setActiveLink] = useState(location.pathname);
+  const whiteLinks = ["/pricing", "/services"];
 
   useEffect(() => {
     setActiveLink(location.pathname);
@@ -46,7 +47,7 @@ export default function Navbar() {
               <li
                 key={link.name}
                 className={`${
-                  activeLink.includes("services") ? "text-black" : "text-white"
+                  whiteLinks.includes(link.href) ? "text-black" : "text-white"
                 }`}
               >
                 <Link
@@ -54,7 +55,7 @@ export default function Navbar() {
                   className={`${
                     link.href === activeLink
                       ? `font-medium ${
-                          activeLink.includes("services")
+                          whiteLinks.includes(link.href)
                             ? "navbar_shadow_white text-black"
                             : "navbar_shadow_black text-white"
                         }`
@@ -71,7 +72,11 @@ export default function Navbar() {
             onClick={() => {
               console.log("Get Started");
             }}
-            className="bg-white text-black py-2.5 px-6 rounded-full font-medium text-2lg"
+            className={`${
+              activeLink.includes("services")
+                ? "bg-black text-white"
+                : "bg-white text-black"
+            }  py-2.5 px-6 rounded-full font-medium text-2lg`}
           >
             Get Started
           </Button>

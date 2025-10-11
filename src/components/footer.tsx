@@ -35,11 +35,12 @@ const socialMedia = [
 export default function Footer() {
   return (
     <footer
-      className="bg-black text-white px-20 py-25 w-full"
+      className="bg-black text-white px-20 py-25 w-full h-full"
       style={{
         backgroundImage: `url(${FooterBg})`,
         backgroundRepeat: "no-repeat",
-        backgroundPosition: "center",
+        backgroundPosition: "bottom",
+        backgroundSize: "cover",
       }}
     >
       <div className="flex items-start gap-10">
