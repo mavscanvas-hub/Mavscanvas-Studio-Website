@@ -68,7 +68,8 @@ const team = [
 export default function HowWeWork() {
   const [currentA, setCurrentA] = useState(-1);
   const [currentB, setCurrentB] = useState(-1);
-  const [active, setActive] = useState(false);
+  const [activeA, setActiveA] = useState(false);
+  const [activeB, setActiveB] = useState(false);
 
   const handleSectionClick = (e: React.MouseEvent) => {
     const target = e.target as HTMLElement;
@@ -77,7 +78,8 @@ export default function HowWeWork() {
     if (!isStepContainer) {
       setCurrentA(-1);
       setCurrentB(-1);
-      setActive(false);
+      setActiveA(false);
+      setActiveB(false);
     }
   };
   return (
@@ -99,7 +101,7 @@ export default function HowWeWork() {
               <div
                 key={idx}
                 className={`flex step-container ${
-                  active && idx === currentA
+                  activeA && idx === currentA
                     ? idx === 1
                       ? "flex-row-reverse items-center justify-between"
                       : "flex-row items-center justify-between"
@@ -111,12 +113,17 @@ export default function HowWeWork() {
                 }`}
                 onClick={(e) => {
                   e.stopPropagation();
-                  setCurrentA(idx);
-                  setActive(true);
+                  if (idx === currentA && activeA) {
+                    setCurrentA(-1);
+                    setActiveA(false);
+                  } else {
+                    setCurrentA(idx);
+                    setActiveA(true);
+                  }
                 }}
                 style={{
                   backgroundImage: `url(${
-                    active && idx === currentA ? displayWide : displayBg
+                    activeA && idx === currentA ? displayWide : displayBg
                   })`,
                   backgroundRepeat: "no-repeat",
                   backgroundPosition: "contain",
@@ -126,7 +133,7 @@ export default function HowWeWork() {
                 <h3 className="font-cormo text-[90px]/[120%] italic text-white">
                   {item.label}
                 </h3>
-                {active && idx === currentA && (
+                {activeA && idx === currentA && (
                   <p className="text-white text-4xl font-light max-w-[500px]">
                     {item.content}
                   </p>
@@ -139,7 +146,7 @@ export default function HowWeWork() {
               <div
                 key={idx}
                 className={`step-container flex ${
-                  active && idx === currentB
+                  activeB && idx === currentB
                     ? idx === 1
                       ? "flex-row-reverse items-center justify-between"
                       : "flex-row items-center justify-between"
@@ -151,12 +158,17 @@ export default function HowWeWork() {
                 }`}
                 onClick={(e) => {
                   e.stopPropagation();
-                  setCurrentB(idx);
-                  setActive(true);
+                  if (idx === currentB && activeB) {
+                    setCurrentB(-1);
+                    setActiveB(false);
+                  } else {
+                    setCurrentB(idx);
+                    setActiveB(true);
+                  }
                 }}
                 style={{
                   backgroundImage: `url(${
-                    active && idx === currentB ? displayWide : displayBg
+                    activeB && idx === currentB ? displayWide : displayBg
                   })`,
                   backgroundRepeat: "no-repeat",
                   backgroundPosition: "contain",
@@ -166,7 +178,7 @@ export default function HowWeWork() {
                 <h3 className="font-cormo text-[90px]/[120%] italic text-white">
                   {item.label}
                 </h3>
-                {active && idx === currentB && (
+                {activeB && idx === currentB && (
                   <p className="text-white text-4xl font-light max-w-[500px]">
                     {item.content}
                   </p>

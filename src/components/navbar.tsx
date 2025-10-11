@@ -29,7 +29,6 @@ const links = [
 export default function Navbar() {
   const location = useLocation();
   const [activeLink, setActiveLink] = useState(location.pathname);
-  const whiteLinks = ["/pricing", "/services"];
 
   useEffect(() => {
     setActiveLink(location.pathname);
@@ -47,7 +46,10 @@ export default function Navbar() {
               <li
                 key={link.name}
                 className={`${
-                  whiteLinks.includes(link.href) ? "text-black" : "text-white"
+                  activeLink.includes("services") ||
+                  activeLink.includes("pricing")
+                    ? "text-black"
+                    : "text-white"
                 }`}
               >
                 <Link
@@ -55,7 +57,8 @@ export default function Navbar() {
                   className={`${
                     link.href === activeLink
                       ? `font-medium ${
-                          whiteLinks.includes(link.href)
+                          activeLink.includes("services") ||
+                          activeLink.includes("pricing")
                             ? "navbar_shadow_white text-black"
                             : "navbar_shadow_black text-white"
                         }`
