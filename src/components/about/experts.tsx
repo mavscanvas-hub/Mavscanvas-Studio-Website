@@ -92,6 +92,8 @@ export default function Experts() {
               <img
                 src={member.image}
                 alt={member.name}
+                loading="lazy"
+                decoding="async"
                 className="w-70 h-70 rounded-full object-cover"
               />
               <div className="flex flex-col items-center justify-center pb-8 max-w-[262px] gap-3">

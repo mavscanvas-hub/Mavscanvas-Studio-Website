@@ -52,63 +52,76 @@ export default function WhatWeDeliver() {
   };
   return (
     <div
-      className="px-15 py-15 flex flex-col gap-13.5 bg-bottom-right bg-cover w-full"
+      className="px-15 py-15 max-md:pt-5 max-md:pb-6 flex flex-col gap-13.5 max-md:gap-3 max-md:px-3.5 bg-bottom-right bg-cover w-full"
       style={{
         backgroundImage: `url(${bg})`,
         backgroundRepeat: "no-repeat",
       }}
     >
       <div>
-        <span className="font-cormo text-[90px]/[120%] italic text-start text-black">
+        <span className="font-cormo text-[90px]/[120%] max-md:text-[36px]/[120%] italic text-start text-black">
           What We <strong className="font-bold">Deliver</strong>
         </span>
       </div>
       <div
-        className="bg-black pl-15 pr-16 pt-10 pb-16 rounded-4xl bg-bottom-right bg-cover"
+        className="bg-black pl-15 max-md:px-4 pr-16 pt-10 max-md:pt-5 pb-16 max-md:pb-5 rounded-4xl max-md:rounded-lg"
         style={{
           backgroundImage: `url(${mask})`,
           backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
         }}
       >
         {currentValue && (
-          <div className="flex items-start justify-start gap-15 h-[645px]">
-            <div className="flex flex-col gap-10 min-w-[420px]">
-              <h2 className="text-white text-[64px]/[120%] font-bold">
-                {currentValue.title}
-              </h2>
-              <div className="border border-white rounded-3xl p-4">
-                <div className="bg-gray-100 h-[420px] rounded-3xl"></div>
-              </div>
-            </div>
-            <div className="flex flex-col justify-between h-full">
-              <div className="flex gap-5 flex-wrap mt-10">
-                {allValues.map((value) => (
-                  <button
-                    key={value}
-                    onClick={() => handleSetActive(value)}
-                    className={`border border-white font-normal cursor-pointer text-xl py-2.5 px-10 rounded-full ${
-                      currentValue.value === value
-                        ? "bg-[#02DDEF] text-black font-semibold border-none"
-                        : "text-white"
-                    }`}
-                  >
-                    {value.toLocaleUpperCase()}
+          <>
+            <div className="flex items-start justify-start gap-15 max-md:gap-5 h-[645px] max-md:h-auto max-md:flex-col-reverse">
+              <div className="flex flex-col gap-10 max-md:gap-0 min-w-[420px] max-md:min-w-full">
+                <h2 className="text-white text-[64px]/[120%] font-bold max-md:hidden">
+                  {currentValue.title}
+                </h2>
+                <div className="border max-md:border-[0.26px] border-white rounded-3xl  max-md:rounded-none p-4 max-md:p-2">
+                  <div className="bg-gray-100 h-[420px] max-md:h-[220px] rounded-3xl max-md:rounded-[4px]"></div>
+                </div>
+                <div className="mt-10.5 max-md:mt-5 md:hidden flex justify-center items-center">
+                  <button className="border max-md:border-[0.26px] border-white text-white py-2.5 max-md:py-1 max-md:px-4 px-10 rounded-full flex gap-3.5 items-center font-medium text-[28px]/[120%] max-md:text-[10px]/[120%] max-md:italic">
+                    <span>View Services</span>
+                    <FaArrowRightLong />
                   </button>
-                ))}
+                </div>
               </div>
-              <div className="px-3">
-                <p className=" text-white text-2lg font-light">
-                  {currentValue.content}
-                </p>
-              </div>
-              <div className="mt-10.5">
-                <button className="border border-white text-white py-2.5 px-10 rounded-full flex gap-3.5 items-center font-medium text-2lg">
-                  <span>View Services</span>
-                  <FaArrowRightLong />
-                </button>
+              <div className="flex flex-col justify-between h-full">
+                <div className="flex gap-5 max-md:gap-3.5 max-md:gap-y-2 flex-wrap mt-10 max-md:mt-0">
+                  {allValues.map((value) => (
+                    <button
+                      key={value}
+                      onClick={() => handleSetActive(value)}
+                      className={`border border-white font-normal cursor-pointer text-xl max-md:text-[8px]/[120%] py-2.5 max-md:py-1 max-md:px-2.5 px-10 rounded-full ${
+                        currentValue.value === value
+                          ? "bg-[#02DDEF] text-black font-semibold border-none"
+                          : "text-white"
+                      }`}
+                    >
+                      {value.toLocaleUpperCase()}
+                    </button>
+                  ))}
+                  <h2 className="text-white text-[64px]/[120%] max-md:text-[18px]/[120%] max-md:my-5 font-bold md:hidden">
+                    {currentValue.title}
+                  </h2>
+                </div>
+                <div className="px-3 max-md:px-0">
+                  <p className=" text-white text-[22px]/[120%] max-md:text-[10px]/[120%] font-light">
+                    {currentValue.content}
+                  </p>
+                </div>
+                <div className="mt-10.5 max-md:hidden">
+                  <button className="border border-white text-white py-2.5 px-10 rounded-full flex gap-3.5 items-center font-medium text-2lg">
+                    <span>View Services</span>
+                    <FaArrowRightLong />
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
+          </>
         )}
       </div>
     </div>

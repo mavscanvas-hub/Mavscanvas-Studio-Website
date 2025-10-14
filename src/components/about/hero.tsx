@@ -56,6 +56,8 @@ export default function Hero() {
             <div className="h-[510px] p-5 bg-white rounded-[30px]">
               <img
                 src={item.url}
+                loading="lazy"
+                decoding="async"
                 alt={`Hero Image ${index + 1}`}
                 className="h-auto rounded-[30px] min-w-[630px]"
               />

@@ -74,7 +74,13 @@ export default function Mission() {
           </div>
         </div>
         <div className="flex-1">
-          <img src={line} alt="curved line" className="w-full" />
+          <img
+            src={line}
+            alt="curved line"
+            loading="lazy"
+            decoding="async"
+            className="w-full"
+          />
           <span className="absolute -top-11 left-[70%] bg-black -translate-x-1/2 px-22.5 rounded-full py-7 ">
             <h4 className="bg-[linear-gradient(90deg,#02DDEF_0%,#FA01F0_100%)] text-transparent bg-clip-text text-[40px]/[120%] font-bold">
               Creativity

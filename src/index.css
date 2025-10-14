@@ -62,3 +62,36 @@
 .navbar_shadow_white {
   text-shadow: 0px 0px 30px #02ddefcc;
 }
+
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.slide-in-from-right {
+  animation: slideInFromRight 0.36s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes dropDown {
+  from {
+    transform: translateY(-24px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.drop-in {
+  transform: translateY(-24px);
+  opacity: 0;
+}
+.drop-in.drop-in--active {
+  animation: dropDown 560ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
