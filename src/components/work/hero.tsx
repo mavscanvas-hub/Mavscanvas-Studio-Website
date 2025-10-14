@@ -143,6 +143,8 @@ export default function Hero() {
                 >
                   <img
                     src={image}
+                    loading="lazy"
+                    decoding="async"
                     alt={`Project ${work.id} Image ${index + 1}`}
                     className="w-full h-full object-cover rounded-3xl"
                   />

@@ -197,6 +197,8 @@ export default function Main() {
                 <div className="border w-full border-white p-4 rounded-[20px] relative">
                   <img
                     src={service.projects[currentIndex].image}
+                    loading="lazy"
+                    decoding="async"
                     alt={`Project ${service.projects[currentIndex].id}`}
                     className="w-full h-auto rounded-[20px]"
                   />
