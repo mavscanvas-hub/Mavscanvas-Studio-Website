@@ -65,7 +65,7 @@ const socialMedia = [
 export default function WeDeliver() {
   return (
     <section
-      className="bg-[#FAFAFA] pt-15 px-15 pb-40 flex flex-col gap-47"
+      className="bg-[#FAFAFA] pt-15 max-md:pt-7 px-15 max-md:px-4 pb-40 max-md:pb-12.5 flex flex-col gap-47 max-md:gap-14"
       style={{
         backgroundImage: `url(${Deliverbg})`,
         backgroundRepeat: "no-repeat",
@@ -73,49 +73,55 @@ export default function WeDeliver() {
         backgroundPosition: "top",
       }}
     >
-      <div className="flex flex-col gap-22.5">
+      <div className="flex flex-col gap-22.5 max-md:gap-7">
         <div>
-          <h2 className="text-[90px]/[120%] font-cormo italic text-[#161616]">
+          <h2 className="text-[90px]/[120%] max-md:text-[36px]/[120%] font-cormo italic text-[#161616]">
             The Consistent
           </h2>
-          <h3 className="text-[90px]/[120%] font-extrabold text-[#161616]">
+          <h3 className="text-[90px]/[120%] max-md:text-[36px]/[120%] font-extrabold text-[#161616]">
             Results We Deliver
           </h3>
         </div>
-        <div className="grid grid-cols-3 items-center px-20 mt-25 relative">
-          <div className="absolute inset-y-0 left-[36%] w-px bg-[linear-gradient(0deg,_#FA01F0_0%,_#02DDEF_100%)] rounded-full" />
-          <div className="absolute inset-y-0 left-[64%] w-px bg-[linear-gradient(0deg,_#FA01F0_0%,_#02DDEF_100%)] rounded-full" />
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 h-[1.1px] rounded-full bg-[linear-gradient(90deg,_#02DDEF_0%,_#FA01F0_100%)] w-[80%]"></div>
+        <div className="grid grid-cols-3 items-center px-20 max-md:px-1 mt-25 max-md:mt-0 relative">
+          <div className="absolute inset-y-0 left-[36%] max-md:left-[34%] w-px bg-[linear-gradient(0deg,_#FA01F0_0%,_#02DDEF_100%)] rounded-full" />
+          <div className="absolute inset-y-0 left-[64%] max-md:left-[66%] w-px bg-[linear-gradient(0deg,_#FA01F0_0%,_#02DDEF_100%)] rounded-full" />
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 h-[1.1px] max-md:w-[90%] bg-[linear-gradient(90deg,_#02DDEF_0%,_#FA01F0_100%)] w-[80%]"></div>
           {outcomes.map((outcome, idx) => (
-            <div key={idx} className="flex flex-col items-center p-20 relative">
-              <span className="text-[108px]/[120%] font-bold text-black">
+            <div
+              key={idx}
+              className="flex flex-col items-center p-20 max-md:p-8 relative"
+            >
+              <span className="text-[108px]/[120%] max-md:text-[34px]/[120%] font-bold text-black">
                 {outcome.value}
               </span>
-              <span className="text-3xl text-black font-light text-center">
+              <span className="text-3xl max-md:text-[12px]/[120%] text-black font-light text-center">
                 {outcome.label}
               </span>
             </div>
           ))}
         </div>
       </div>
-      <div className="flex flex-col gap-28">
-        <div className="flex flex-col gap-32">
+      <div className="flex flex-col gap-28 max-md:gap-7">
+        <div className="flex flex-col gap-32 max-md:gap-6.5">
           <div>
-            <h2 className="text-[90px]/[120%] font-cormo italic text-[#161616]">
+            <h2 className="text-[90px]/[120%] max-md:text-[36px]/[120%] font-cormo italic text-[#161616]">
               For More Inquiries
             </h2>
-            <h3 className="text-[90px]/[120%] font-extrabold text-[#161616]">
+            <h3 className="text-[90px]/[120%] max-md:text-[36px]/[120%] font-extrabold text-[#161616]">
               Reach Out to Us
             </h3>
           </div>
-          <div className="flex items-center justify-between w-full">
+          <div className="flex items-center max-md:flex-col justify-between max-md:gap-7 w-full">
             {contacts.map((contact, idx) => (
-              <div key={idx} className="flex flex-col gap-3 min-w-[530px]">
-                <span className="uppercase text-3xl font-medium text-black">
+              <div
+                key={idx}
+                className="flex flex-col gap-3 min-w-[530px] max-md:min-w-full"
+              >
+                <span className="uppercase text-3xl max-md:text-xs font-medium text-black">
                   {contact.method}
                 </span>
                 <div
-                  className="flex items-center gap-5 justify-start bg-black px-10 py-6 rounded-full"
+                  className="flex items-center gap-5 justify-start bg-black px-10 max-md:px-4 max-md:py-3 py-6 rounded-full"
                   style={{
                     backgroundImage: `url(${Buttonbg})`,
                     backgroundRepeat: "no-repeat",
@@ -123,8 +129,10 @@ export default function WeDeliver() {
                     backgroundPosition: "center",
                   }}
                 >
-                  <span className="text-white text-5xl">{contact.icon}</span>
-                  <span className="text-white text-4xl/[120%] font-light">
+                  <span className="text-white text-5xl max-md:text-xl">
+                    {contact.icon}
+                  </span>
+                  <span className="text-white text-4xl/[120%] max-md:text-[20px]/[120%] font-light">
                     {contact.detail}
                   </span>
                 </div>
@@ -133,14 +141,14 @@ export default function WeDeliver() {
           </div>
         </div>
         <div className="w-full flex flex-col items-center justify-center">
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 max-md:gap-2">
             {socialMedia.map((item) => (
               <Link
                 key={item.name}
                 to={item.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-4xl hover:scale-110 p-3 bg-black border text-white rounded-full transition-transform"
+                className="text-4xl max-md:text-xl hover:scale-110 p-3 bg-black border text-white rounded-full transition-transform"
                 style={{
                   backgroundImage: `url(${Socialbg})`,
                   backgroundRepeat: "no-repeat",
@@ -152,19 +160,21 @@ export default function WeDeliver() {
               </Link>
             ))}
           </div>
-          <span className="text-[32px]/[120%] font-light text-center mt-38 block max-w-[800px]">
+          <span className="text-[32px]/[120%] max-md:text-[10px]/[120%] font-light text-center mt-38 max-md:mt-13 block max-md:w-full max-w-[800px]">
             We are prepared to replicate these results for your brand. Are you
             ready to begin?
           </span>
-          <div className="flex justify-center items-center mt-15">
+          <div className="flex justify-center items-center mt-15 max-md:mt-5">
             <Button
-              className="bg-[#02DDEF] rounded-full py-5 px-20 flex gap-6 items-center"
+              className="bg-[#02DDEF] rounded-full py-5.5 max-md:py-3 max-md:px-10 px-24 flex gap-6 max-md:gap-2 items-center"
               onClick={() => {
                 console.log("Logged");
               }}
             >
-              <span className="font-medium text-[28px]">Start a Project</span>
-              <FaArrowRightLong className="text-3xl" />
+              <span className="font-medium text-[28px] text-[28px]/[120%] max-md:text-[10px]/[120%]">
+                Start a Project
+              </span>
+              <FaArrowRightLong className="text-2xl max-md:text-[20px]" />
             </Button>
           </div>
         </div>

@@ -18,7 +18,7 @@ const data = [
 export default function Mission() {
   return (
     <section
-      className="bg-white pt-22.5 px-15 pb-27 flex gap-15 flex-col items-center"
+      className="bg-white pt-22.5 max-md:pt-6 px-15 max-md:px-4 pb-27 max-md:pb-1 flex gap-15 flex-col items-center"
       style={{
         backgroundImage: `url(${MissionBg})`,
         backgroundSize: "cover",
@@ -26,14 +26,14 @@ export default function Mission() {
         backgroundRepeat: "no-repeat",
       }}
     >
-      <div className="w-full flex flex-col gap-15">
+      <div className="w-full flex flex-col gap-15 max-md:gap-4">
         {data.map((item, index) => (
           <div
             key={index}
-            className={`w-full bg-black flex items-center py-6 rounded-[400px] gap-36 ${
+            className={`w-full bg-black flex items-center py-6 max-md:py-3 rounded-full gap-36 max-md:gap-5 ${
               index % 2 === 0
-                ? "flex-row pr-32 pl-6"
-                : "flex-row-reverse pl-32 pr-6"
+                ? "flex-row pr-32 max-md:pr-2 pl-6 max-md:pl-3"
+                : "flex-row-reverse pl-32 pr-6 max-md:pr-3 max-md:pl-2"
             } `}
             style={{
               backgroundImage: `url(${cardbg})`,
@@ -42,24 +42,24 @@ export default function Mission() {
               backgroundRepeat: "no-repeat",
             }}
           >
-            <div className="bg-white rounded-[150px] min-w-[465px] h-[310px] flex items-center justify-center">
+            <div className="bg-white rounded-full max-md:min-w-[120px] max-md:h-[92px] min-w-[465px] h-[310px] flex items-center justify-center">
               <h3
-                className={`text-[80px]/[120%] font-bold ${
+                className={`text-[80px]/[120%] max-md:text-[20px]/[120%] font-bold ${
                   index % 2 === 0 ? "text-[#123C53]" : "text-[#410441]"
                 }`}
               >
                 {item.label}
               </h3>
             </div>
-            <p className="text-[35px]/[120%] max-w-[638px] text-white">
+            <p className="text-[35px]/[120%] max-md:text-[9px]/[120%] max-md:w-[150px] max-w-[638px] text-white">
               {item.content}
             </p>
           </div>
         ))}
       </div>
-      <div className="flex items-start relative mt-20">
+      <div className="flex items-start relative mt-20 max-md:mt-10">
         <div
-          className="absolute p-4.5 -top-22 rounded-[120px] bg-black "
+          className="absolute p-4.5 max-md:p-1 -top-22 rounded-[120px] bg-black "
           style={{
             backgroundImage: `url(${Core})`,
             backgroundSize: "cover",
@@ -67,8 +67,8 @@ export default function Mission() {
             backgroundRepeat: "no-repeat",
           }}
         >
-          <div className="bg-white bg-opacity-70 backdrop-blur-md rounded-[120px] px-25 py-11">
-            <h2 className="text-[80px]/[120%] font-bold text-[#123C53]">
+          <div className="bg-white bg-opacity-70 max-md:relative max-md:z-10 backdrop-blur-md rounded-full px-25 max-md:px-7 py-11 max-md:py-3.5">
+            <h2 className="text-[80px]/[120%] max-md:text-[20px]/[120%] font-bold text-[#123C53]">
               Core Values
             </h2>
           </div>
@@ -79,25 +79,25 @@ export default function Mission() {
             alt="curved line"
             loading="lazy"
             decoding="async"
-            className="w-full"
+            className="w-full max-md:relative max-md:-top-15"
           />
-          <span className="absolute -top-11 left-[70%] bg-black -translate-x-1/2 px-22.5 rounded-full py-7 ">
-            <h4 className="bg-[linear-gradient(90deg,#02DDEF_0%,#FA01F0_100%)] text-transparent bg-clip-text text-[40px]/[120%] font-bold">
+          <span className="absolute -top-11 max-md:-top-18.5 max-md:left-[75%] left-[70%] bg-black -translate-x-1/2 px-22.5 max-md:px-5 rounded-full py-7 max-md:py-2">
+            <h4 className="bg-[linear-gradient(90deg,#02DDEF_0%,#FA01F0_100%)] text-transparent bg-clip-text text-[40px]/[120%] max-md:text-[10px]/[120%] font-bold">
               Creativity
             </h4>
           </span>
-          <span className="absolute -bottom-10 left-[12%] bg-black -translate-x-1/2 px-22.5 rounded-full py-7 ">
-            <h4 className="bg-[linear-gradient(90deg,#02DDEF_0%,#FA01F0_100%)] text-transparent bg-clip-text text-[40px]/[120%] font-bold">
+          <span className="absolute -bottom-10 max-md:bottom-12.5 max-md:left-[11%] left-[12%] bg-black -translate-x-1/2 px-22.5 max-md:px-5 rounded-full py-7 max-md:py-2">
+            <h4 className="bg-[linear-gradient(90deg,#02DDEF_0%,#FA01F0_100%)] text-transparent bg-clip-text text-[40px]/[120%] max-md:text-[10px]/[120%] font-bold">
               Impact
             </h4>
           </span>
-          <span className="absolute -bottom-10 left-[44%] bg-black -translate-x-1/2 px-22.5 rounded-full py-7 ">
-            <h4 className="bg-[linear-gradient(90deg,#02DDEF_0%,#FA01F0_100%)] text-transparent bg-clip-text text-[40px]/[120%] font-bold">
+          <span className="absolute -bottom-10 max-md:bottom-12.5 left-[44%] bg-black -translate-x-1/2 px-22.5 max-md:px-5 rounded-full py-7 max-md:py-2">
+            <h4 className="bg-[linear-gradient(90deg,#02DDEF_0%,#FA01F0_100%)] text-transparent bg-clip-text text-[40px]/[120%] max-md:text-[10px]/[120%] font-bold">
               Innovation
             </h4>
           </span>
-          <span className="absolute -bottom-10 -right-8 bg-black -translate-x-1/2 px-22.5 rounded-full py-7 ">
-            <h4 className="bg-[linear-gradient(90deg,#02DDEF_0%,#FA01F0_100%)] text-transparent bg-clip-text text-[40px]/[120%] font-bold">
+          <span className="absolute -bottom-10 max-md:bottom-12.5 max-md:-right-5 -right-8 bg-black -translate-x-1/2 px-22.5 max-md:px-5 rounded-full py-7 max-md:py-2">
+            <h4 className="bg-[linear-gradient(90deg,#02DDEF_0%,#FA01F0_100%)] text-transparent bg-clip-text text-[40px]/[120%] max-md:text-[10px]/[120%] font-bold">
               Integrity
             </h4>
           </span>

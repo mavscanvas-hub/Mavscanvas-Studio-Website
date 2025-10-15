@@ -29,7 +29,7 @@ const data = [
 export default function Hero() {
   return (
     <section
-      className="bg-black pt-[245px] px-15 flex flex-col gap-20 pb-40"
+      className="bg-black pt-[245px] max-md:pt-[76px] px-15 max-md:px-5 flex flex-col gap-20 max-md:gap-8 pb-40 max-md:pb-8"
       style={{
         backgroundImage: `url(${Herobg})`,
         backgroundSize: "cover",
@@ -38,10 +38,10 @@ export default function Hero() {
       }}
     >
       <div className="flex flex-col">
-        <h2 className="text-white text-[90px]/[120%] font-cormo italic">
+        <h2 className="text-white text-[90px]/[120%] max-md:text-[36px]/[120%] font-cormo italic">
           More Than an Agency,
         </h2>
-        <h2 className="text-white text-[90px]/[120%] font-extrabold">
+        <h2 className="text-white text-[90px]/[120%] max-md:text-[36px]/[120%] font-extrabold">
           Your Digital Solutions Partner
         </h2>
       </div>
@@ -49,20 +49,20 @@ export default function Hero() {
         {data.map((item, index) => (
           <div
             key={index}
-            className={`flex gap-10 items-center ${
+            className={`flex gap-10 items-center max-md:flex-col ${
               index % 2 === 0 ? "flex-row" : "flex-row-reverse"
             }`}
           >
-            <div className="h-[510px] p-5 bg-white rounded-[30px]">
+            <div className="h-[510px] max-md:h-auto max-md:w-full p-3 bg-white rounded-[30px]">
               <img
                 src={item.url}
                 loading="lazy"
                 decoding="async"
                 alt={`Hero Image ${index + 1}`}
-                className="h-auto rounded-[30px] min-w-[630px]"
+                className="h-auto rounded-[30px] min-w-[630px] max-md:w-full max-md:min-w-0"
               />
             </div>
-            <span className="text-white text-4xl/[120%] font-light">
+            <span className="text-white text-4xl/[120%] max-md:text-[12px]/[120%] font-light">
               {item.content}
             </span>
           </div>
