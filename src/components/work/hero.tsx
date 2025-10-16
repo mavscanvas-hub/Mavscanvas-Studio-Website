@@ -171,7 +171,7 @@ export default function Hero() {
               console.log("Logged");
             }}
           >
-            <span className="font-medium text-[28px] text-[28px]/[120%] max-md:text-[10px]/[120%]">
+            <span className="font-medium text-[28px] text-[28px]/[120%] max-md:text-[14px]/[120%]">
               Start a Project
             </span>
             <FaArrowRightLong className="text-2xl max-md:text-[20px]" />

@@ -131,7 +131,7 @@ export default function Hero() {
               <button
                 className={`${
                   plan.id === 1 ? "bg-white" : "bg-[#02DDEF]"
-                } rounded-full py-5 max-md:py-4 px-15 max-md:px-10 text-[20px]/[120%] font-medium flex gap-6 max-md:gap-4 items-center`}
+                } rounded-full py-5 max-md:py-4 px-15 max-md:px-15 text-[20px]/[120%] font-medium flex gap-6 max-md:gap-0 max-md:justify-between items-center`}
                 onClick={() => {
                   console.log("Logged");
                 }}
@@ -170,12 +170,12 @@ export default function Hero() {
         </span>
         <div className="flex justify-center items-center">
           <Button
-            className="bg-[#02DDEF] rounded-full py-5.5 max-md:py-3 max-md:px-10 px-24 flex gap-6 max-md:gap-2 items-center"
+            className="bg-[#02DDEF] rounded-full py-5.5 max-md:py-3 max-md:px-10 px-24 flex gap-6 max-md:gap-5 max-md:justify-between items-center "
             onClick={() => {
               console.log("Logged");
             }}
           >
-            <span className="font-medium text-[28px] text-[28px]/[120%] max-md:text-[10px]/[120%]">
+            <span className="font-medium text-[28px] text-[28px]/[120%] max-md:text-[14px]/[120%]">
               Start a Project
             </span>
             <FaArrowRightLong className="text-2xl max-md:text-[20px]" />

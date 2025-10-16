@@ -208,7 +208,7 @@ export default function Reviews() {
           </div>
         </div>
         <div className="flex flex-col gap-26 max-md:gap-4.5 items-center">
-          <span className="text-white text-[28px]/[120%] max-md:text-[10px]/[120%] italic font-light max-w-[872px] max-md:w-full text-center">
+          <span className="text-white text-[28px]/[120%] max-md:text-[10px]/[120%] italic font-light max-w-[872px] max-md:w-[280px] text-center">
             We are prepared to replicate these results for your brand. Are you
             ready to begin?
           </span>
@@ -219,7 +219,7 @@ export default function Reviews() {
                 console.log("Logged");
               }}
             >
-              <span className="font-medium text-[28px]/[120%] max-md:text-[10px]/[120%]">
+              <span className="font-medium text-[28px]/[120%] max-md:text-[14px]/[120%]">
                 Start a Project
               </span>
               <FaArrowRightLong className="text-2xl max-md:text-[20px]" />

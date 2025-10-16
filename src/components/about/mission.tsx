@@ -18,7 +18,7 @@ const data = [
 export default function Mission() {
   return (
     <section
-      className="bg-white pt-22.5 max-md:pt-6 px-15 max-md:px-4 pb-27 max-md:pb-1 flex gap-15 flex-col items-center"
+      className="bg-white pt-22.5 max-md:pt-6 px-15 max-md:px-5 pb-27 max-md:pb-1 flex gap-15 flex-col items-center"
       style={{
         backgroundImage: `url(${MissionBg})`,
         backgroundSize: "cover",
@@ -86,7 +86,7 @@ export default function Mission() {
               Creativity
             </h4>
           </span>
-          <span className="absolute -bottom-10 max-md:bottom-12.5 max-md:left-[11%] left-[12%] bg-black -translate-x-1/2 px-22.5 max-md:px-5 rounded-full py-7 max-md:py-2">
+          <span className="absolute -bottom-10 max-md:bottom-12.5 max-md:left-[10.8%] left-[12%] bg-black -translate-x-1/2 px-22.5 max-md:px-5 rounded-full py-7 max-md:py-2">
             <h4 className="bg-[linear-gradient(90deg,#02DDEF_0%,#FA01F0_100%)] text-transparent bg-clip-text text-[40px]/[120%] max-md:text-[10px]/[120%] font-bold">
               Impact
             </h4>

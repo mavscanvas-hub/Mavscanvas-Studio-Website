@@ -148,7 +148,7 @@ export default function Main() {
 
   return (
     <section
-      className="bg-white pt-[245px] px-15 max-md:px-4 max-md:pt-[88px] flex flex-col gap-20 max-md:gap-5.5 pb-40 max-md:pb-5 bg-top-left"
+      className="bg-white pt-[245px] px-15 max-md:px-4 max-md:pt-[88px] flex flex-col gap-20 max-md:gap-5.5 pb-40 max-md:pb-12 bg-top-left"
       style={{
         backgroundImage: `url(${Herobg})`,
         backgroundSize: "cover",
@@ -267,7 +267,7 @@ export default function Main() {
               console.log("Logged");
             }}
           >
-            <span className="font-medium text-[28px] text-[28px]/[120%] max-md:text-[10px]/[120%]">
+            <span className="font-medium text-[28px] text-[28px]/[120%] max-md:text-[14px]/[120%]">
               Start a Project
             </span>
             <FaArrowRightLong className="text-2xl max-md:text-[20px]" />
