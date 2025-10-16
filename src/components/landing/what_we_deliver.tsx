@@ -79,11 +79,11 @@ export default function WhatWeDeliver() {
                 <h2 className="text-white text-[64px]/[120%] font-bold max-md:hidden">
                   {currentValue.title}
                 </h2>
-                <div className="border max-md:border-[0.26px] border-white rounded-3xl  max-md:rounded-none p-4 max-md:p-2">
-                  <div className="bg-gray-100 h-[420px] max-md:h-[220px] rounded-3xl max-md:rounded-[4px]"></div>
+                <div className="border max-md:bord max-md:rounded-[5px] border-white rounded-3xl p-4 max-md:p-2">
+                  <div className="bg-gray-100 h-[420px] max-md:h-[220px] rounded-3xl max-md:rounded-[4px]" />
                 </div>
                 <div className="mt-10.5 max-md:mt-5 md:hidden flex justify-center items-center">
-                  <button className="border max-md:border-[0.26px] border-white text-white py-2.5 max-md:py-1 max-md:px-4 px-10 rounded-full flex gap-3.5 items-center font-medium text-[28px]/[120%] max-md:text-[10px]/[120%] max-md:italic">
+                  <button className="border max-md:bord border-white text-white py-2.5 max-md:py-1 max-md:px-4 px-10 rounded-full flex gap-3.5 items-center font-medium text-[28px]/[120%] max-md:text-[10px]/[120%] max-md:italic">
                     <span>View Services</span>
                     <FaArrowRightLong />
                   </button>

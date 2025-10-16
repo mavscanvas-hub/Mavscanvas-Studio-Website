@@ -8,6 +8,10 @@
   --color-foundation-cyan: "#02DDEF";
 }
 
+.bord {
+  border: 0.26px solid white;
+}
+
 .glass_effect {
   position: relative;
   background: hsl(0deg 0% 100% / 0);

@@ -7,10 +7,10 @@ import { useState } from "react";
 
 const categories = [
   "Website Development",
-  "Digital Marketing Design",
+  "Digital Marketing",
   "Social Media Management",
   "Branding",
-  "Digital Marketing",
+  "Digital Marketing Design",
   "ui/ux",
 ];
 
@@ -68,22 +68,23 @@ export default function Hero() {
   );
   return (
     <section
-      className="bg-black pt-[245px] px-15 flex flex-col gap-20 pb-40 bg-top-left"
+      className="bg-black pt-[245px] max-md:pt-22 px-15 max-md:px-4 flex flex-col gap-20 max-md:gap-8 pb-40 max-md:pb-14 bg-top-left"
       style={{
         backgroundImage: `url(${Herobg})`,
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
+        backgroundPosition: "top left",
       }}
     >
       <div className="flex flex-col">
-        <h2 className="text-white text-[90px]/[120%] font-cormo italic">
+        <h2 className="text-white text-[90px]/[120%] max-md:text-[36px]/[120%] font-cormo italic">
           Our Work,
         </h2>
-        <h2 className="text-white text-[90px]/[120%] font-extrabold">
+        <h2 className="text-white text-[90px]/[120%] max-md:text-[36px]/[120%] font-extrabold">
           Your Proof
         </h2>
       </div>
-      <div className="flex flex-wrap gap-x-8 gap-y-9 pr-[150px]">
+      <div className="flex flex-wrap max-md:flex-row gap-x-8 max-md:gap-x-1 max-md:gap-y-2 gap-y-9 pr-[150px] max-md:pr-0">
         {categories.map((category) => (
           <button
             key={category}
@@ -91,51 +92,55 @@ export default function Hero() {
               category === activeCategory
                 ? "bg-[#02DDEF] text-black font-medium"
                 : "bg-transparent border border-white text-white font-normal"
-            } text-[22px]/[120%]  py-2.5 px-7.5 rounded-full cursor-pointer transition-all duration-300 ease-out uppercase`}
+            } text-[22px]/[120%] max-md:text-[11px]/[120%] py-2.5 max-md:py-1.5 max-md:px-3.5 px-7.5 rounded-full cursor-pointer transition-all duration-300 ease-out uppercase`}
             onClick={() => setActiveCategory(category)}
           >
             {category}
           </button>
         ))}
       </div>
-      <div className="mt-20 flex flex-col gap-30">
+      <div className="mt-20 max-md:mt-0 flex flex-col gap-30 max-md:gap-5 px-2">
         {filteredWorks.map((work, index) => (
           <div
             key={work.id}
-            className={`flex flex-col gap-9 pb-30  ${
-              index < filteredWorks.length - 1 ? "border-b border-white" : ""
+            className={`flex flex-col gap-9 max-md:gap-6   ${
+              index < filteredWorks.length - 1
+                ? "border-b border-white pb-30 max-md:pb-10"
+                : ""
             }`}
           >
-            <h3 className="text-white text-5xl font-extrabold">{work.title}</h3>
-            <div className="text-[#FFFFFFAD] text-lg font-light flex items-center gap-3">
+            <h3 className="text-white text-5xl max-md:text-[24px]/[120%] font-extrabold">
+              {work.title}
+            </h3>
+            <div className="text-[#FFFFFFAD] text-lg max-md:text-[10px] max-md:-mt-4 font-light flex items-center gap-3">
               <span className="font-light">Timeline</span>
               <span className="border-l border-[#FFFFFFAD] pl-3 font-light">
                 {work.timeline}
               </span>
             </div>
-            <div className="flex flex-col gap-9 mb-5">
-              <div className="flex flex-col gap-3">
-                <h4 className="text-white text-[32px]/[120%] font-bold uppercase">
+            <div className="flex flex-col gap-9 max-md:gap-4 mb-5">
+              <div className="flex flex-col gap-3 max-md:gap-0.5">
+                <h4 className="text-white text-[32px]/[120%] max-md:text-sm/[120%] font-bold uppercase">
                   Problem
                 </h4>
-                <p className="text-white text-[28px] font-light">
+                <p className="text-white text-[28px] max-md:text-[10px]/[120%] font-light">
                   {work.problem}
                 </p>
               </div>
-              <div className="flex flex-col gap-3">
-                <h4 className="text-white text-[32px]/[120%] font-bold uppercase">
+              <div className="flex flex-col gap-3 max-md:gap-0.5">
+                <h4 className="text-white text-[32px]/[120%] max-md:text-sm/[120%] font-bold uppercase">
                   Solution
                 </h4>
-                <p className="text-white text-[28px] font-light">
+                <p className="text-white text-[28px] max-md:text-[10px]/[120%] font-light">
                   {work.solution}
                 </p>
               </div>
             </div>
-            <div className="flex mt-12.5 gap-8 w-full overflow-x-scroll scrollbar-hide">
+            <div className="flex max-md:flex-col max-md:gap-5 mt-12.5 max-md:mt-0 gap-8 w-full overflow-x-scroll scrollbar-hide">
               {work.project_image.map((image, index) => (
                 <div
                   key={index}
-                  className="border-white border p-5 rounded-3xl min-w-[605px] h-[400px] flex-shrink-0"
+                  className="border-white border p-5 max-md:p-2.5 rounded-3xl max-md:rounded-[10px] min-w-[605px] max-md:min-w-0 h-[400px] max-md:h-[225px] flex-shrink-0"
                   style={{
                     msOverflowStyle: "none",
                     scrollbarWidth: "none",
@@ -146,7 +151,7 @@ export default function Hero() {
                     loading="lazy"
                     decoding="async"
                     alt={`Project ${work.id} Image ${index + 1}`}
-                    className="w-full h-full object-cover rounded-3xl"
+                    className="w-full h-full object-cover rounded-3xl max-md:rounded-[10px]"
                   />
                 </div>
               ))}
@@ -154,20 +159,22 @@ export default function Hero() {
           </div>
         ))}
       </div>
-      <div className="flex flex-col gap-15 items-center justify-center">
-        <span className="text-[32px]/[120%] text-white font-light text-center mt-38 block max-w-[800px]">
+      <div className="flex flex-col gap-15 max-md:gap-4 items-center justify-center">
+        <span className="text-[32px]/[120%] max-md:text-[10px]/[120%] text-white font-light text-center mt-38 max-md:mt-5 block max-w-[800px] max-md:w-[250px]">
           We are prepared to replicate these results for your brand. Are you
           ready to begin?
         </span>
         <div className="flex justify-center items-center">
           <Button
-            className="bg-[#02DDEF] rounded-full py-5 px-20 flex gap-6 items-center"
+            className="bg-[#02DDEF] rounded-full py-5.5 max-md:py-3 max-md:px-10 px-24 flex gap-6 max-md:gap-2 items-center"
             onClick={() => {
               console.log("Logged");
             }}
           >
-            <span className="font-medium text-[28px]">Start a Project</span>
-            <FaArrowRightLong className="text-3xl" />
+            <span className="font-medium text-[28px] text-[28px]/[120%] max-md:text-[10px]/[120%]">
+              Start a Project
+            </span>
+            <FaArrowRightLong className="text-2xl max-md:text-[20px]" />
           </Button>
         </div>
       </div>

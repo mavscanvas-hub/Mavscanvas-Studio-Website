@@ -27,7 +27,13 @@ const links = [
   },
 ];
 
-export default function Navbar() {
+export default function Navbar({
+  setIsSidebarOpen,
+  isSidebarOpen,
+}: {
+  setIsSidebarOpen: (open: boolean) => void;
+  isSidebarOpen: boolean;
+}) {
   const location = useLocation();
   const [activeLink, setActiveLink] = useState(location.pathname);
   const [scrolled, setScrolled] = useState(false);
@@ -158,7 +164,14 @@ export default function Navbar() {
           className="glass_effect bg-transparent rounded-full p-2 flex items-center justify-center"
           onClick={() => {}}
         >
-          <RxHamburgerMenu className="text-2xl text-white" />
+          <RxHamburgerMenu
+            onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+            className={`text-2xl ${
+              activeLink.includes("services") || activeLink.includes("pricing")
+                ? "text-black"
+                : "text-white"
+            }`}
+          />
         </Button>
       </div>
     </>
