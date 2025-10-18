@@ -29,7 +29,7 @@ const data = [
 export default function Hero() {
   return (
     <section
-      className="bg-black pt-[245px] max-md:pt-[76px] px-15 max-md:px-5 flex flex-col gap-20 max-md:gap-8 pb-40 max-md:pb-8"
+      className="bg-black pt-[245px] max-md:pt-[80px] px-15 max-md:px-5 flex flex-col gap-20 max-md:gap-8 pb-40 max-md:pb-8 font-subito"
       style={{
         backgroundImage: `url(${Herobg})`,
         backgroundSize: "cover",
@@ -37,7 +37,7 @@ export default function Hero() {
         backgroundRepeat: "no-repeat",
       }}
     >
-      <div className="flex flex-col">
+      <div className="flex flex-col w-full">
         <h2 className="text-white text-[90px]/[120%] max-md:text-[36px]/[120%] font-cormo italic">
           More Than an Agency,
         </h2>

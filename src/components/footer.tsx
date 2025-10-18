@@ -19,12 +19,10 @@ const support = [
   { name: "Privacy Policy", link: "/privacy" },
   { name: "Terms of Service", link: "/terms" },
 ];
-
 const contact = [
   { icon: <IoMdMail />, value: "info@mavscanvas.com" },
   { icon: <IoMdCall />, value: "+234 (0) 9121635235" },
 ];
-
 const socialMedia = [
   { name: "Facebook", link: "https://facebook.com", icon: <FaFacebookF /> },
   { name: "Twitter", link: "https://twitter.com", icon: <FaXTwitter /> },
@@ -35,7 +33,7 @@ const socialMedia = [
 export default function Footer() {
   return (
     <footer
-      className="bg-black text-white px-20 py-25 max-md:py-10 max-md:px-4 w-full h-full"
+      className="bg-black text-white px-20 py-25 max-md:py-10 max-md:px-4 w-full h-full font-subito"
       style={{
         backgroundImage: `url(${FooterBg})`,
         backgroundRepeat: "no-repeat",
@@ -118,7 +116,7 @@ export default function Footer() {
                 onClick={() => {
                   console.log("Subscribed");
                 }}
-                className="bg-white text-black text-[22px] max-md:w-full max-md:text-[11px] max-md:font-bold py-2.5 max-md:py-1.5 px-10 max-md:px-15 rounded-full"
+                className="bg-white text-black text-[22px] max-md:w-full max-md:text-[12px]/[120%] max-md:font-bold py-2.5 max-md:py-2.5 px-10 max-md:px-15 rounded-full"
               >
                 Subscribe
               </Button>

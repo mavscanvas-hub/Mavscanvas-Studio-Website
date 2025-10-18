@@ -1,5 +1,6 @@
 import displayBg from "../../assets/company_op/discover.webp";
-import Discoverbg from "../../assets/company_op/discoverbg.webp";
+// import small from "../../assets/company_op/discover_small.png";
+// import Discoverbg from "../../assets/company_op/discoverbg.webp";
 import displayWide from "../../assets/company_op/discoverwide.webp";
 import Team from "../../assets/company_op/team.webp";
 import TeamBG from "../../assets/company_op/teambg.webp";
@@ -83,19 +84,18 @@ export default function HowWeWork() {
     }
   };
   return (
-    <section
-      className="bg-white pt-15 max-md:pt-9 pl-15 max-md:pl-4.5"
-      style={{
-        backgroundImage: `url(${Discoverbg})`,
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "center",
-      }}
-    >
-      <div className="flex flex-col gap-11" onClick={handleSectionClick}>
-        <h2 className="font-cormo text-[90px]/[120%] max-md:text-[36px]/[120%] italic text-start text-black pl-10 max-md:pl-0">
-          How We <strong>Work</strong>
+    <section className="bg-white how-we-work-bg pt-15 max-md:pt-9  max-md:pb-13 ">
+      <div
+        className="flex flex-col gap-15 pl-15 max-md:pl-4.5"
+        onClick={handleSectionClick}
+      >
+        <h2 className="font-cormo text-[90px]/[120%] max-md:text-[36px]/[120%] italic text-start text-black">
+          How We{" "}
+          <strong className="font-subito font-extrabold not-italic">
+            Work
+          </strong>
         </h2>
-        <div className="flex flex-col gap-10 max-md:gap-2.5">
+        <div className="flex flex-col gap-10 max-md:gap-2.5 justify-center max-md:mb-12.5">
           <div className="flex gap-10 max-md:gap-4 justify-start px-10 max-md:px-8 relative">
             {data1.map((item, idx) => (
               <div
@@ -134,11 +134,11 @@ export default function HowWeWork() {
                       : "482px max-md:126px",
                 }}
               >
-                <h3 className="font-cormo text-[90px]/[120%] max-md:text-[24px]/[120%] italic text-white">
+                <h3 className="font-subito text-[90px]/[120%] max-md:text-[24px]/[120%] text-white">
                   {item.label}
                 </h3>
                 {activeA && idx === currentA && (
-                  <p className="text-white text-4xl max-md:text-[12px]/[120%] font-light max-w-[500px] max-md:w-full">
+                  <p className="text-white font-subito text-4xl max-md:text-[12px]/[120%] font-light max-w-[500px] max-md:w-full">
                     {item.content}
                   </p>
                 )}
@@ -183,11 +183,11 @@ export default function HowWeWork() {
                       : "482px max-md:126px",
                 }}
               >
-                <h3 className="font-cormo text-[90px]/[120%] max-md:text-[24px]/[120%] italic text-white">
+                <h3 className="font-subito text-[90px]/[120%] max-md:text-[24px]/[120%] text-white">
                   {item.label}
                 </h3>
                 {activeB && idx === currentB && (
-                  <p className="text-white text-4xl max-md:text-[12px]/[120%] font-light max-w-[500px] max-md:w-full">
+                  <p className="text-white text-4xl max-md:text-[12px]/[120%] font-light font-subito max-w-[500px] max-md:w-full">
                     {item.content}
                   </p>
                 )}
@@ -196,11 +196,14 @@ export default function HowWeWork() {
           </div>
         </div>
       </div>
-      <div className="mt-60 max-md:mt-12.5 mb-10 flex flex-col gap-11 max-md:gap-9">
-        <h2 className="font-cormo text-[90px]/[120%] max-md:text-[36px]/[120%] italic text-start text-black pl-10 max-md:pl-0">
-          Meet Our <strong>Team</strong>
+      <div className="mt-60 max-md:mt-22.5 mb-10 flex flex-col gap-11 max-md:gap-9">
+        <h2 className="font-cormo text-[90px]/[120%] max-md:text-[36px]/[120%] italic text-start text-black pl-15 max-md:pl-4.5">
+          Meet Our{" "}
+          <strong className="font-subito font-extrabold not-italic">
+            Team
+          </strong>
         </h2>
-        <div className="flex flex-row gap-8 max-md:gap-3 overflow-x-scroll">
+        <div className="flex flex-row gap-8 max-md:gap-3 overflow-x-scroll team-scroll pl-15 max-md:pl-4.5 pr-15 max-md:pr-5">
           {team.map((member, idx) => (
             <div
               key={idx}
@@ -218,26 +221,26 @@ export default function HowWeWork() {
                 decoding="async"
                 className="w-70 h-70 max-md:w-[124px] max-md:h-[124px] rounded-full object-cover"
               />
-              <div className="flex flex-col items-center justify-center pb-8 max-md:pb-0 max-w-[262px] gap-3 max-md:gap-1 max-md:w-[96px]">
-                <span className="text-5xl max-md:text-[18px]/[120%] text-white font-medium text-center">
+              <div className="flex flex-col items-center font-subito justify-center pb-8 max-md:pb-0 max-w-[262px] gap-3 max-md:gap-1 max-md:w-[96px]">
+                <span className="text-5xl/[120%] max-md:text-[18px]/[120%] text-white font-medium text-center">
                   {member.name}
                 </span>
-                <span className="text-xl max-md:text-[8px]/[120%] text-white font-light">
+                <span className="text-xl/[120%] max-md:text-[8px]/[120%] text-white font-light">
                   {member.role}
                 </span>
               </div>
             </div>
           ))}
         </div>
-        <div className="flex justify-center my-20 max-md:mt-12 max-md:mb-14">
+        <div className="flex justify-center my-20 max-md:mt-12 max-md:mb-10">
           <Button
             variant="secondary"
             onClick={() => {
               console.log("View All Case Studies");
             }}
-            className="border max-md:border-[0.26px] border-black text-black py-2.5 max-md:py-1 max-md:px-4 px-10 rounded-full flex gap-3.5 items-center font-medium  max-md:italic"
+            className="border max-md:border-[0.26px] border-black text-black py-2.5 max-md:py-1 max-md:px-4 px-10 rounded-full flex gap-3.5 items-center font-bold  max-md:italic"
           >
-            <span className="text-[28px]/[120%] max-md:text-[10px]/[120%] italic">
+            <span className="text-[28px]/[120%] max-md:text-[10px]/[120%] italic font-subito">
               View Teams
             </span>
             <FaArrowRight className="text-[30px] max-md:text-lg text-black" />

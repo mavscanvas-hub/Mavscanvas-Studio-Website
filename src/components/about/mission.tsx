@@ -18,7 +18,7 @@ const data = [
 export default function Mission() {
   return (
     <section
-      className="bg-white pt-22.5 max-md:pt-6 px-15 max-md:px-5 pb-27 max-md:pb-1 flex gap-15 flex-col items-center"
+      className="bg-white pt-22.5 max-md:pt-6 px-15 max-md:px-5 pb-27 max-md:pb-1 flex gap-15 flex-col items-center font-subito"
       style={{
         backgroundImage: `url(${MissionBg})`,
         backgroundSize: "cover",
@@ -51,7 +51,7 @@ export default function Mission() {
                 {item.label}
               </h3>
             </div>
-            <p className="text-[35px]/[120%] max-md:text-[9px]/[120%] max-md:w-[150px] max-w-[638px] text-white">
+            <p className="text-[35px]/[120%] max-md:text-[9px]/[120%] max-md:w-[150px] font-light  max-w-[638px] text-white">
               {item.content}
             </p>
           </div>
@@ -81,7 +81,7 @@ export default function Mission() {
             decoding="async"
             className="w-full max-md:relative max-md:-top-15"
           />
-          <span className="absolute -top-11 max-md:-top-18.5 max-md:left-[75%] left-[70%] bg-black -translate-x-1/2 px-22.5 max-md:px-5 rounded-full py-7 max-md:py-2">
+          <span className="absolute -top-11 max-md:-top-18.5 max-md:left-[75%] left-[73%] bg-black -translate-x-1/2 px-22.5 max-md:px-5 rounded-full py-7 max-md:py-2">
             <h4 className="bg-[linear-gradient(90deg,#02DDEF_0%,#FA01F0_100%)] text-transparent bg-clip-text text-[40px]/[120%] max-md:text-[10px]/[120%] font-bold">
               Creativity
             </h4>

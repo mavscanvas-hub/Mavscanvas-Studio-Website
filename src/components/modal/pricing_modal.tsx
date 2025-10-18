@@ -1,8 +1,6 @@
 import { HiMiniCheckBadge } from "react-icons/hi2";
 import { HiArrowRight } from "react-icons/hi";
 import Herobg from "../../assets/pricing/bg.png";
-import Button from "../custom/button";
-import { FaArrowRightLong } from "react-icons/fa6";
 
 const plans = [
   {
@@ -50,7 +48,7 @@ const plans = [
 export default function Hero() {
   return (
     <section
-      className="bg-white font-subito pt-[235px] max-md:pt-25.5 px-15 max-md:px-4 flex flex-col gap-20 max-md:gap-8 pb-40 max-md:pb-11 bg-top-left"
+      className="bg-white font-subito px-15 max-md:px-4 pt-5 flex flex-col gap-12.5 max-md:gap-8 pb-12 max-md:pb-8"
       style={{
         backgroundImage: `url(${Herobg})`,
         backgroundSize: "cover",
@@ -58,16 +56,16 @@ export default function Hero() {
         backgroundPosition: "center",
       }}
     >
-      <div className="flex flex-col">
-        <h2 className="text-black text-[90px]/[120%] max-md:text-[36px]/[120%] font-cormo italic">
-          Clear Packages,
+      <div className="flex flex-col justify-center items-center">
+        <h2 className="text-black text-[70px]/[120%] max-md:text-[36px]/[120%] font-cormo italic">
+          We Have The
         </h2>
-        <h2 className="text-black text-[90px]/[120%] max-md:text-[36px]/[120%] font-extrabold">
-          Flexible Solutions
+        <h2 className="text-black text-[70px]/[120%] max-md:text-[36px]/[120%] font-extrabold">
+          Right Plan for You
         </h2>
       </div>
       <div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {plans.map((plan) => (
             <div
               key={plan.id}
@@ -75,7 +73,7 @@ export default function Hero() {
                 plan.id === 1
                   ? " bg-[url(src/assets/pricing/card_bg.png)] bg-cover bg-black"
                   : "bg-transparent border border-black"
-              } rounded-[42px] max-md:rounded-[30px] pt-[50px] max-md:pt-9 max-md:px-7 px-10 pb-11 flex flex-col justify-between`}
+              } rounded-[42px] max-md:rounded-[30px] pt-[50px] max-md:pt-9 max-md:px-7 px-10 pb-11 flex flex-col font-subito justify-between`}
             >
               <div>
                 <span
@@ -90,7 +88,7 @@ export default function Hero() {
                   </h3>
                 </span>
                 <p
-                  className={`text-[60px]/[120%] font-subito max-md:text-[44px]/[120%] font-bold mt-6 max-md:mt-5 max-md:mb-6 mb-8 ${
+                  className={`text-[60px]/[120%] max-md:text-[44px]/[120%] font-subito font-bold mt-6 max-md:mt-5 max-md:mb-6 mb-8 ${
                     plan.id === 1 ? "text-white" : "text-black"
                   }`}
                 >
@@ -109,7 +107,7 @@ export default function Hero() {
                     {plan.short_desc}
                   </p>
                 </div>
-                <ul className="mt-7 mb-[285px] max-md:mb-16.5 space-y-2">
+                <ul className="mt-7 mb-[50px] max-md:mb-10 space-y-2">
                   {plan.benefits.map((benefit, index) => (
                     <li key={index} className="flex items-center gap-3">
                       <HiMiniCheckBadge
@@ -162,25 +160,6 @@ export default function Hero() {
           Reach Out
           <HiArrowRight className="text-3xl max-md:text-xl" />
         </button>
-      </div>
-      <div className="flex flex-col gap-15 max-md:gap-4 items-center justify-center">
-        <span className="text-[32px]/[120%] max-md:text-[10px]/[120%] font-light text-center mt-38 max-md:mt-5 block max-w-[800px] max-md:w-[250px] text-black">
-          We are prepared to replicate these results for your brand. Are you
-          ready to begin?
-        </span>
-        <div className="flex justify-center items-center">
-          <Button
-            className="bg-[#02DDEF] rounded-full py-5.5 max-md:py-3 max-md:px-10 px-24 flex gap-6 max-md:gap-5 max-md:justify-between items-center "
-            onClick={() => {
-              console.log("Logged");
-            }}
-          >
-            <span className="font-medium text-[28px] text-[28px]/[120%] max-md:text-[14px]/[120%]">
-              Start a Project
-            </span>
-            <FaArrowRightLong className="text-2xl max-md:text-[20px]" />
-          </Button>
-        </div>
       </div>
     </section>
   );

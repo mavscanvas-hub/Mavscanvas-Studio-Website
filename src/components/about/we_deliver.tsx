@@ -65,7 +65,7 @@ const socialMedia = [
 export default function WeDeliver() {
   return (
     <section
-      className="bg-[#FAFAFA] pt-15 max-md:pt-7 px-15 max-md:px-4 pb-40 max-md:pb-12.5 flex flex-col gap-47 max-md:gap-14"
+      className="bg-[#FAFAFA] pt-15 max-md:pt-7 px-15 max-md:px-4 pb-40 max-md:pb-12.5 flex flex-col gap-47 max-md:gap-14 font-subito"
       style={{
         backgroundImage: `url(${Deliverbg})`,
         backgroundRepeat: "no-repeat",
@@ -91,7 +91,7 @@ export default function WeDeliver() {
               key={idx}
               className="flex flex-col items-center p-20 max-md:p-8 relative"
             >
-              <span className="text-[108px]/[120%] max-md:text-[34px]/[120%] font-bold text-black">
+              <span className="text-[108px]/[120%] max-md:text-[34px]/[120%] font-extrabold text-black">
                 {outcome.value}
               </span>
               <span className="text-3xl max-md:text-[12px]/[120%] text-black font-light text-center">
@@ -132,7 +132,7 @@ export default function WeDeliver() {
                   <span className="text-white text-5xl max-md:text-xl">
                     {contact.icon}
                   </span>
-                  <span className="text-white text-4xl/[120%] max-md:text-[20px]/[120%] font-light">
+                  <span className="text-white text-4xl/[120%] max-md:text-[20px]/[120%] font-light font-subito">
                     {contact.detail}
                   </span>
                 </div>

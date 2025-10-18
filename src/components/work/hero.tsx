@@ -68,7 +68,7 @@ export default function Hero() {
   );
   return (
     <section
-      className="bg-black pt-[245px] max-md:pt-22 px-15 max-md:px-4 flex flex-col gap-20 max-md:gap-8 pb-40 max-md:pb-14 bg-top-left"
+      className="bg-black pt-[245px] max-md:pt-22  flex flex-col gap-20 max-md:gap-8 pb-40 max-md:pb-14 bg-top-left font-subito"
       style={{
         backgroundImage: `url(${Herobg})`,
         backgroundSize: "cover",
@@ -76,7 +76,7 @@ export default function Hero() {
         backgroundPosition: "top left",
       }}
     >
-      <div className="flex flex-col">
+      <div className="flex flex-col px-15 max-md:px-4">
         <h2 className="text-white text-[90px]/[120%] max-md:text-[36px]/[120%] font-cormo italic">
           Our Work,
         </h2>
@@ -84,7 +84,7 @@ export default function Hero() {
           Your Proof
         </h2>
       </div>
-      <div className="flex flex-wrap max-md:flex-row gap-x-8 max-md:gap-x-1 max-md:gap-y-2 gap-y-9 pr-[150px] max-md:pr-0">
+      <div className="flex flex-wrap max-md:flex-row gap-x-8 max-md:gap-x-1 max-md:gap-y-2 gap-y-9 px-15 max-md:px-4 pr-[150px] max-md:pr-0">
         {categories.map((category) => (
           <button
             key={category}
@@ -99,7 +99,7 @@ export default function Hero() {
           </button>
         ))}
       </div>
-      <div className="mt-20 max-md:mt-0 flex flex-col gap-30 max-md:gap-5 px-2">
+      <div className="mt-20 max-md:mt-0 flex flex-col gap-30 max-md:gap-5 ">
         {filteredWorks.map((work, index) => (
           <div
             key={work.id}
@@ -109,16 +109,16 @@ export default function Hero() {
                 : ""
             }`}
           >
-            <h3 className="text-white text-5xl max-md:text-[24px]/[120%] font-extrabold">
+            <h3 className="text-white text-5xl max-md:text-[24px]/[120%] px-15 max-md:px-6 font-extrabold">
               {work.title}
             </h3>
-            <div className="text-[#FFFFFFAD] text-lg max-md:text-[10px] max-md:-mt-4 font-light flex items-center gap-3">
+            <div className="text-[#FFFFFFAD] text-lg max-md:text-[10px] px-15 max-md:px-6 max-md:-mt-4 font-light flex items-center gap-3">
               <span className="font-light">Timeline</span>
               <span className="border-l border-[#FFFFFFAD] pl-3 font-light">
                 {work.timeline}
               </span>
             </div>
-            <div className="flex flex-col gap-9 max-md:gap-4 mb-5">
+            <div className="flex flex-col gap-9 max-md:gap-4 mb-5 px-15 max-md:px-6">
               <div className="flex flex-col gap-3 max-md:gap-0.5">
                 <h4 className="text-white text-[32px]/[120%] max-md:text-sm/[120%] font-bold uppercase">
                   Problem
@@ -136,7 +136,7 @@ export default function Hero() {
                 </p>
               </div>
             </div>
-            <div className="flex max-md:flex-col max-md:gap-5 mt-12.5 max-md:mt-0 gap-8 w-full overflow-x-scroll scrollbar-hide">
+            <div className="flex max-md:flex-col max-md:gap-5 mt-12.5 px-15 max-md:px-6 team-scroll max-md:mt-0 gap-8 w-full overflow-x-scroll scrollbar-hide">
               {work.project_image.map((image, index) => (
                 <div
                   key={index}

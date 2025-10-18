@@ -62,7 +62,7 @@ const process = [
 export default function Experts() {
   return (
     <section
-      className="bg-black pt-22.5 max-md:pt-6 pb-27 max-md:pb-12.5 flex flex-col gap-48 max-md:gap-12 w-full"
+      className="bg-black pt-22.5 max-md:pt-6 pb-27 max-md:pb-12.5 flex flex-col gap-48 max-md:gap-12 w-full font-subito"
       style={{
         backgroundImage: `url(${Herobg})`,
         backgroundRepeat: "no-repeat",
@@ -70,8 +70,8 @@ export default function Experts() {
         backgroundSize: "contain",
       }}
     >
-      <div className="flex flex-col w-full px-15 max-md:px-5">
-        <div className="text-white flex flex-col">
+      <div className="flex flex-col w-full ">
+        <div className="text-white flex flex-col px-15 max-md:px-5">
           <h3 className="text-[90px]/[120%] max-md:text-[36px]/[120%] font-cormo italic">
             Meet the Experts
           </h3>
@@ -79,7 +79,7 @@ export default function Experts() {
             Behind the Work
           </h2>
         </div>
-        <div className="grid grid-cols-3 max-md:flex max-md:items-center max-md:overflow-scroll gap-18 max-md:gap-3 pt-17 max-md:pt-8">
+        <div className="grid grid-cols-3 max-md:flex max-md:items-center team-scroll max-md:overflow-scroll gap-18 max-md:gap-3 pt-17 max-md:pt-8 px-15 max-md:px-5">
           {team.map((member, idx) => (
             <div
               key={idx}

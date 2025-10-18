@@ -64,7 +64,10 @@ export default function Reviews() {
       }}
     >
       <h2 className="font-cormo text-[90px]/[120%] max-md:text-[36px]/[120%] italic text-start text-white">
-        Clients <strong>Reviews</strong>
+        Clients{" "}
+        <strong className="font-extrabold font-subito not-italic">
+          Reviews
+        </strong>
       </h2>
 
       <div className="flex flex-col items-center gap-4">
@@ -92,11 +95,11 @@ export default function Reviews() {
                   >
                     ★ ★ ★ ★ ★
                   </span>
-                  <span className="flex flex-col gap-1 max-md:gap-0.5">
-                    <blockquote className="text-black text-2xl/[120%] max-md:text-[7px]/[120%] flex-1">
+                  <span className="flex flex-col gap-1 max-md:gap-0.5 ">
+                    <blockquote className="text-black text-2xl/[120%] max-md:text-[7px]/[120%] font-subito font-normal flex-1">
                       {reviewsData[0].quote}
                     </blockquote>
-                    <p className="text-2xl/[120%] text-black max-md:text-[7px]/[120%] font-medium">
+                    <p className="text-2xl/[120%] text-black max-md:text-[7px]/[120%] font-subito font-medium">
                       {reviewsData[0].role}
                     </p>
                   </span>
@@ -126,7 +129,7 @@ export default function Reviews() {
                   >
                     ★ ★ ★ ★ ★
                   </span>
-                  <span className="flex flex-col gap-1 max-md:gap-0">
+                  <span className="flex flex-col gap-1 max-md:gap-0 font-subito">
                     <blockquote className="text-black text-2xl/[120%] max-md:text-[7px]/[120%] flex-1">
                       {reviewsData[1].quote}
                     </blockquote>
@@ -160,7 +163,7 @@ export default function Reviews() {
                   >
                     ★ ★ ★ ★ ★
                   </span>
-                  <span className="flex flex-col gap-1 max-md:gap-0">
+                  <span className="flex flex-col gap-1 max-md:gap-0 font-subito">
                     <blockquote className="text-black text-2xl/[120%] max-md:text-[7px]/[120%] flex-1">
                       {reviewsData[2].quote}
                     </blockquote>
@@ -194,11 +197,11 @@ export default function Reviews() {
                   >
                     ★ ★ ★ ★ ★
                   </span>
-                  <span className="flex flex-col gap-1 max-md:gap-0">
-                    <blockquote className="text-black text-2xl/[120%] max-md:text-[7px]/[120%] flex-1">
+                  <span className="flex flex-col gap-1 max-md:gap-0 font-subito">
+                    <blockquote className="text-black text-2xl/[120%] max-md:text-[7px]/[120%] font-subito flex-1">
                       {reviewsData[3].quote}
                     </blockquote>
-                    <p className="text-2xl/[120%] text-black max-md:text-[7px]/[120%] font-medium">
+                    <p className="text-2xl/[120%] text-black max-md:text-[7px]/[120%] font-subito font-medium">
                       {reviewsData[3].role}
                     </p>
                   </span>

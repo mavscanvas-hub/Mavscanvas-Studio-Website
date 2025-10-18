@@ -1,13 +1,138 @@
 @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&display=swap");
 @import "tailwindcss";
 
+/* -------------------------
+   CUSTOM TAILWIND THEME VARS
+-------------------------- */
 @theme {
-  --text-2lg: "28px";
-  --default-border: "0.5px";
-  --font-cormo: "Cormorant Garamond";
-  --color-foundation-cyan: "#02DDEF";
+  --default-border: 0.5px;
+  --font-cormo: "Cormorant Garamond", serif;
+  --font-subito: "Subito", sans-serif;
+  --color-foundation-cyan: #02ddef;
 }
 
+/* -------------------------
+   SUBITO FONT FAMILY SETUP
+-------------------------- */
+
+@font-face {
+  font-family: "Subito";
+  src: url("./assets/font_face/Subito-Thin_trial.woff2") format("woff2"),
+    url("./assets/font/Subito-Thin_trial.woff") format("woff");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Subito";
+  src: url("./assets/font_face/Subito-ThinItalic_trial.woff2") format("woff2"),
+    url("./assets/font/Subito-ThinItalic_trial.woff") format("woff");
+  font-weight: 100;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Subito";
+  src: url("./assets/font_face/Subito-Light_trial.woff2") format("woff2"),
+    url("./assets/font/Subito-Light_trial.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Subito";
+  src: url("./assets/font_face/Subito-LightItalic_trial.woff2") format("woff2"),
+    url("./assets/font/Subito-LightItalic_trial.woff") format("woff");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Subito";
+  src: url("./assets/font_face/Subito-Regular_trial.woff2") format("woff2"),
+    url("./assets/font/Subito-Regular_trial.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Subito";
+  src: url("./assets/font_face/Subito-RegularItalic_trial.woff2")
+      format("woff2"),
+    url("./assets/font/Subito-RegularItalic_trial.woff") format("woff");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Subito";
+  src: url("./assets/font_face/Subito-Medium_trial.woff2") format("woff2"),
+    url("./assets/font/Subito-Medium_trial.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Subito";
+  src: url("./assets/font_face/Subito-MediumItalic_trial.woff2") format("woff2"),
+    url("./assets/font/Subito-MediumItalic_trial.woff") format("woff");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Subito";
+  src: url("./assets/font_face/Subito-Bold_trial.woff2") format("woff2"),
+    url("./assets/font/Subito-Bold_trial.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Subito";
+  src: url("./assets/font/Subito-BoldItalic_trial.woff2") format("woff2"),
+    url("./assets/font/Subito-BoldItalic_trial.woff") format("woff");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Subito";
+  src: url("./assets/font_face/Subito-ExtraBold_trial.woff2") format("woff2"),
+    url("./assets/font/Subito-ExtraBold_trial.woff") format("woff");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Subito";
+  src: url("./assets/font_face/Subito-ExtraBoldItalic_trial.woff2")
+      format("woff2"),
+    url("./assets/font/Subito-ExtraBoldItalic_trial.woff") format("woff");
+  font-weight: 800;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Subito";
+  src: url("./assets/font_face/Subito-Black_trial.woff2") format("woff2"),
+    url("./assets/font/Subito-Black_trial.woff") format("woff");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Subito";
+  src: url("./assets/font_face/Subito-BlackItalic_trial.woff2") format("woff2"),
+    url("./assets/font/Subito-BlackItalic_trial.woff") format("woff");
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* -------------------------
+   CUSTOM CLASSES
+-------------------------- */
 .bord {
   border: 0.26px solid white;
 }
@@ -23,38 +148,27 @@
   background-clip: padding-box, border-box;
   background-origin: border-box;
 
-  background-image: 
-     /* Top layer: An inner background to "cut out" the border effect */ linear-gradient(
+  background-image: linear-gradient(
       rgba(255, 255, 255, 0),
       rgba(255, 255, 255, 0)
     ),
-    /* Bottom layer: Combined gradients for top-bottom and right edge effects */
-      /* I dabbled with this and i was able to figure out the glassy thing or not */
-      linear-gradient(
-        to bottom,
-        rgba(255, 255, 255, 0.5) 1%,
-        rgba(255, 255, 255, 0) 1%,
-        rgba(255, 255, 255, 0.1) 0%,
-        rgba(255, 255, 255, 0) 5%
-      ),
+    linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.4) 1%,
+      rgba(255, 255, 255, 0) 5%
+    ),
     linear-gradient(
       to top,
-      rgba(255, 255, 255, 0.5) 1.4%,
-      rgba(255, 255, 255, 0) 0%,
-      rgba(255, 255, 255, 0.2) 0.1%,
+      rgba(255, 255, 255, 0.4) 1%,
       rgba(255, 255, 255, 0) 5%
     ),
     linear-gradient(
       to left,
-      rgba(255, 255, 255, 0),
-      rgba(255, 255, 255, 0),
       rgba(255, 255, 255, 0.5) 0%,
       rgba(255, 255, 255, 0) 0.2%
     ),
     linear-gradient(
       to right,
-      rgba(255, 255, 255, 0),
-      rgba(255, 255, 255, 0),
       rgba(255, 255, 255, 0.5) 0%,
       rgba(255, 255, 255, 0) 0.3%
     );
@@ -77,7 +191,6 @@
     opacity: 1;
   }
 }
-
 .slide-in-from-right {
   animation: slideInFromRight 0.36s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
@@ -98,4 +211,69 @@
 }
 .drop-in.drop-in--active {
   animation: dropDown 560ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.how-we-work-bg {
+  background-image: url("./assets/company_op/discoverbg.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+/* larger screens use Discoverbg */
+@media (min-width: 769px) {
+  .how-we-work-bg {
+    background-image: url("./assets/company_op/discoverbg.webp");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+}
+
+/* hide horizontal scrollbar but keep scrolling working */
+.results-scroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-x;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.results-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* smooth transforms for card elements */
+.results-scroll > * > * {
+  transition: transform 100ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: transform;
+}
+
+/* clip any visual overflow at page level */
+.w-full.overflow-x-hidden {
+  position: relative;
+  overflow-x: hidden;
+}
+
+.team-scroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch; /* smooth on iOS */
+  touch-action: pan-x;
+  -ms-overflow-style: none; /* IE/Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.team-scroll::-webkit-scrollbar {
+  display: none; /* WebKit */
+}
+
+.team-scroll::-webkit-scrollbar {
+  display: none; /* WebKit */
+}
+
+/* -------------------------
+   ROOT VARIABLE FOR SUBITO
+-------------------------- */
+:root {
+  --font-subito: "Subito", sans-serif;
 }

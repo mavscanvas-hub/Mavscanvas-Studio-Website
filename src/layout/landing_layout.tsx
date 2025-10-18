@@ -2,29 +2,36 @@ import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import { Outlet } from "react-router-dom";
 import Sidebar from "../components/sidebar";
+import Pricing from "../components/modal/pricing_modal";
 import { useState, useRef, useEffect } from "react";
 
 export default function LandingLayout() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [getStartedModalOpen, setGetStartedModalOpen] = useState(false);
 
   const sidebarRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    document.documentElement.style.overflow = isSidebarOpen ? "hidden" : "";
+    // lock body scroll when either sidebar OR modal is open
+    document.documentElement.style.overflow =
+      isSidebarOpen || getStartedModalOpen ? "hidden" : "";
     return () => {
       document.documentElement.style.overflow = "";
     };
-  }, [isSidebarOpen]);
+  }, [isSidebarOpen, getStartedModalOpen]);
 
-  // useEffect(() => {
-  //   function onKey(e: KeyboardEvent) {
-  //     if (e.key === "Escape") setIsSidebarOpen(false);
-  //   }
-  //   window.addEventListener("keydown", onKey);
-  //   return () => window.removeEventListener("keydown", onKey);
-  // }, []);
+  // close sidebar/modal on Escape
+  useEffect(() => {
+    function onKey(e: KeyboardEvent) {
+      if (e.key === "Escape") {
+        setIsSidebarOpen(false);
+        setGetStartedModalOpen(false);
+      }
+    }
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
 
-  // focus sidebar when opened (helps keyboard users)
   useEffect(() => {
     if (isSidebarOpen) {
       sidebarRef.current?.focus();
@@ -37,6 +44,8 @@ export default function LandingLayout() {
         <Navbar
           setIsSidebarOpen={setIsSidebarOpen}
           isSidebarOpen={isSidebarOpen}
+          setGetStartedModalOpen={setGetStartedModalOpen}
+          getStartedModalOpen={getStartedModalOpen}
         />
       </header>
 
@@ -65,6 +74,12 @@ export default function LandingLayout() {
           setIsSidebarOpen={setIsSidebarOpen}
         />
       </div>
+
+      {getStartedModalOpen && (
+        <div className="relative z-[9999] max-h-screen overflow-auto w-full">
+          <Pricing />
+        </div>
+      )}
 
       <div className="flex-1">
         <Outlet />
