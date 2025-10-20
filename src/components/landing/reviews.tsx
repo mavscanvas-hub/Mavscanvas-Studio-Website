@@ -1,10 +1,10 @@
 import { FaArrowRightLong } from "react-icons/fa6";
 import Button from "../custom/button";
 import Review from "../../assets/company_op/reviewbg.webp";
-import user1 from "../../assets/company_op/revies/1.png";
+import user1 from "../../assets/company_op/revies/1.webp";
 import user2 from "../../assets/company_op/revies/2.png";
-import user3 from "../../assets/company_op/revies/3.png";
-import user4 from "../../assets/company_op/revies/4.png";
+import user3 from "../../assets/company_op/revies/3.webp";
+import user4 from "../../assets/company_op/revies/4.webp";
 import { useEffect, useRef, useState } from "react";
 
 const reviewsData = [
@@ -217,7 +217,7 @@ export default function Reviews() {
           </span>
           <div className="flex justify-center items-center">
             <Button
-              className="bg-[#02DDEF] rounded-full py-5.5 max-md:py-3 max-md:px-10 px-24 flex gap-6 max-md:gap-2 items-center"
+              className="bg-[#02DDEF] hover:scale-105 rounded-full py-5.5 max-md:py-3 max-md:px-10 px-24 flex gap-6 max-md:gap-2 items-center"
               onClick={() => {
                 console.log("Logged");
               }}

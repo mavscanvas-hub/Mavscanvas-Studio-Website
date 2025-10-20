@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import cardBg from "../../assets/company_op/card-bg.webp";
 import sectionBg from "../../assets/company_op/result-bg.webp";
 import Button from "../custom/button";
@@ -33,6 +33,7 @@ const outcomes = [
 ];
 
 export default function OurResults() {
+  const navigate = useNavigate();
   const containerRef = useRef<HTMLDivElement | null>(null);
   const cardRefs = useRef<HTMLDivElement[]>([]);
   const rafRef = useRef<number | null>(null);
@@ -148,14 +149,14 @@ export default function OurResults() {
           <Button
             variant="secondary"
             onClick={() => {
-              console.log("View All Case Studies");
+              navigate("/work");
             }}
-            className="border max-md:border-[0.26px] border-white text-white py-2.5 max-md:py-1 max-md:px-4 px-10 rounded-full flex gap-3.5 items-center font-medium  max-md:italic"
+            className="border hover:bg-white hover:text-black transition-colors duration-500 ease-in max-md:border-[0.26px] border-white text-white py-2.5 max-md:py-1 max-md:px-4 px-10 rounded-full flex gap-3.5 items-center font-medium  max-md:italic"
           >
             <span className="text-[28px]/[120%] max-md:text-[10px]/[120%] italic">
               Our Works
             </span>
-            <FaArrowRight className="text-[30px] max-md:text-lg text-white" />
+            <FaArrowRight className="text-[30px] max-md:text-lg" />
           </Button>
         </div>
       </div>
@@ -176,10 +177,10 @@ export default function OurResults() {
               key={idx}
               className="flex flex-col items-center p-18 max-md:p-8 relative"
             >
-              <span className="text-[108px]/[120%] max-md:text-[34px]/[120%] font-black text-white">
+              <span className="text-[108px]/[120%] max-md:text-[34px]/[120%] font-black text-white font-subito">
                 {outcome.value}
               </span>
-              <span className="text-4xl/[120%] max-md:text-[12px]/[120%] text-white font-light text-center">
+              <span className="text-4xl/[120%] max-md:text-[12px]/[120%] text-white font-light text-center font-subito">
                 {outcome.label}
               </span>
             </div>

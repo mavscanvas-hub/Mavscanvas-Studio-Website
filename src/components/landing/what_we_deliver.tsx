@@ -3,6 +3,8 @@ import mask from "../../assets/company_op/deliver_mask.webp";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { useState } from "react";
 import project from "../../assets/service/project_image.png";
+import brand from "../../assets/company_op/branding.png";
+import { useNavigate } from "react-router-dom";
 
 const data = [
   {
@@ -10,21 +12,21 @@ const data = [
     value: "website development",
     content:
       "Web design & development service covering discovery to launch: we plan, design, and build a fast, responsive, on-brand site in WordPress or Webflow, including UX/UI (sitemap, wireframes, Figma comps), front-end implementation, basic animations, on-page SEO, Core Web Vitals optimization, WCAG 2.1 AA accessibility, SSL/security hardening, backups, and integrations (GA4, Search Console, CRM/forms, email). Deliverables include the approved designs, a production-ready site with redirects (if redesign), analytics tags, training, documentation, and a 30-day post-launch warranty; typical build runs 3-6 weeks assuming content is ready. Client supplies brand assets, copy/images, timely feedback, and hosting/DNS access.",
-    image: "",
+    image: project,
   },
   {
     title: "Branding Design",
     value: "branding",
     content:
       "Web design & development service covering discovery to launch: we plan, design, and build a fast, responsive, on-brand site in WordPress or Webflow, including UX/UI (sitemap, wireframes, Figma comps), front-end implementation, basic animations, on-page SEO, Core Web Vitals optimization, WCAG 2.1 AA accessibility, SSL/security hardening, backups, and integrations (GA4, Search Console, CRM/forms, email). Deliverables include the approved designs, a production-ready site with redirects (if redesign), analytics tags, training, documentation, and a 30-day post-launch warranty; typical build runs 3-6 weeks assuming content is ready. Client supplies brand assets, copy/images, timely feedback, and hosting/DNS access.",
-    image: "",
+    image: brand,
   },
   {
     title: "Product Design",
     value: "UI/UX",
     content:
       "Web design & development service covering discovery to launch: we plan, design, and build a fast, responsive, on-brand site in WordPress or Webflow, including UX/UI (sitemap, wireframes, Figma comps), front-end implementation, basic animations, on-page SEO, Core Web Vitals optimization, WCAG 2.1 AA accessibility, SSL/security hardening, backups, and integrations (GA4, Search Console, CRM/forms, email). Deliverables include the approved designs, a production-ready site with redirects (if redesign), analytics tags, training, documentation, and a 30-day post-launch warranty; typical build runs 3-6 weeks assuming content is ready. Client supplies brand assets, copy/images, timely feedback, and hosting/DNS access.",
-    image: "",
+    image: project,
   },
   {
     title: "Digital Marketing",
@@ -43,6 +45,7 @@ const data = [
 ];
 
 export default function WhatWeDeliver() {
+  const navigate = useNavigate();
   const [allValues] = useState(data.map((item) => item.value));
   const [currentValue, setCurrentValue] = useState(data[0]);
   const handleSetActive = (value: string) => {
@@ -89,7 +92,7 @@ export default function WhatWeDeliver() {
                   <div
                     className="bg-gray-100 h-[420px] max-md:h-[220px] rounded-3xl max-md:rounded-[4px]"
                     style={{
-                      backgroundImage: `url(${project})`,
+                      backgroundImage: `url(${currentValue.image})`,
                       backgroundRepeat: "no-repeat",
                       backgroundSize: "cover",
                       backgroundPosition: "center",
@@ -130,8 +133,13 @@ export default function WhatWeDeliver() {
                   </p>
                 </div>
                 <div className="mt-10.5 max-md:hidden">
-                  <button className="border border-white text-white py-2.5 px-10 rounded-full flex gap-3.5 items-center font-medium">
-                    <span className="font-bold italic text-[28px]/[120%]">
+                  <button
+                    className="border border-white hover:bg-white hover:text-black transition-colors duration-200 cursor-pointer text-white py-2.5 px-10 rounded-full flex gap-3.5 items-center font-medium"
+                    onClick={() => {
+                      navigate("/services");
+                    }}
+                  >
+                    <span className="font-bold italic text-[28px]/[120%] font-subito">
                       View Services
                     </span>
                     <FaArrowRightLong className="text-[28px]/[120%]" />

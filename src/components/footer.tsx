@@ -30,7 +30,13 @@ const socialMedia = [
   { name: "Instagram", link: "https://instagram.com", icon: <FaInstagram /> },
 ];
 
-export default function Footer() {
+export default function Footer({
+  faqModal,
+  setFaqModal,
+}: {
+  faqModal: boolean;
+  setFaqModal: (open: boolean) => void;
+}) {
   return (
     <footer
       className="bg-black text-white px-20 py-25 max-md:py-10 max-md:px-4 w-full h-full font-subito"
@@ -71,7 +77,16 @@ export default function Footer() {
                     key={item.name}
                     className="text-xl max-md:text-[9px]/[120%] max-md:font-light"
                   >
-                    <a href={item.link} className="hover:underline">
+                    <a
+                      className="hover:underline"
+                      onClick={() => {
+                        if (item.name === "FAQ") {
+                          setFaqModal(!faqModal);
+                        } else {
+                          window.location.href = item.link;
+                        }
+                      }}
+                    >
                       {item.name}
                     </a>
                   </li>

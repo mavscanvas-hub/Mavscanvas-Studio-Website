@@ -1,31 +1,33 @@
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import Sidebar from "../components/sidebar";
 import Pricing from "../components/modal/pricing_modal";
+import FAQModal from "../components/modal/faq_modal";
 import { useState, useRef, useEffect } from "react";
 
 export default function LandingLayout() {
+  const location = useLocation();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [getStartedModalOpen, setGetStartedModalOpen] = useState(false);
+  const [faqModal, setFaqModal] = useState(false);
 
   const sidebarRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    // lock body scroll when either sidebar OR modal is open
     document.documentElement.style.overflow =
-      isSidebarOpen || getStartedModalOpen ? "hidden" : "";
+      isSidebarOpen || getStartedModalOpen || faqModal ? "hidden" : "";
     return () => {
       document.documentElement.style.overflow = "";
     };
-  }, [isSidebarOpen, getStartedModalOpen]);
+  }, [isSidebarOpen, getStartedModalOpen, faqModal]);
 
-  // close sidebar/modal on Escape
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
       if (e.key === "Escape") {
         setIsSidebarOpen(false);
         setGetStartedModalOpen(false);
+        setFaqModal(false);
       }
     }
     window.addEventListener("keydown", onKey);
@@ -38,6 +40,10 @@ export default function LandingLayout() {
     }
   }, [isSidebarOpen]);
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }, [location.pathname]);
+
   return (
     <section className="min-h-screen flex flex-col relative bg-black overscroll-contain">
       <header className="w-full px-15 max-md:px-4.5 fixed top-14 max-md:top-5 z-50">
@@ -49,7 +55,6 @@ export default function LandingLayout() {
         />
       </header>
 
-      {/* Backdrop: always in DOM so close animation can run */}
       <div
         aria-hidden={!isSidebarOpen}
         onClick={() => setIsSidebarOpen(false)}
@@ -60,7 +65,6 @@ export default function LandingLayout() {
         }`}
       />
 
-      {/* Sidebar: always in DOM so it can animate on close */}
       <div
         ref={sidebarRef}
         tabIndex={-1}
@@ -80,11 +84,16 @@ export default function LandingLayout() {
           <Pricing />
         </div>
       )}
+      {faqModal && (
+        <div className="relative z-[9999] max-h-screen overflow-auto w-full">
+          <FAQModal />
+        </div>
+      )}
 
       <div className="flex-1">
         <Outlet />
       </div>
-      <Footer />
+      <Footer faqModal={faqModal} setFaqModal={setFaqModal} />
     </section>
   );
 }

@@ -122,7 +122,7 @@ export default function Experts() {
           <h3 className="text-[90px]/[120%] max-md:text-[36px]/[120%] font-cormo italic">
             This is our
           </h3>
-          <h2 className="text-[90px]/[120%] max-md:text-[36px]/[120%] font-bold">
+          <h2 className="text-[90px]/[120%] max-md:text-[36px]/[120%] font-bold font-subito">
             Success Process
           </h2>
         </div>
@@ -150,7 +150,7 @@ export default function Experts() {
                   backgroundSize: "contain",
                 }}
               >
-                <p className="text-[35px]/[120%] max-md:text-[12px]/[120%] max-md:w-full max-w-[634px] font-light text-white">
+                <p className="text-[35px]/[120%] max-md:text-[12px]/[120%] max-md:w-full max-w-[634px] font-light text-white font-subito">
                   {step.content}
                 </p>
               </span>

@@ -166,7 +166,7 @@ export default function Hero() {
         </span>
         <div className="flex justify-center items-center">
           <Button
-            className="bg-[#02DDEF] rounded-full py-5.5 max-md:py-3 max-md:px-10 px-24 flex gap-6 max-md:gap-2 items-center"
+            className="bg-[#02DDEF] hover:scale-105 rounded-full py-5.5 max-md:py-3 max-md:px-10 px-24 flex gap-6 max-md:gap-2 items-center"
             onClick={() => {
               console.log("Logged");
             }}

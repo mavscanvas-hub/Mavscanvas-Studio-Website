@@ -100,7 +100,7 @@ export default function HowWeWork() {
             {data1.map((item, idx) => (
               <div
                 key={idx}
-                className={`flex step-container ${
+                className={`flex step-container hover:scale-105 ${
                   activeA && idx === currentA
                     ? idx === 1
                       ? "flex-row-reverse items-center justify-between"
@@ -149,7 +149,7 @@ export default function HowWeWork() {
             {data2.map((item, idx) => (
               <div
                 key={idx}
-                className={`flex step-container ${
+                className={`flex step-container  hover:scale-105 ${
                   activeB && idx === currentB
                     ? idx === 1
                       ? "flex-row-reverse items-center justify-between"
@@ -238,12 +238,12 @@ export default function HowWeWork() {
             onClick={() => {
               console.log("View All Case Studies");
             }}
-            className="border max-md:border-[0.26px] border-black text-black py-2.5 max-md:py-1 max-md:px-4 px-10 rounded-full flex gap-3.5 items-center font-bold  max-md:italic"
+            className="border hover:bg-black hover:text-white transition-colors duration-100 max-md:border-[0.26px] border-black text-black py-2.5 max-md:py-1 max-md:px-4 px-10 rounded-full flex gap-3.5 items-center font-bold  max-md:italic"
           >
             <span className="text-[28px]/[120%] max-md:text-[10px]/[120%] italic font-subito">
               View Teams
             </span>
-            <FaArrowRight className="text-[30px] max-md:text-lg text-black" />
+            <FaArrowRight className="text-[30px] max-md:text-lg" />
           </Button>
         </div>
       </div>

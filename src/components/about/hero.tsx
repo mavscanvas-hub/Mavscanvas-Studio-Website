@@ -41,7 +41,7 @@ export default function Hero() {
         <h2 className="text-white text-[90px]/[120%] max-md:text-[36px]/[120%] font-cormo italic">
           More Than an Agency,
         </h2>
-        <h2 className="text-white text-[90px]/[120%] max-md:text-[36px]/[120%] font-extrabold">
+        <h2 className="text-white text-[80px]/[120%] max-md:text-[36px]/[120%] font-extrabold font-subito">
           Your Digital Solutions Partner
         </h2>
       </div>
@@ -59,7 +59,7 @@ export default function Hero() {
                 loading="lazy"
                 decoding="async"
                 alt={`Hero Image ${index + 1}`}
-                className="h-auto rounded-[30px] min-w-[630px] max-md:w-full max-md:min-w-0"
+                className="h-full rounded-[30px] min-w-[630px] max-md:w-full max-md:min-w-0"
               />
             </div>
             <span className="text-white text-4xl/[120%] max-md:text-[12px]/[120%] font-light">

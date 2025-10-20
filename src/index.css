@@ -205,6 +205,7 @@
     opacity: 1;
   }
 }
+
 .drop-in {
   transform: translateY(-24px);
   opacity: 0;

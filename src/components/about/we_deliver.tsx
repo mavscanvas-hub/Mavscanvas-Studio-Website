@@ -78,7 +78,7 @@ export default function WeDeliver() {
           <h2 className="text-[90px]/[120%] max-md:text-[36px]/[120%] font-cormo italic text-[#161616]">
             The Consistent
           </h2>
-          <h3 className="text-[90px]/[120%] max-md:text-[36px]/[120%] font-extrabold text-[#161616]">
+          <h3 className="text-[90px]/[120%] max-md:text-[36px]/[120%] font-extrabold text-[#161616] font-subito">
             Results We Deliver
           </h3>
         </div>
@@ -164,9 +164,9 @@ export default function WeDeliver() {
             We are prepared to replicate these results for your brand. Are you
             ready to begin?
           </span>
-          <div className="flex justify-center items-center mt-15 max-md:mt-5">
+          <div className="flex justify-center items-center mt-15 max-md:mt-5 font-subito">
             <Button
-              className="bg-[#02DDEF] rounded-full py-5.5 max-md:py-3 max-md:px-10 px-24 flex gap-6 max-md:gap-2 items-center"
+              className="bg-[#02DDEF] hover:scale-105 rounded-full py-5.5 max-md:py-3 max-md:px-10 px-24 flex gap-6 max-md:gap-2 items-center"
               onClick={() => {
                 console.log("Logged");
               }}

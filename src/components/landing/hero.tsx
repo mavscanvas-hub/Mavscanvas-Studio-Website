@@ -79,10 +79,10 @@ export default function Home() {
             websites, and growth engines that actually perform
           </div>
 
-          <div className="flex justify-center items-center mt-15 max-md:mt-6">
+          <div className="flex justify-center items-center mt-12 max-md:mt-6">
             <Button
               className={
-                "bg-[#02DDEF] rounded-full py-5 max-md:py-3 max-md:px-10 px-20 flex gap-6 items-center transform transition-all duration-500 ease-out " +
+                "bg-[#02DDEF] hover:transform hover:scale-105 rounded-full py-5 max-md:py-3 max-md:px-10 px-20 flex gap-6 items-center transform transition-all duration-500 ease-out " +
                 (bgLoaded
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-6")
