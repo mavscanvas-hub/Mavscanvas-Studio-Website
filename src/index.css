@@ -250,6 +250,32 @@
   will-change: transform;
 }
 
+.results-scroll.dragging,
+.results-scroll.dragging * {
+  cursor: grabbing !important;
+  cursor: -webkit-grabbing !important;
+}
+
+.team-scroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-x; /* required so pointer/touch pan works */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  cursor: grab;
+}
+.team-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* visual feedback while dragging */
+.team-scroll.dragging,
+.team-scroll.dragging * {
+  cursor: grabbing !important;
+  cursor: -webkit-grabbing !important;
+}
+
 /* clip any visual overflow at page level */
 .w-full.overflow-x-hidden {
   position: relative;

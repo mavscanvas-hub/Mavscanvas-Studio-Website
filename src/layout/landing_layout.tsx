@@ -45,7 +45,11 @@ export default function LandingLayout() {
   }, [location.pathname]);
 
   return (
-    <section className="min-h-screen flex flex-col relative bg-black overscroll-contain">
+    <section
+      className={`min-h-screen flex flex-col relative ${
+        getStartedModalOpen ? "bg-transparent" : "bg-black"
+      } overscroll-contain`}
+    >
       <header className="w-full px-15 max-md:px-4.5 fixed top-14 max-md:top-5 z-50">
         <Navbar
           setIsSidebarOpen={setIsSidebarOpen}
@@ -80,9 +84,7 @@ export default function LandingLayout() {
       </div>
 
       {getStartedModalOpen && (
-        <div className="relative z-[9999] max-h-screen overflow-auto w-full">
-          <Pricing />
-        </div>
+        <Pricing setGetStartedModalOpen={setGetStartedModalOpen} />
       )}
       {faqModal && (
         <div className="relative z-[9999] max-h-screen overflow-auto w-full">

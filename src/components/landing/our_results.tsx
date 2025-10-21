@@ -42,11 +42,48 @@ export default function OurResults() {
     const container = containerRef.current;
     if (!container) return;
 
+    const cardElements = cardRefs.current;
+    const raf = rafRef;
+    let isDown = false;
+    let startX = 0;
+    let scrollLeft = 0;
+
+    // Drag-to-scroll (pointer events)
+    const onPointerDown = (e: PointerEvent) => {
+      isDown = true;
+      startX = e.clientX;
+      scrollLeft = container.scrollLeft;
+      // set pointer capture for smooth drag across slop
+      // try {
+      //   container.setPointerCapture &&
+      //     container.setPointerCapture((e as any).pointerId);
+      // } catch {}
+      container.classList.add("dragging");
+    };
+    const onPointerMove = (e: PointerEvent) => {
+      if (!isDown) return;
+      const x = e.clientX;
+      const walk = startX - x; // how far mouse moved
+      container.scrollLeft = scrollLeft + walk;
+      // trigger visual update for wiggle
+      if (raf.current != null) cancelAnimationFrame(raf.current);
+      raf.current = requestAnimationFrame(update);
+    };
+    const endDrag = () => {
+      isDown = false;
+      // try {
+      //   container.releasePointerCapture &&
+      //     container.releasePointerCapture((e as any).pointerId);
+      // } catch {}
+      container.classList.remove("dragging");
+    };
+
+    // wiggle / transform update (keeps your original logic)
     const update = () => {
       const rect = container.getBoundingClientRect();
       const centerX = rect.left + rect.width / 2;
 
-      cardRefs.current.forEach((card) => {
+      cardElements.forEach((card) => {
         if (!card) return;
         const r = card.getBoundingClientRect();
         const cardCenter = r.left + r.width / 2;
@@ -62,19 +99,33 @@ export default function OurResults() {
     };
 
     const onScroll = () => {
-      if (rafRef.current != null) cancelAnimationFrame(rafRef.current);
-      rafRef.current = requestAnimationFrame(update);
+      if (raf.current != null) cancelAnimationFrame(raf.current);
+      raf.current = requestAnimationFrame(update);
     };
 
-    // initial layout
+    // initial layout + listeners
     update();
     container.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", update);
 
+    // pointer listeners for drag scrolling
+    container.addEventListener("pointerdown", onPointerDown);
+    container.addEventListener("pointermove", onPointerMove);
+    container.addEventListener("pointerup", endDrag);
+    container.addEventListener("pointercancel", endDrag);
+    container.addEventListener("pointerleave", endDrag);
+
     return () => {
       container.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", update);
-      if (rafRef.current != null) cancelAnimationFrame(rafRef.current);
+
+      container.removeEventListener("pointerdown", onPointerDown);
+      container.removeEventListener("pointermove", onPointerMove);
+      container.removeEventListener("pointerup", endDrag);
+      container.removeEventListener("pointercancel", endDrag);
+      container.removeEventListener("pointerleave", endDrag);
+
+      if (raf.current != null) cancelAnimationFrame(raf.current);
     };
   }, []);
 
@@ -114,11 +165,11 @@ export default function OurResults() {
                 }`}
                 style={{ transform: "translate(0px,0px) rotate(0deg)" }}
               >
-                <div className="bg-black rounded-full flex items-center justify-center text-white font-medium text-lg max-md:text-[8px]/[120%] px-6 max-md:px-2 py-2 max-md:py-[2.5px]">
+                <div className="bg-black rounded-full select-none flex items-center justify-center text-white font-medium text-lg max-md:text-[8px]/[120%] px-6 max-md:px-2 py-2 max-md:py-[2.5px]">
                   WEBSITE DEVELOPMENT
                 </div>
                 <div className="flex flex-col gap-4">
-                  <p className="text-black text-[50px]/[120%] max-md:text-[16px]/[120%] italic font-light">
+                  <p className="text-black text-[50px]/[120%] select-none max-md:text-[16px]/[120%] italic font-light">
                     We Turned a <strong className="font-medium">Website</strong>{" "}
                     into a{" "}
                     <strong className="font-medium">Revenue Engine</strong>

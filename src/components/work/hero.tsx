@@ -3,7 +3,7 @@ import work1 from "../../assets/work/work_1.png";
 import work2 from "../../assets/work/work_2.png";
 import Button from "../custom/button";
 import { FaArrowRightLong } from "react-icons/fa6";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 const categories = [
   "Website Development",
@@ -66,6 +66,54 @@ export default function Hero() {
   const filteredWorks = works.filter(
     (work) => work.category === activeCategory
   );
+
+  const pointerState = useRef(
+    new WeakMap<
+      HTMLElement,
+      {
+        isDown: boolean;
+        startX: number;
+        scrollLeft: number;
+        activeId: number | null;
+      }
+    >()
+  );
+
+  const handlePointerDown = (e: React.PointerEvent) => {
+    const el = e.currentTarget as HTMLElement;
+    pointerState.current.set(el, {
+      isDown: true,
+      startX: e.clientX,
+      scrollLeft: (el as HTMLDivElement).scrollLeft,
+      activeId: e.pointerId,
+    });
+    try {
+      (el as any).setPointerCapture?.(e.pointerId);
+    } catch {}
+    el.classList.add("dragging");
+  };
+
+  const handlePointerMove = (e: React.PointerEvent) => {
+    const el = e.currentTarget as HTMLElement;
+    const state = pointerState.current.get(el);
+    if (!state || !state.isDown || state.activeId !== e.pointerId) return;
+    const walk = state.startX - e.clientX;
+    (el as HTMLDivElement).scrollLeft = state.scrollLeft + walk;
+  };
+
+  const handlePointerUp = (e: React.PointerEvent) => {
+    const el = e.currentTarget as HTMLElement;
+    const state = pointerState.current.get(el);
+    if (state) {
+      state.isDown = false;
+      try {
+        (el as any).releasePointerCapture?.(e.pointerId);
+      } catch {}
+      pointerState.current.delete(el);
+    }
+    el.classList.remove("dragging");
+  };
+
   return (
     <section
       className="bg-black pt-[245px] max-md:pt-22  flex flex-col gap-20 max-md:gap-8 pb-40 max-md:pb-14 bg-top-left font-subito"
@@ -136,7 +184,16 @@ export default function Hero() {
                 </p>
               </div>
             </div>
-            <div className="flex max-md:flex-col max-md:gap-5 mt-12.5 px-15 max-md:px-6 team-scroll max-md:mt-0 gap-8 w-full overflow-x-scroll scrollbar-hide">
+            <div
+              // add direct pointer handlers and set touchAction so the browser doesn't steal horizontal pointer gestures
+              onPointerDown={handlePointerDown}
+              onPointerMove={handlePointerMove}
+              onPointerUp={handlePointerUp}
+              onPointerCancel={handlePointerUp}
+              onPointerLeave={handlePointerUp}
+              className="flex team-scroll  max-md:flex-col max-md:gap-5 mt-12.5 px-15 max-md:px-6 team-scroll max-md:mt-0 gap-8 w-full overflow-x-scroll scrollbar-hide"
+              style={{ touchAction: "pan-y" }}
+            >
               {work.project_image.map((image, index) => (
                 <div
                   key={index}
@@ -151,7 +208,9 @@ export default function Hero() {
                     loading="lazy"
                     decoding="async"
                     alt={`Project ${work.id} Image ${index + 1}`}
-                    className="w-full h-full object-cover rounded-3xl max-md:rounded-[10px]"
+                    draggable={false}
+                    style={{ userSelect: "none" }}
+                    className="w-full h-full object-cover select-none rounded-3xl max-md:rounded-[10px]"
                   />
                 </div>
               ))}

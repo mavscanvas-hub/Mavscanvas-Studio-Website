@@ -1,12 +1,10 @@
 import displayBg from "../../assets/company_op/discover.webp";
-// import small from "../../assets/company_op/discover_small.png";
-// import Discoverbg from "../../assets/company_op/discoverbg.webp";
 import displayWide from "../../assets/company_op/discoverwide.webp";
 import Team from "../../assets/company_op/team.webp";
 import TeamBG from "../../assets/company_op/teambg.webp";
 import Button from "../custom/button";
 import { FaArrowRight } from "react-icons/fa6";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 const data1 = [
   {
@@ -71,6 +69,7 @@ export default function HowWeWork() {
   const [currentB, setCurrentB] = useState(-1);
   const [activeA, setActiveA] = useState(false);
   const [activeB, setActiveB] = useState(false);
+  const teamRef = useRef<HTMLDivElement | null>(null);
 
   const handleSectionClick = (e: React.MouseEvent) => {
     const target = e.target as HTMLElement;
@@ -83,6 +82,56 @@ export default function HowWeWork() {
       setActiveB(false);
     }
   };
+
+  useEffect(() => {
+    const container = teamRef.current;
+    if (!container) return;
+
+    let isDown = false;
+    let startX = 0;
+    let scrollLeft = 0;
+
+    const onPointerDown = (e: PointerEvent) => {
+      isDown = true;
+      startX = e.clientX;
+      scrollLeft = container.scrollLeft;
+      try {
+        // optional pointer capture for smoother dragging
+        (container as any).setPointerCapture?.((e as any).pointerId);
+      } catch {}
+      container.classList.add("dragging");
+    };
+
+    const onPointerMove = (e: PointerEvent) => {
+      if (!isDown) return;
+      const x = e.clientX;
+      const walk = startX - x;
+      container.scrollLeft = scrollLeft + walk;
+    };
+
+    const endDrag = () => {
+      isDown = false;
+      try {
+        (container as any).releasePointerCapture?.();
+      } catch {}
+      container.classList.remove("dragging");
+    };
+
+    container.addEventListener("pointerdown", onPointerDown);
+    container.addEventListener("pointermove", onPointerMove);
+    container.addEventListener("pointerup", endDrag);
+    container.addEventListener("pointercancel", endDrag);
+    container.addEventListener("pointerleave", endDrag);
+
+    return () => {
+      container.removeEventListener("pointerdown", onPointerDown);
+      container.removeEventListener("pointermove", onPointerMove);
+      container.removeEventListener("pointerup", endDrag);
+      container.removeEventListener("pointercancel", endDrag);
+      container.removeEventListener("pointerleave", endDrag);
+    };
+  }, []);
+
   return (
     <section className="bg-white how-we-work-bg pt-15 max-md:pt-9  max-md:pb-13 ">
       <div
@@ -203,11 +252,14 @@ export default function HowWeWork() {
             Team
           </strong>
         </h2>
-        <div className="flex flex-row gap-8 max-md:gap-3 overflow-x-scroll team-scroll pl-15 max-md:pl-4.5 pr-15 max-md:pr-5">
+        <div
+          ref={teamRef}
+          className="flex results-scroll flex-row gap-8 max-md:gap-3 overflow-x-scroll team-scroll pl-15 max-md:pl-4.5 pr-15 max-md:pr-5"
+        >
           {team.map((member, idx) => (
             <div
               key={idx}
-              className="flex flex-col items-center gap-16.5 max-md:gap-6 px-9 max-md:px-3.5 pt-9 max-md:pt-3.5 pb-24 max-md:pb-9 flex-shrink-0 min-w-[300px] max-md:min-w-[150px]"
+              className="flex flex-col select-none items-center gap-16.5 max-md:gap-6 px-9 max-md:px-3.5 pt-9 max-md:pt-3.5 pb-24 max-md:pb-9 flex-shrink-0 min-w-[300px] max-md:min-w-[150px]"
               style={{
                 backgroundImage: `url(${TeamBG})`,
                 backgroundRepeat: "no-repeat",
@@ -219,6 +271,8 @@ export default function HowWeWork() {
                 alt={member.name}
                 loading="lazy"
                 decoding="async"
+                draggable={false}
+                style={{ userSelect: "none" }}
                 className="w-70 h-70 max-md:w-[124px] max-md:h-[124px] rounded-full object-cover"
               />
               <div className="flex flex-col items-center font-subito justify-center pb-8 max-md:pb-0 max-w-[262px] gap-3 max-md:gap-1 max-md:w-[96px]">
