@@ -63,7 +63,7 @@ export default function OurResults() {
     const onPointerMove = (e: PointerEvent) => {
       if (!isDown) return;
       const x = e.clientX;
-      const walk = startX - x; // how far mouse moved
+      const walk = startX - x;
       container.scrollLeft = scrollLeft + walk;
       // trigger visual update for wiggle
       if (raf.current != null) cancelAnimationFrame(raf.current);
