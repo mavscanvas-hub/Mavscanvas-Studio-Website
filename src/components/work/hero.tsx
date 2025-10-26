@@ -4,6 +4,8 @@ import work2 from "../../assets/work/work_2.png";
 import Button from "../custom/button";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { useState, useRef } from "react";
+import { FaArrowRight } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const categories = [
   "Website Development",
@@ -62,6 +64,7 @@ const works = [
 ];
 
 export default function Hero() {
+  const navigate = useNavigate();
   const [activeCategory, setActiveCategory] = useState(categories[0]);
   const filteredWorks = works.filter(
     (work) => work.category === activeCategory
@@ -185,13 +188,12 @@ export default function Hero() {
               </div>
             </div>
             <div
-              // add direct pointer handlers and set touchAction so the browser doesn't steal horizontal pointer gestures
               onPointerDown={handlePointerDown}
               onPointerMove={handlePointerMove}
               onPointerUp={handlePointerUp}
               onPointerCancel={handlePointerUp}
               onPointerLeave={handlePointerUp}
-              className="flex team-scroll  max-md:flex-col max-md:gap-5 mt-12.5 px-15 max-md:px-6 team-scroll max-md:mt-0 gap-8 w-full overflow-x-scroll scrollbar-hide"
+              className="flex team-scroll max-md:flex-col max-md:gap-5 mt-12.5 px-15 max-md:px-6 team-scroll max-md:mt-0 gap-8 w-full overflow-x-scroll scrollbar-hide"
               style={{ touchAction: "pan-y" }}
             >
               {work.project_image.map((image, index) => (
@@ -214,6 +216,20 @@ export default function Hero() {
                   />
                 </div>
               ))}
+            </div>
+            <div className="flex justify-center mt-20 max-md:mt-9">
+              <Button
+                variant="secondary"
+                onClick={() => {
+                  navigate("/work");
+                }}
+                className="border hover:bg-white hover:text-black transition-colors duration-500 ease-in max-md:border-[0.26px] border-white text-white py-2.5 max-md:py-1 max-md:px-4 px-10 rounded-full flex gap-3.5 items-center font-medium  max-md:italic"
+              >
+                <span className="text-[28px]/[120%] max-md:text-[10px]/[120%] italic">
+                  Our Works
+                </span>
+                <FaArrowRight className="text-[30px] max-md:text-base" />
+              </Button>
             </div>
           </div>
         ))}

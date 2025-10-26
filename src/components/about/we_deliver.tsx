@@ -13,6 +13,83 @@ import Deliverbg from "../../assets/about/deliver_bg.png";
 import Button from "../custom/button";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+import { useRef, useEffect } from "react";
+
+// CountUp component: animates numeric portion of strings like "85%", "2.1x", "3.5x"
+function CountUp({ value, className }: { value: string; className?: string }) {
+  const elRef = useRef<HTMLSpanElement | null>(null);
+
+  useEffect(() => {
+    const el = elRef.current;
+    if (!el) return;
+
+    const match = value.match(/^([\d.]+)(.*)$/);
+    if (!match) {
+      el.textContent = value;
+      return;
+    }
+
+    const numStr = match[1];
+    const suffix = match[2] || "";
+    const end = parseFloat(numStr);
+    const decimals = numStr.includes(".") ? numStr.split(".")[1].length : 0;
+    const duration = 1000;
+    let rafId: number | null = null;
+    let startTime: number | null = null;
+    let canceled = false;
+
+    const format = (v: number) =>
+      decimals > 0
+        ? v.toFixed(decimals) + suffix
+        : Math.round(v).toString() + suffix;
+
+    const easeOutQuad = (t: number) => 1 - (1 - t) * (1 - t);
+
+    const animate = (t: number) => {
+      if (canceled) return;
+      if (startTime === null) startTime = t;
+      const elapsed = t - startTime;
+      const progress = Math.min(1, elapsed / duration);
+      const eased = easeOutQuad(progress);
+      const current = end * eased;
+      el.textContent = format(current);
+      if (progress < 1) {
+        rafId = requestAnimationFrame(animate);
+      } else {
+        rafId = null;
+      }
+    };
+
+    el.textContent = (decimals > 0 ? (0).toFixed(decimals) : "0") + suffix;
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            rafId = requestAnimationFrame(animate);
+            io.disconnect();
+            break;
+          }
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    io.observe(el);
+
+    return () => {
+      canceled = true;
+      io.disconnect();
+      if (rafId != null) cancelAnimationFrame(rafId);
+    };
+  }, [value]);
+
+  return (
+    <span ref={elRef} className={className} aria-label={value}>
+      {value}
+    </span>
+  );
+}
 
 const outcomes = [
   {
@@ -91,9 +168,10 @@ export default function WeDeliver() {
               key={idx}
               className="flex flex-col items-center p-20 max-md:p-8 relative"
             >
-              <span className="text-[108px]/[120%] max-md:text-[34px]/[120%] font-extrabold text-black">
-                {outcome.value}
-              </span>
+              <CountUp
+                value={outcome.value}
+                className="text-[108px]/[120%] max-md:text-[34px]/[120%] font-extrabold text-black"
+              />
               <span className="text-3xl max-md:text-[12px]/[120%] text-black font-light text-center">
                 {outcome.label}
               </span>

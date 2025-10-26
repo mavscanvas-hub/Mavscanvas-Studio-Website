@@ -106,7 +106,7 @@ export default function Navbar({
               scrolled && "px-20"
             }`}
           >
-            <Link to="/" className={` ${scrolled ? "px-5" : "px-16"}`}>
+            <Link to="/" className={` px-5`}>
               <img
                 src={logo}
                 alt="logo"

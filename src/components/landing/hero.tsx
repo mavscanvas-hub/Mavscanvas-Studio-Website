@@ -30,14 +30,14 @@ export default function Home() {
   return (
     <>
       <div
-        className="min-h-screen max-md:min-h-0 overscroll-contain pt-52 max-md:pt-16 pb-24 max-md:pb-12 px-15 max-md:px-3.5 bg-center max-md:bg-top"
+        className="min-h-screen max-md:min-h-0 overscroll-contain pt-52 max-md:pt-16 pb-24 max-md:pb-5 px-15 max-md:px-3.5 bg-center max-md:bg-top"
         style={{
           backgroundImage: `url(${hero})`,
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
         }}
       >
-        <div className="mt-8 max-md:mt-2 max-w-[1106px] max-md:w-full mx-auto max-md:mx-0 flex flex-col gap-5 max-md:gap-3.5">
+        <div className="mt-8 max-md:mt-0 max-w-[1106px] max-md:w-full mx-auto max-md:mx-0 flex flex-col gap-5 max-md:gap-3.5">
           {/* headline: animate only after bgLoaded */}
           <div className="flex flex-col justify-center items-center w-full">
             <span
@@ -67,7 +67,7 @@ export default function Home() {
 
           <div
             className={
-              "text-[28px]/[120%] max-md:text-[10px]/[120%] italic pb-10 max-md:pb-0 font-subito text-white font-light mx-15 max-md:mx-0 text-center transform transition-all duration-700 ease-out " +
+              "text-[28px]/[120%] max-md:text-[10px]/[120%] italic pb-10 max-md:pb-4 font-subito text-white font-light mx-15 max-md:mx-0 text-center transform transition-all duration-700 ease-out " +
               (bgLoaded
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-6")
@@ -79,7 +79,7 @@ export default function Home() {
             websites, and growth engines that actually perform
           </div>
 
-          <div className="flex justify-center items-center pt-40 max-md:mt-6">
+          <div className="flex justify-center items-center pt-40 max-md:pt-6 max-md:mt-6">
             <Button
               className={
                 "bg-[#02DDEF] hover:transform hover:scale-105 rounded-full py-5 max-md:py-3 max-md:px-10 px-20 flex gap-6 items-center transform transition-all duration-500 ease-out " +

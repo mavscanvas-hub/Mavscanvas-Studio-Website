@@ -124,7 +124,7 @@ export default function Footer({
             <input
               type="email"
               placeholder="Enter your email"
-              className="px-6 max-md:px-3.5 py-3 max-md:py-2 rounded-4xl text-base border w-full focus-within:outline-0"
+              className="px-6 max-md:px-3.5 py-3 max-md:py-2 rounded-4xl text-base max-md:text-sm border w-full focus-within:outline-0"
             />
             <div className="flex justify-between items-center gap-5 max-md:gap-3">
               <Button

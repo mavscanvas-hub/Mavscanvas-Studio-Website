@@ -90,20 +90,27 @@ export default function HowWeWork() {
     let isDown = false;
     let startX = 0;
     let scrollLeft = 0;
+    let activePointerId: number | null = null;
 
     const onPointerDown = (e: PointerEvent) => {
       isDown = true;
       startX = e.clientX;
       scrollLeft = container.scrollLeft;
+      activePointerId = e.pointerId;
       try {
-        // optional pointer capture for smoother dragging
-        (container as any).setPointerCapture?.((e as any).pointerId);
+        if (
+          typeof (container as Element).setPointerCapture === "function" &&
+          activePointerId !== null
+        ) {
+          (container as Element).setPointerCapture(activePointerId);
+        }
       } catch {}
       container.classList.add("dragging");
     };
 
     const onPointerMove = (e: PointerEvent) => {
       if (!isDown) return;
+      if (activePointerId !== null && e.pointerId !== activePointerId) return;
       const x = e.clientX;
       const walk = startX - x;
       container.scrollLeft = scrollLeft + walk;
@@ -112,8 +119,14 @@ export default function HowWeWork() {
     const endDrag = () => {
       isDown = false;
       try {
-        (container as any).releasePointerCapture?.();
+        if (
+          activePointerId !== null &&
+          typeof (container as Element).releasePointerCapture === "function"
+        ) {
+          (container as Element).releasePointerCapture(activePointerId);
+        }
       } catch {}
+      activePointerId = null;
       container.classList.remove("dragging");
     };
 
@@ -133,7 +146,7 @@ export default function HowWeWork() {
   }, []);
 
   return (
-    <section className="bg-white how-we-work-bg pt-15 max-md:pt-9  max-md:pb-13 ">
+    <section className="bg-white how-we-work-bg pt-15 max-md:pt-9 max-md:pb-2">
       <div
         className="flex flex-col gap-15 pl-15 max-md:pl-4.5"
         onClick={handleSectionClick}
@@ -157,7 +170,7 @@ export default function HowWeWork() {
                     : "flex-row items-center justify-center"
                 } gap-4 rounded-3xl max-md:rounded-lg cursor-pointer transition-all duration-300 p-12 max-md:p-3 ${
                   idx === currentA
-                    ? "h-[312px] max-md:h-[82px] absolute top-0 left-10 right-10 z-30 slide-in-from-right"
+                    ? "h-[312px] max-md:h-[82px] absolute top-0 left-10 max-md:left-8 right-10 z-30 slide-in-from-right"
                     : "w-[482px] max-md:w-[126px] h-[312px] max-md:h-[82px] relative z-10 "
                 }`}
                 onClick={(e) => {
@@ -198,7 +211,7 @@ export default function HowWeWork() {
             {data2.map((item, idx) => (
               <div
                 key={idx}
-                className={`flex step-container  hover:scale-105 ${
+                className={`flex step-container lg:hover:scale-102 ${
                   activeB && idx === currentB
                     ? idx === 1
                       ? "flex-row-reverse items-center justify-between"
@@ -206,7 +219,7 @@ export default function HowWeWork() {
                     : "flex-row items-center justify-center"
                 } gap-4 rounded-3xl max-md:rounded-lg cursor-pointer transition-all duration-300 p-12 max-md:p-3 ${
                   idx === currentB
-                    ? "h-[312px] max-md:h-[82px] absolute top-0 left-10 right-10 z-30 slide-in-from-right"
+                    ? "h-[312px] max-md:h-[82px] absolute top-0 left-10 right-10 max-md:right-8 z-30 slide-in-from-right"
                     : "w-[482px] max-md:w-[126px] h-[312px] max-md:h-[82px] relative z-10 "
                 }`}
                 onClick={(e) => {
@@ -229,7 +242,7 @@ export default function HowWeWork() {
                   width:
                     idx === currentB
                       ? "calc(100% - 120px) max-md:calc(100% - 30px)"
-                      : "482px max-md:126px",
+                      : "482px max-md:128px",
                 }}
               >
                 <h3 className="font-subito text-[90px]/[120%] max-md:text-[24px]/[120%] text-white">
@@ -245,7 +258,7 @@ export default function HowWeWork() {
           </div>
         </div>
       </div>
-      <div className="mt-60 max-md:mt-22.5 mb-10 flex flex-col gap-11 max-md:gap-9">
+      <div className="mt-60 max-md:mt-22.5 mb-10 max-md:mb-4 flex flex-col gap-11 max-md:gap-9">
         <h2 className="font-cormo text-[90px]/[120%] max-md:text-[36px]/[120%] italic text-start text-black pl-15 max-md:pl-4.5">
           Meet Our{" "}
           <strong className="font-subito font-extrabold not-italic">
@@ -286,7 +299,7 @@ export default function HowWeWork() {
             </div>
           ))}
         </div>
-        <div className="flex justify-center my-20 max-md:mt-12 max-md:mb-10">
+        <div className="flex justify-center my-20 max-md:mt-5 max-md:mb-5">
           <Button
             variant="secondary"
             onClick={() => {
