@@ -50,7 +50,7 @@ const plans = [
 export default function Hero() {
   return (
     <section
-      className="bg-white font-subito pt-[235px] max-md:pt-25.5 px-15 max-md:px-4 flex flex-col gap-20 max-md:gap-8 pb-40 max-md:pb-11 bg-top-left"
+      className="bg-white font-subito pt-[235px] max-md:pt-25.5 px-15 max-md:px-4 flex flex-col gap-10 max-md:gap-8 pb-20 max-md:pb-11 bg-top-left"
       style={{
         backgroundImage: `url(${Herobg})`,
         backgroundSize: "cover",
@@ -109,7 +109,7 @@ export default function Hero() {
                     {plan.short_desc}
                   </p>
                 </div>
-                <ul className="mt-7 mb-[285px] max-md:mb-16.5 space-y-2">
+                <ul className="mt-7 mb-[80px] max-md:mb-14 space-y-2">
                   {plan.benefits.map((benefit, index) => (
                     <li key={index} className="flex items-center gap-3">
                       <HiMiniCheckBadge
@@ -145,10 +145,10 @@ export default function Hero() {
       </div>
       <div className="py-10 px-12.5 max-md:px-3.5 max-md:py-5 border-[#222222] border rounded-[42px] max-md:rounded-[10px] flex max-md:flex-col max-md:gap-4.5 items-center justify-between">
         <div className="w-[831px] flex flex-col gap-4.5 max-md:gap-3 max-md:w-full">
-          <span className="text-[40px]/[120%] max-md:text-[20px]/[120%] font-bold">
+          <span className="text-[32px]/[120%] max-md:text-[20px]/[120%] font-bold">
             Are you interested in a quote project?
           </span>
-          <span className="text-[28px]/[120%] max-md:text-[12px]/[120%] font-normal">
+          <span className="text-[24px]/[120%] max-md:text-[12px]/[120%] font-normal">
             If the above plan isn't the right fit, don't hesitate to reach out,
             we'll be glad to discuss a tailored solution for your needs.
           </span>
@@ -163,8 +163,8 @@ export default function Hero() {
           <HiArrowRight className="text-3xl max-md:text-xl" />
         </button>
       </div>
-      <div className="flex flex-col gap-15 max-md:gap-4 items-center justify-center">
-        <span className="text-[32px]/[120%] max-md:text-[10px]/[120%] font-light text-center mt-38 max-md:mt-5 block max-w-[800px] max-md:w-[250px] text-black">
+      <div className="flex flex-col gap-10 max-md:gap-4 items-center justify-center">
+        <span className="text-[24px]/[120%] max-md:text-[10px]/[120%] font-light text-center mt-8 max-md:mt-5 block max-w-[800px] max-md:w-[250px] text-black">
           We are prepared to replicate these results for your brand. Are you
           ready to begin?
         </span>

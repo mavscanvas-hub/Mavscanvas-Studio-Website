@@ -51,7 +51,7 @@ export default function Footer({
 }) {
   return (
     <footer
-      className="bg-black text-white px-20 py-25 max-md:py-10 max-md:px-4 w-full h-full font-subito"
+      className="bg-black text-white px-20 pt-25 pb-10 max-md:py-10 max-md:px-4 w-full h-full font-subito"
       style={{
         backgroundImage: `url(${FooterBg})`,
         backgroundRepeat: "no-repeat",

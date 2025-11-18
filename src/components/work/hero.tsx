@@ -119,7 +119,7 @@ export default function Hero() {
 
   return (
     <section
-      className="bg-black pt-[245px] max-md:pt-22  flex flex-col gap-20 max-md:gap-8 pb-40 max-md:pb-14 bg-top-left font-subito"
+      className="bg-black pt-[245px] max-md:pt-22  flex flex-col gap-12 max-md:gap-8 pb-40 max-md:pb-14 bg-top-left font-subito"
       style={{
         backgroundImage: `url(${Herobg})`,
         backgroundSize: "cover",
@@ -150,13 +150,13 @@ export default function Hero() {
           </button>
         ))}
       </div>
-      <div className="mt-20 max-md:mt-0 flex flex-col gap-30 max-md:gap-5 ">
+      <div className="mt-8 max-md:mt-0 flex flex-col gap-20 max-md:gap-5 ">
         {filteredWorks.map((work, index) => (
           <div
             key={work.id}
-            className={`flex flex-col gap-9 max-md:gap-6   ${
+            className={`flex flex-col gap-5 max-md:gap-6   ${
               index < filteredWorks.length - 1
-                ? "border-b border-white pb-30 max-md:pb-10"
+                ? "border-b border-white pb-20 max-md:pb-10"
                 : ""
             }`}
           >
@@ -174,7 +174,7 @@ export default function Hero() {
                 <h4 className="text-white text-[32px]/[120%] max-md:text-sm/[120%] font-bold uppercase">
                   Problem
                 </h4>
-                <p className="text-white text-[28px] max-md:text-[10px]/[120%] font-light">
+                <p className="text-white text-[22px] max-md:text-[10px]/[120%] font-light">
                   {work.problem}
                 </p>
               </div>
@@ -182,7 +182,7 @@ export default function Hero() {
                 <h4 className="text-white text-[32px]/[120%] max-md:text-sm/[120%] font-bold uppercase">
                   Solution
                 </h4>
-                <p className="text-white text-[28px] max-md:text-[10px]/[120%] font-light">
+                <p className="text-white text-[22px] max-md:text-[10px]/[120%] font-light">
                   {work.solution}
                 </p>
               </div>
@@ -217,7 +217,7 @@ export default function Hero() {
                 </div>
               ))}
             </div>
-            <div className="flex justify-center mt-20 max-md:mt-9">
+            <div className="flex justify-center mt-14 max-md:mt-9">
               <Button
                 variant="secondary"
                 onClick={() => {
@@ -235,7 +235,7 @@ export default function Hero() {
         ))}
       </div>
       <div className="flex flex-col gap-15 max-md:gap-4 items-center justify-center">
-        <span className="text-[32px]/[120%] max-md:text-[10px]/[120%] text-white font-light text-center mt-38 max-md:mt-5 block max-w-[800px] max-md:w-[250px]">
+        <span className="text-[32px]/[120%] max-md:text-[10px]/[120%] text-white font-light text-center mt-20 max-md:mt-5 block max-w-[800px] max-md:w-[250px]">
           We are prepared to replicate these results for your brand. Are you
           ready to begin?
         </span>

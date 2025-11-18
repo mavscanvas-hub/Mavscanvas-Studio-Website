@@ -161,7 +161,7 @@ export default function WeDeliver() {
         backgroundPosition: "top",
       }}
     >
-      <div className="flex flex-col gap-22.5 max-md:gap-7">
+      <div className="flex flex-col gap-20 max-md:gap-7">
         <div>
           <h2 className="text-[90px]/[120%] max-md:text-[36px]/[120%] font-cormo italic text-[#161616]">
             The Consistent
@@ -170,7 +170,7 @@ export default function WeDeliver() {
             Results We Deliver
           </h3>
         </div>
-        <div className="grid grid-cols-3 items-center px-20 max-md:px-1 mt-25 max-md:mt-0 relative">
+        <div className="grid grid-cols-3 items-center px-20 max-md:px-1 mt-16 max-md:mt-0 relative">
           <div className="absolute inset-y-0 left-[36%] max-md:left-[34%] w-px bg-[linear-gradient(0deg,_#FA01F0_0%,_#02DDEF_100%)] rounded-full" />
           <div className="absolute inset-y-0 left-[64%] max-md:left-[66%] w-px bg-[linear-gradient(0deg,_#FA01F0_0%,_#02DDEF_100%)] rounded-full" />
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 h-[1.1px] max-md:w-[90%] bg-[linear-gradient(90deg,_#02DDEF_0%,_#FA01F0_100%)] w-[80%]"></div>
@@ -190,8 +190,8 @@ export default function WeDeliver() {
           ))}
         </div>
       </div>
-      <div className="flex flex-col gap-28 max-md:gap-7">
-        <div className="flex flex-col gap-32 max-md:gap-6.5">
+      <div className="flex flex-col gap-24 max-md:gap-7">
+        <div className="flex flex-col gap-20 max-md:gap-6.5">
           <div>
             <h2 className="text-[90px]/[120%] max-md:text-[36px]/[120%] font-cormo italic text-[#161616]">
               For More Inquiries
@@ -256,7 +256,7 @@ export default function WeDeliver() {
               </Link>
             ))}
           </div>
-          <span className="text-[32px]/[120%] max-md:text-[10px]/[120%] font-light text-center mt-38 max-md:mt-13 block max-md:w-full max-w-[800px]">
+          <span className="text-[32px]/[120%] max-md:text-[10px]/[120%] font-light text-center mt-20 max-md:mt-13 block max-md:w-full max-w-[800px]">
             We are prepared to replicate these results for your brand. Are you
             ready to begin?
           </span>

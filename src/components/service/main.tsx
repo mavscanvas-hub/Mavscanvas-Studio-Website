@@ -148,7 +148,7 @@ export default function Main() {
 
   return (
     <section
-      className="bg-white pt-[245px] px-15 max-md:px-4 max-md:pt-[88px] flex flex-col gap-20 max-md:gap-5.5 pb-40 max-md:pb-12 bg-top-left font-subito"
+      className="bg-white pt-[245px] px-15 max-md:px-4 max-md:pt-[88px] flex flex-col gap-12 max-md:gap-5.5 pb-40 max-md:pb-12 bg-top-left font-subito"
       style={{
         backgroundImage: `url(${Herobg})`,
         backgroundSize: "cover",
@@ -189,22 +189,22 @@ export default function Main() {
               }}
             >
               <div className="flex justify-between items-center font-subito">
-                <h3 className="text-[96px]/[120%] max-md:text-[24px]/[120%] max-md:w-[175px] font-bold w-[676px]">
+                <h3 className="text-[80px]/[120%] max-md:text-[24px]/[120%] max-md:w-[175px] font-bold w-[676px]">
                   {service.category}
                 </h3>
-                <div className="w-[271px] h-[228px] max-md:w-[80px] max-md:h-[60px] glass_effect flex flex-col justify-center items-center">
+                <div className="w-[261px] h-[218px] max-md:w-[80px] max-md:h-[60px] glass_effect flex flex-col justify-center items-center">
                   <span className="text-[32px]/[120%] max-md:text-[9px]/[120%] font-light font-subito uppercase">
                     Clients
                   </span>
-                  <span className="text-[128px]/[120%] max-md:text-[33px]/[120%] font-bold font-subito">
+                  <span className="text-[96px]/[120%] max-md:text-[33px]/[120%] font-bold font-subito">
                     {service.clients}
                   </span>
                 </div>
               </div>
-              <p className="text-[28px]/[120%] max-md:text-[10px]/[120%] font-normal font-subito">
+              <p className="text-[24px]/[120%] max-md:text-[10px]/[120%] font-normal font-subito">
                 {service.description}
               </p>
-              <div className="mt-10 max-md:mt-3 flex flex-col gap-12 max-md:gap-5">
+              <div className="mt-5 max-md:mt-3 flex flex-col gap-12 max-md:gap-5 group">
                 <div className="border w-full border-white p-4 max-md:p-1 rounded-[20px] max-md:rounded-[5px] relative">
                   <img
                     src={service.projects[currentIndex].image}
@@ -213,7 +213,7 @@ export default function Main() {
                     alt={`Project ${service.projects[currentIndex].id}`}
                     className="w-full h-auto max-md:h-[190px] rounded-[20px] max-md:rounded-[5px]"
                   />
-                  <div className="absolute inset-0 flex justify-between items-center z-10">
+                  <div className="absolute inset-0 group-hover:flex justify-between items-center z-10 hidden">
                     <button
                       className="absolute top-1/2 right-5 max-md:right-1 transform -translate-y-1/2 cursor-pointer text-white p-10 max-md:p-2.5 rounded-full flex justify-center items-center"
                       onClick={() =>
@@ -256,7 +256,7 @@ export default function Main() {
         })}
       </div>
       <div className="flex flex-col gap-15 max-md:gap-5 items-center justify-center">
-        <span className="text-[32px]/[120%] max-md:text-[12px]/[120%] font-light text-center mt-38 max-md:mt-5.5 block max-w-[800px] max-md:w-[280px]">
+        <span className="text-[32px]/[120%] max-md:text-[12px]/[120%] font-light text-center mt-12 max-md:mt-5.5 block max-w-[800px] max-md:w-[280px]">
           We are prepared to replicate these results for your brand. Are you
           ready to begin?
         </span>
