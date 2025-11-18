@@ -30,7 +30,7 @@ export default function Home() {
   return (
     <>
       <div
-        className="min-h-screen max-md:min-h-0 overscroll-contain pt-40 max-md:pt-16 pb-10 max-md:pb-5 px-15 max-md:px-3.5 bg-center max-md:bg-top"
+        className="min-h-screen max-md:min-h-0 overscroll-contain pt-40 max-md:pt-16 pb-20 max-md:pb-5 px-15 max-md:px-3.5 bg-center max-md:bg-top"
         style={{
           backgroundImage: `url(${hero})`,
           backgroundRepeat: "no-repeat",
