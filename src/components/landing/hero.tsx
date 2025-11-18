@@ -43,7 +43,7 @@ export default function Home() {
           <div className="flex flex-col justify-center items-center w-full">
             <span
               className={
-                "text-white font-cormo italic text-[72px]/[120%] max-md:text-[26px]/[120%] transform transition-all duration-700 ease-out " +
+                "text-white font-cormo italic text-[76px]/[120%] max-md:text-[26px]/[120%] transform transition-all duration-700 ease-out " +
                 (bgLoaded
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-8")
@@ -55,7 +55,7 @@ export default function Home() {
 
             <span
               className={
-                "text-white font-subito font-bold text-[72px]/[110%] max-md:text-[26px]/[120%] transform transition-all duration-900 ease-out " +
+                "text-white font-subito font-bold text-[76px]/[110%] max-md:text-[26px]/[120%] transform transition-all duration-900 ease-out " +
                 (bgLoaded
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-12")
@@ -68,7 +68,7 @@ export default function Home() {
 
           <div
             className={
-              "text-[20px]/[120%] max-md:text-[10px]/[120%] italic pb-6 pt-3 max-md:pb-4 font-subito text-white font-light mx-15 max-md:mx-0 text-center transform transition-all duration-700 ease-out" +
+              "text-[22px]/[120%] max-md:text-[10px]/[120%] italic pb-10 pt-3 max-md:pb-4 font-subito text-white font-light mx-15 max-md:mx-0 text-center transform transition-all duration-700 ease-out" +
               (bgLoaded
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-6")
@@ -80,7 +80,7 @@ export default function Home() {
             websites, and growth engines that actually perform
           </div>
 
-          <div className="flex justify-center items-center pt-18 max-md:pt-6 mt-0 max-md:mt-6">
+          <div className="flex justify-center items-center pt-12 max-md:pt-6 mt-0 max-md:mt-6">
             <Button
               className={
                 "bg-[#02DDEF] hover:transform hover:scale-105 rounded-full py-5 max-md:py-3 max-md:px-10 px-20 flex gap-6 items-center transform transition-all duration-500 ease-out " +
@@ -99,7 +99,7 @@ export default function Home() {
             </Button>
           </div>
 
-          <div className="mt-7 max-md:mt-3 flex flex-col items-center justify-center gap-8 max-md:gap-3 text-white">
+          <div className="mt-10 max-md:mt-3 flex flex-col items-center justify-center gap-8 max-md:gap-3 text-white">
             <h4 className="text-[22px]/[120%] max-md:text-[7px]/[120%] font-normal">
               Trusted by
             </h4>
