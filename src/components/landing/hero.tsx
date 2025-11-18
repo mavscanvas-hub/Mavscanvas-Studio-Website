@@ -36,11 +36,9 @@ export default function Home() {
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
           willChange: "background-image",
-          height: "calc(100vh - 160px)",
-          width: "100%",
         }}
       >
-        <div className="mt-20 max-w-[1106px] max-md:w-full mx-auto max-md:mx-0 flex flex-col max-md:gap-3.5 gap-0">
+        <div className="mt-20 max-md:mt-5 max-w-[1106px] max-md:w-full mx-auto max-md:mx-0 flex flex-col max-md:gap-3.5 gap-0">
           {/* headline: animate only after bgLoaded */}
           <div className="flex flex-col justify-center items-center w-full">
             <span
@@ -70,7 +68,7 @@ export default function Home() {
 
           <div
             className={
-              "text-[22px]/[120%] max-md:text-[10px]/[120%] italic pb-5 mt-8 max-md:pt-0 max-md:pb-4 font-subito text-white font-light mx-15 max-md:mx-0 text-center transform transition-all duration-700 ease-out" +
+              "text-[22px]/[120%] max-md:text-[10px]/[120%] italic pb-5 mt-8 max-md:mt-0 max-md:pt-0 max-md:pb-4 font-subito text-white font-light mx-15 max-md:mx-0 text-center transform transition-all duration-700 ease-out" +
               (bgLoaded
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-6")
