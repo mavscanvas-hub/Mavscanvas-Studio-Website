@@ -14,7 +14,6 @@ import Button from "../custom/button";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import { useRef, useEffect } from "react";
-
 // CountUp component: animates numeric portion of strings like "85%", "2.1x", "3.5x"
 function CountUp({ value, className }: { value: string; className?: string }) {
   const elRef = useRef<HTMLSpanElement | null>(null);
@@ -122,7 +121,7 @@ const contacts = [
   {
     method: "Email",
     icon: <IoMail />,
-    detail: "hello@mavscanvas.com",
+    detail: "mavscanvas@gmail.com",
   },
   {
     method: "Phone",
@@ -132,10 +131,22 @@ const contacts = [
 ];
 
 const socialMedia = [
-  { name: "Facebook", link: "https://facebook.com", icon: <FaFacebookF /> },
-  { name: "Twitter", link: "https://twitter.com", icon: <FaXTwitter /> },
-  { name: "LinkedIn", link: "https://linkedin.com", icon: <FaLinkedinIn /> },
-  { name: "Instagram", link: "https://instagram.com", icon: <FaInstagram /> },
+  {
+    name: "Facebook",
+    link: "https://www.facebook.com/mavscanvas",
+    icon: <FaFacebookF />,
+  },
+  { name: "Twitter", link: "https://x.com/MavsCanvas", icon: <FaXTwitter /> },
+  {
+    name: "LinkedIn",
+    link: "https://www.linkedin.com/company/mavscanvas",
+    icon: <FaLinkedinIn />,
+  },
+  {
+    name: "Instagram",
+    link: "https://www.instagram.com/mavs_canvas/",
+    icon: <FaInstagram />,
+  },
   { name: "WhatsApp", link: "https://whatsapp.com", icon: <FaWhatsapp /> },
 ];
 
@@ -198,13 +209,20 @@ export default function WeDeliver() {
                 <span className="uppercase text-3xl max-md:text-xs font-medium text-black">
                   {contact.method}
                 </span>
-                <div
-                  className="flex items-center gap-5 justify-start bg-black px-10 max-md:px-4 max-md:py-3 py-6 rounded-full"
+                <button
+                  className="flex cursor-pointer items-center gap-5 justify-start bg-black px-10 max-md:px-4 max-md:py-3 py-6 rounded-full"
                   style={{
                     backgroundImage: `url(${Buttonbg})`,
                     backgroundRepeat: "no-repeat",
                     backgroundSize: "cover",
                     backgroundPosition: "center",
+                  }}
+                  onClick={() => {
+                    if (contact.method === "Email") {
+                      window.location.href = `mailto:${contact.detail}`;
+                    } else if (contact.method === "Phone") {
+                      return;
+                    }
                   }}
                 >
                   <span className="text-white text-5xl max-md:text-xl">
@@ -213,7 +231,7 @@ export default function WeDeliver() {
                   <span className="text-white text-4xl/[120%] max-md:text-[20px]/[120%] font-light font-subito">
                     {contact.detail}
                   </span>
-                </div>
+                </button>
               </div>
             ))}
           </div>

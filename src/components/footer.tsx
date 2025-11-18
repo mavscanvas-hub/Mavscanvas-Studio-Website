@@ -20,14 +20,26 @@ const support = [
   { name: "Terms of Service", link: "/terms" },
 ];
 const contact = [
-  { icon: <IoMdMail />, value: "info@mavscanvas.com" },
+  { icon: <IoMdMail />, value: "mavscanvas@gmail.com" },
   { icon: <IoMdCall />, value: "+234 (0) 9121635235" },
 ];
 const socialMedia = [
-  { name: "Facebook", link: "https://facebook.com", icon: <FaFacebookF /> },
-  { name: "Twitter", link: "https://twitter.com", icon: <FaXTwitter /> },
-  { name: "LinkedIn", link: "https://linkedin.com", icon: <FaLinkedinIn /> },
-  { name: "Instagram", link: "https://instagram.com", icon: <FaInstagram /> },
+  {
+    name: "Facebook",
+    link: "https://www.facebook.com/mavscanvas",
+    icon: <FaFacebookF />,
+  },
+  { name: "Twitter", link: "https://x.com/MavsCanvas", icon: <FaXTwitter /> },
+  {
+    name: "LinkedIn",
+    link: "https://www.linkedin.com/company/mavscanvas",
+    icon: <FaLinkedinIn />,
+  },
+  {
+    name: "Instagram",
+    link: "https://www.instagram.com/mavs_canvas/",
+    icon: <FaInstagram />,
+  },
 ];
 
 export default function Footer({

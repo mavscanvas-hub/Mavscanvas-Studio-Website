@@ -102,7 +102,7 @@ export default function Navbar({
           }`}
         >
           <ul
-            className={`flex justify-between items-center py-3.5 pl-2.5 pr-8 ${
+            className={`flex justify-between items-center py-2 pl-2.5 pr-8 ${
               scrolled && "px-20"
             }`}
           >
@@ -171,7 +171,7 @@ export default function Navbar({
         <div
           className={`md:hidden flex justify-between items-center transition-all duration-300 ease-out transform`}
         >
-          <div className="">
+          <Link to={"/"}>
             <img
               src={logo}
               alt="logo"
@@ -179,7 +179,7 @@ export default function Navbar({
               decoding="async"
               className="h-11 w-11"
             />
-          </div>
+          </Link>
           <Button
             className="glass_effect bg-transparent rounded-full p-2 flex items-center justify-center"
             onClick={() => {}}

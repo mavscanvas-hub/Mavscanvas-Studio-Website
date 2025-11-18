@@ -30,15 +30,17 @@ export default function Home() {
   return (
     <>
       <div
-        className="min-h-screen max-md:min-h-0 overscroll-contain pt-40 max-md:pt-16 pb-20 max-md:pb-5 px-15 max-md:px-3.5 bg-center max-md:bg-top"
+        className="min-h-screen max-md:min-h-0 overscroll-contain pt-40 max-md:pt-16 pb-10 max-md:pb-5 px-15 max-md:px-3.5 bg-center max-md:bg-top"
         style={{
           backgroundImage: `url(${hero})`,
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
           willChange: "background-image",
+          height: "calc(100vh - 160px)",
+          width: "100%",
         }}
       >
-        <div className="mt-8 max-md:mt-0 max-w-[1106px] max-md:w-full mx-auto max-md:mx-0 flex flex-col max-md:gap-3.5">
+        <div className="mt-20 max-w-[1106px] max-md:w-full mx-auto max-md:mx-0 flex flex-col max-md:gap-3.5 gap-0">
           {/* headline: animate only after bgLoaded */}
           <div className="flex flex-col justify-center items-center w-full">
             <span
@@ -68,7 +70,7 @@ export default function Home() {
 
           <div
             className={
-              "text-[22px]/[120%] max-md:text-[10px]/[120%] italic pb-10 pt-3 max-md:pb-4 font-subito text-white font-light mx-15 max-md:mx-0 text-center transform transition-all duration-700 ease-out" +
+              "text-[22px]/[120%] max-md:text-[10px]/[120%] italic pb-5 mt-8 max-md:pt-0 max-md:pb-4 font-subito text-white font-light mx-15 max-md:mx-0 text-center transform transition-all duration-700 ease-out" +
               (bgLoaded
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-6")
@@ -80,7 +82,7 @@ export default function Home() {
             websites, and growth engines that actually perform
           </div>
 
-          <div className="flex justify-center items-center pt-12 max-md:pt-6 mt-0 max-md:mt-6">
+          <div className="flex justify-center items-center pt-12 max-md:pt-6 mt-0 max-md:mt-4">
             <Button
               className={
                 "bg-[#02DDEF] hover:transform hover:scale-105 rounded-full py-5 max-md:py-3 max-md:px-10 px-20 flex gap-6 items-center transform transition-all duration-500 ease-out " +
