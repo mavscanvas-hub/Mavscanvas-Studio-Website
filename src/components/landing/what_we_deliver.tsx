@@ -56,7 +56,7 @@ export default function WhatWeDeliver() {
   };
   return (
     <div
-      className="px-15 py-15 max-md:pt-5 max-md:pb-6 flex flex-col gap-13.5 max-md:gap-3 max-md:px-3.5 bg-bottom-right bg-cover w-full"
+      className="px-15 py-15 max-md:pt-5 max-md:pb-6 flex flex-col gap-13.5 max-md:gap-3 max-md:px-3.5 bg-bottom-right bg-cover w-full bg-white"
       style={{
         backgroundImage: `url(${bg})`,
         backgroundRepeat: "no-repeat",

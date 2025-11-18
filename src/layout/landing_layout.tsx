@@ -50,7 +50,7 @@ export default function LandingLayout() {
         getStartedModalOpen ? "bg-transparent" : "bg-black"
       } overscroll-contain`}
     >
-      <header className="w-full px-15 max-md:px-4.5 fixed top-14 max-md:top-5 z-50">
+      <header className="w-full px-15 max-md:px-4.5 fixed top-10 max-md:top-5 z-50">
         <Navbar
           setIsSidebarOpen={setIsSidebarOpen}
           isSidebarOpen={isSidebarOpen}
