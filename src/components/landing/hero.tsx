@@ -43,7 +43,7 @@ export default function Home() {
           <div className="flex flex-col justify-center items-center w-full">
             <span
               className={
-                "text-white font-cormo italic text-[80px]/[120%] max-md:text-[26px]/[120%] transform transition-all duration-700 ease-out " +
+                "text-white font-cormo italic text-[72px]/[120%] max-md:text-[26px]/[120%] transform transition-all duration-700 ease-out " +
                 (bgLoaded
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-8")
@@ -55,7 +55,7 @@ export default function Home() {
 
             <span
               className={
-                "text-white font-subito font-bold text-[80px]/[110%] max-md:text-[26px]/[120%] transform transition-all duration-900 ease-out " +
+                "text-white font-subito font-bold text-[72px]/[110%] max-md:text-[26px]/[120%] transform transition-all duration-900 ease-out " +
                 (bgLoaded
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-12")
@@ -68,7 +68,7 @@ export default function Home() {
 
           <div
             className={
-              "text-[28px]/[120%] max-md:text-[10px]/[120%] italic pb-10 max-md:pb-4 font-subito text-white font-light mx-15 max-md:mx-0 text-center transform transition-all duration-700 ease-out " +
+              "text-[20px]/[120%] max-md:text-[10px]/[120%] italic pb-6 pt-3 max-md:pb-4 font-subito text-white font-light mx-15 max-md:mx-0 text-center transform transition-all duration-700 ease-out" +
               (bgLoaded
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-6")
