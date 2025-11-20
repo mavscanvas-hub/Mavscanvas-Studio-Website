@@ -1,5 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import logo from "../assets/company_op/logo.webp";
+import logoBlack from "../assets/company_op/logo_black.webp";
 import { RxHamburgerMenu } from "react-icons/rx";
 import Button from "./custom/button";
 import { useEffect, useState, useRef } from "react";
@@ -35,7 +36,6 @@ export default function Navbar({
   }, [location.pathname]);
 
   useEffect(() => {
-    // top sentinel to detect when user scrolls away from top
     let sentinel = document.getElementById(
       "nav-scroll-sentinel"
     ) as HTMLDivElement | null;
@@ -86,6 +86,11 @@ export default function Navbar({
   // Fixed nav height used for spacer to avoid layout shift when nav becomes fixed
   const NAV_HEIGHT_PX = 116;
 
+  const isWhitePage = [
+    activeLink.includes("services"),
+    activeLink.includes("pricing"),
+  ].some(Boolean);
+
   return (
     <>
       <div ref={wrapperRef} className="w-full">
@@ -108,11 +113,11 @@ export default function Navbar({
           >
             <Link to="/" className={` px-5`}>
               <img
-                src={logo}
+                src={isWhitePage && !scrolled ? logoBlack : logo}
                 alt="logo"
                 loading="lazy"
                 decoding="async"
-                className="h-22 w-22"
+                className="h-auto w-18"
               />
             </Link>
             <div className="flex gap-12 items-center">
