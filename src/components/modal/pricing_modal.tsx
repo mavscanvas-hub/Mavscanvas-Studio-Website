@@ -69,7 +69,6 @@ export default function PricingModal({
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center",
-            // backgroundColor: "rgba(255,255,255,0.04)", // subtle card tint
             backdropFilter: "blur(6px)",
           }}
         >

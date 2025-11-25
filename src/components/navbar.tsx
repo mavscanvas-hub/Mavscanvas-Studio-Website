@@ -83,7 +83,6 @@ export default function Navbar({
     setGetStartedModalOpen(!getStartedModalOpen);
   };
 
-  // Fixed nav height used for spacer to avoid layout shift when nav becomes fixed
   const NAV_HEIGHT_PX = 116;
 
   const isWhitePage = [
@@ -111,13 +110,15 @@ export default function Navbar({
               scrolled && "px-20"
             }`}
           >
-            <Link to="/" className={` px-5`}>
+            <Link to="/" className={`px-5`}>
               <img
                 src={isWhitePage && !scrolled ? logoBlack : logo}
                 alt="logo"
                 loading="lazy"
                 decoding="async"
-                className="h-auto w-18"
+                className={`h-auto ${
+                  isWhitePage && !scrolled ? "w-16" : "w-18"
+                }`}
               />
             </Link>
             <div className="flex gap-12 items-center">

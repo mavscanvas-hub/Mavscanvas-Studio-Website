@@ -42,67 +42,79 @@ const faqData = [
   },
 ];
 
-export default function FAQModal() {
+export default function FAQModal({
+  setFaqModal,
+}: {
+  setFaqModal: (open: boolean) => void;
+}) {
   const [activeIndex, setActiveIndex] = useState<number | null>(1);
 
   return (
     <div
-      className="fixed inset-0 bg-white z-50 pt-15 flex-col gap-15 flex items-center justify-start"
-      style={{
-        backgroundImage: `url(${bg})`,
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
+      className="px-10 z-[9999] bg-white/30 backdrop-blur-sm w-full h-screen fixed inset-0 flex items-center justify-center"
+      onClick={() => setFaqModal(false)}
     >
-      <div className="flex flex-col items-center justify-center max-w-[584px]">
-        <span className="font-cormo text-[70px]/[120%] italic">Frequently</span>
-        <span className="font-subito font-bold text-[70px]/[120%]">
-          Asked Questions
-        </span>
-      </div>
-      <div className="flex gap-15 items-center">
-        <div className="flex flex-col gap-6 max-w-[588px] max-h-[450px] overflow-scroll">
-          {faqData.map((faq, index) => (
-            <div
-              key={index}
-              className={`p-4.5  flex items-center gap-25 rounded-[10px] cursor-pointer justify-between ${
-                activeIndex === faq.id
-                  ? "bg-[#02DDEF] text-black"
-                  : "bg-transparent text-black border-black border"
-              }`}
-              onClick={() =>
-                setActiveIndex(activeIndex === faq.id ? null : faq.id)
-              }
-            >
-              <h3 className="text-[20px]/[120%] font-subito font-medium w-[392px]">
-                {faq.question}
-              </h3>
-              <span className="flex items-center justify-center p-2">
-                <IoIosArrowForward className="text-2xl" />
-              </span>
-            </div>
-          ))}
+      <div
+        className=" bg-white py-10 px-10 flex-col gap-10 flex items-center justify-start rounded-lg"
+        onClick={(e) => e.stopPropagation()}
+        style={{
+          backgroundImage: `url(${bg})`,
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        <div className="flex flex-col items-center justify-center max-w-[584px]">
+          <span className="font-cormo text-[64px]/[120%] italic">
+            Frequently
+          </span>
+          <span className="font-subito font-bold text-[64px]/[120%]">
+            Asked Questions
+          </span>
         </div>
-        <div
-          className="h-[550px] max-w-[584px] bg-black py-12.5 px-10 rounded-[28px]"
-          style={{
-            backgroundImage: `url(${Cardbg})`,
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-        >
-          {(() => {
-            const selectedFaq = faqData.find((f) => f.id === activeIndex);
-            return (
-              selectedFaq && (
-                <p className=" text-white text-[30px]/[140%] font-light font-subito">
-                  {selectedFaq.answer}
-                </p>
-              )
-            );
-          })()}
+        <div className="flex gap-10 items-center">
+          <div className="flex flex-col gap-6 max-w-[588px] max-h-[450px] overflow-scroll">
+            {faqData.map((faq, index) => (
+              <div
+                key={index}
+                className={`p-4.5  flex items-center gap-25 rounded-[10px] cursor-pointer justify-between ${
+                  activeIndex === faq.id
+                    ? "bg-[#02DDEF] text-black"
+                    : "bg-transparent text-black border-black border"
+                }`}
+                onClick={() =>
+                  setActiveIndex(activeIndex === faq.id ? null : faq.id)
+                }
+              >
+                <h3 className="text-[20px]/[120%] font-subito font-medium w-[392px]">
+                  {faq.question}
+                </h3>
+                <span className="flex items-center justify-center p-2">
+                  <IoIosArrowForward className="text-2xl" />
+                </span>
+              </div>
+            ))}
+          </div>
+          <div
+            className="h-[550px] max-w-[584px] bg-black py-12.5 px-10 rounded-[28px]"
+            style={{
+              backgroundImage: `url(${Cardbg})`,
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+          >
+            {(() => {
+              const selectedFaq = faqData.find((f) => f.id === activeIndex);
+              return (
+                selectedFaq && (
+                  <p className=" text-white text-[30px]/[140%] font-light font-subito">
+                    {selectedFaq.answer}
+                  </p>
+                )
+              );
+            })()}
+          </div>
         </div>
       </div>
     </div>

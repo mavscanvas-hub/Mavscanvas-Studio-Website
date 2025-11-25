@@ -136,7 +136,7 @@ export default function Hero() {
                   console.log("Logged");
                 }}
               >
-                Start a Project
+                Buy Package
                 <HiArrowRight className="text-3xl " />
               </button>
             </div>

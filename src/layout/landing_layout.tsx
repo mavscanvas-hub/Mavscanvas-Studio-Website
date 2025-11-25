@@ -4,6 +4,9 @@ import { Outlet, useLocation } from "react-router-dom";
 import Sidebar from "../components/sidebar";
 import Pricing from "../components/modal/pricing_modal";
 import FAQModal from "../components/modal/faq_modal";
+import ContactModal from "../components/modal/contact_modal";
+import PrivacyModal from "../components/modal/privacy_modal";
+import TermsModal from "../components/modal/terms_modal";
 import { useState, useRef, useEffect } from "react";
 
 export default function LandingLayout() {
@@ -11,6 +14,9 @@ export default function LandingLayout() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [getStartedModalOpen, setGetStartedModalOpen] = useState(false);
   const [faqModal, setFaqModal] = useState(false);
+  const [contactModal, setContactModal] = useState(false);
+  const [privacyModal, setPrivacyModal] = useState(false);
+  const [termsModal, setTermsModal] = useState(false);
 
   const sidebarRef = useRef<HTMLDivElement | null>(null);
 
@@ -86,16 +92,24 @@ export default function LandingLayout() {
       {getStartedModalOpen && (
         <Pricing setGetStartedModalOpen={setGetStartedModalOpen} />
       )}
-      {faqModal && (
-        <div className="relative z-[9999] max-h-screen overflow-auto w-full">
-          <FAQModal />
-        </div>
-      )}
+      {faqModal && <FAQModal setFaqModal={setFaqModal} />}
+      {contactModal && <ContactModal setContactModal={setContactModal} />}
+      {privacyModal && <PrivacyModal setPrivacyModal={setPrivacyModal} />}
+      {termsModal && <TermsModal setTermsModal={setTermsModal} />}
 
       <div className="flex-1">
         <Outlet />
       </div>
-      <Footer faqModal={faqModal} setFaqModal={setFaqModal} />
+      <Footer
+        faqModal={faqModal}
+        setFaqModal={setFaqModal}
+        contactModal={contactModal}
+        setContactModal={setContactModal}
+        privacyModal={privacyModal}
+        setPrivacyModal={setPrivacyModal}
+        termsModal={termsModal}
+        setTermsModal={setTermsModal}
+      />
     </section>
   );
 }

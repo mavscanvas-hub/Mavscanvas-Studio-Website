@@ -45,10 +45,36 @@ const socialMedia = [
 export default function Footer({
   faqModal,
   setFaqModal,
+  contactModal,
+  setContactModal,
+  privacyModal,
+  setPrivacyModal,
+  termsModal,
+  setTermsModal,
 }: {
   faqModal: boolean;
   setFaqModal: (open: boolean) => void;
+  contactModal: boolean;
+  setContactModal: (open: boolean) => void;
+  privacyModal: boolean;
+  setPrivacyModal: (open: boolean) => void;
+  termsModal: boolean;
+  setTermsModal: (open: boolean) => void;
 }) {
+  const handleSuportClick = (itemName: string) => {
+    if (itemName === "FAQ") {
+      setFaqModal(!faqModal);
+    }
+    if (itemName === "Contact Us") {
+      setContactModal(!contactModal);
+    }
+    if (itemName === "Privacy Policy") {
+      setPrivacyModal(!privacyModal);
+    }
+    if (itemName === "Terms of Service") {
+      setTermsModal(!termsModal);
+    }
+  };
   return (
     <footer
       className="bg-black text-white px-20 pt-25 pb-10 max-md:py-10 max-md:px-4 w-full h-full font-subito"
@@ -90,13 +116,9 @@ export default function Footer({
                     className="text-xl max-md:text-[9px]/[120%] max-md:font-light"
                   >
                     <a
-                      className="hover:underline"
+                      className="hover:underline cursor-pointer"
                       onClick={() => {
-                        if (item.name === "FAQ") {
-                          setFaqModal(!faqModal);
-                        } else {
-                          window.location.href = item.link;
-                        }
+                        handleSuportClick(item.name);
                       }}
                     >
                       {item.name}
@@ -117,7 +139,17 @@ export default function Footer({
                   >
                     <span className="">{item.icon}</span>{" "}
                     <a
-                      href={`mailto:${item.value}`}
+                      href={
+                        item.value.includes("@")
+                          ? `mailto:${item.value}`
+                          : item.value.includes("+")
+                          ? `tel:${item.value}`
+                          : "#"
+                      }
+                      target={item.value.includes("@") ? "_blank" : "_self"}
+                      rel={
+                        item.value.includes("@") ? "noopener noreferrer" : ""
+                      }
                       className="hover:underline"
                     >
                       {item.value}
