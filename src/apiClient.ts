@@ -1,8 +1,10 @@
 import axios from "axios";
 import { WORKSPACE_TOKEN } from "./constant";
 
+const isProduction = import.meta.env.PROD;
+
 export const baseInstance = axios.create({
-  baseURL: "/api",
+  baseURL: isProduction ? "/api" : "/api",
   headers: {
     "Content-Type": "application/json",
     Accept: "application/json",
