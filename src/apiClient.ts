@@ -2,7 +2,7 @@ import axios from "axios";
 import { WORKSPACE_TOKEN } from "./constant";
 
 export const baseInstance = axios.create({
-  baseURL: "/api",
+  baseURL: "/api/v2",
   headers: {
     "Content-Type": "application/json",
     Accept: "application/json",

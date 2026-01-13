@@ -1,7 +1,7 @@
 {
   "rewrites": [
     {
-      "source": "/api/v2/:path*",
+      "source": "/api/:path*",
       "destination": "https://api.webflow.com/v2/:path*"
     },
     {
