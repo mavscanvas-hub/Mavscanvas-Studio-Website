@@ -1,20 +1,29 @@
 import axios from "axios";
 import { WORKSPACE_TOKEN } from "./constant";
 
+const isDev = import.meta.env.DEV;
+
 export const baseInstance = axios.create({
-  baseURL: "/api/v2",
+  baseURL: isDev ? "/api/v2" : "",
   headers: {
     "Content-Type": "application/json",
     Accept: "application/json",
-    Authorization: `Bearer ${WORKSPACE_TOKEN}`,
+    ...(isDev && { Authorization: `Bearer ${WORKSPACE_TOKEN}` }),
   },
 });
 
 class ApiClient {
   async get<T>(endpoint: string): Promise<T> {
-    const fullUrl = `${baseInstance.defaults.baseURL}${endpoint}`;
+    let url = endpoint;
+    if (!isDev) {
+      // In production, use the proxy serverless function
+      url = `/api/proxy?path=${encodeURIComponent(
+        endpoint.replace(/^\//, "")
+      )}`;
+    }
+    const fullUrl = `${baseInstance.defaults.baseURL}${url}`;
     console.log("API Request:", fullUrl);
-    const response = await baseInstance.get<T>(endpoint);
+    const response = await baseInstance.get<T>(url);
     return response.data;
   }
 }
