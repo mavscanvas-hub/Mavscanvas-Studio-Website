@@ -95,10 +95,15 @@ const WorkProvider = ({ children }: { children: React.ReactNode }) => {
   const getCollectionDetails = async (id: string) => {
     setIsCategoryLoading(true);
     try {
-      const res: any = await apiClient.get<CollectionSchema>(
-        `/collections/${id}`
-      );
-      // console.log("Collection Details:", res);
+      console.log("Fetching collection details for ID:", id);
+      const res = await apiClient.get<CollectionSchema>(`/collections/${id}`);
+      console.log("Collection Details:", res);
+
+      if (!res || !res.fields) {
+        console.error("Invalid response structure:", res);
+        return;
+      }
+
       const optionFields = res.fields.filter(
         (field: Field) => field.type === "Option"
       );
@@ -108,7 +113,6 @@ const WorkProvider = ({ children }: { children: React.ReactNode }) => {
       setCategories(categoryOptions);
     } catch (error) {
       console.error("Error fetching collection details:", error);
-      throw error;
     } finally {
       setIsCategoryLoading(false);
     }
@@ -117,15 +121,22 @@ const WorkProvider = ({ children }: { children: React.ReactNode }) => {
   const getAllWorks = async (id: string): Promise<WorksResponse> => {
     setIsLoading(true);
     try {
+      console.log("Fetching all works for collection ID:", id);
       const res = await apiClient.get<WorksResponse>(
         `/collections/${id}/items`
       );
       console.log("All Works:", res);
-      setWorks(res.items);
-      return res;
+
+      if (res && res.items) {
+        setWorks(res.items);
+        return res;
+      } else {
+        console.error("Invalid works response structure:", res);
+        return { items: [], pagination: { limit: 0, offset: 0, total: 0 } };
+      }
     } catch (error) {
       console.error("Error fetching works:", error);
-      throw error;
+      return { items: [], pagination: { limit: 0, offset: 0, total: 0 } };
     } finally {
       setIsLoading(false);
     }

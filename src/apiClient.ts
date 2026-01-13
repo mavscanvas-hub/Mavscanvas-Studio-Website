@@ -12,6 +12,8 @@ export const baseInstance = axios.create({
 
 class ApiClient {
   async get<T>(endpoint: string): Promise<T> {
+    const fullUrl = `${baseInstance.defaults.baseURL}${endpoint}`;
+    console.log("API Request:", fullUrl);
     const response = await baseInstance.get<T>(endpoint);
     return response.data;
   }
