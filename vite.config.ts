@@ -7,10 +7,10 @@ export default defineConfig({
   plugins: [react(), tailwindcss()],
   server: {
     proxy: {
-      "/api": {
+      "/api/v2": {
         target: "https://api.webflow.com/v2",
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, ""),
+        rewrite: (path) => path.replace(/^\/api\/v2/, ""),
         secure: false,
       },
     },
