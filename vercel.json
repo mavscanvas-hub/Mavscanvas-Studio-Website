@@ -1,8 +1,8 @@
 {
   "rewrites": [
     {
-      "source": "/api",
-      "destination": "https://api.webflow.com/v2"
+      "source": "/api/:path*",
+      "destination": "https://api.webflow.com/v2/:path*"
     },
     {
       "source": "/(.*)",
