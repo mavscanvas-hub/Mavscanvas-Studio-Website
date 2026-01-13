@@ -81,14 +81,9 @@ export default function Hero() {
     el.classList.remove("dragging");
   };
 
-  const handleFetch = () =>
-    Promise.allSettled([
-      getCollectionDetails(COLLECTION_ID),
-      getAllWorks(COLLECTION_ID),
-    ]);
-
   useEffect(() => {
-    handleFetch();
+    getCollectionDetails(COLLECTION_ID);
+    getAllWorks(COLLECTION_ID);
   }, []);
   console.log("Categories in Hero:", categories);
 

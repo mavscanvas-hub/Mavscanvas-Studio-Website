@@ -1,8 +1,8 @@
 import axios from "axios";
-import { WORKSPACE_TOKEN } from "./constant";
+import { WORKSPACE_TOKEN, BASE_URL } from "./constant";
 
 export const baseInstance = axios.create({
-  baseURL: "/api/v2",
+  baseURL: BASE_URL,
   headers: {
     "Content-Type": "application/json",
     Accept: "application/json",
