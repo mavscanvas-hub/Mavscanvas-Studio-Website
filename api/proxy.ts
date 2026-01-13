@@ -1,11 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { WORKSPACE_TOKEN } from "../src/constant";
 import axios from "axios";
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   const { path } = req.query;
-  const token = WORKSPACE_TOKEN;
+  const token = process.env.VITE_WEBFLOW_WORKSPACE_TOKEN;
 
   if (!token) {
     return res.status(500).json({ error: "Missing WORKSPACE_TOKEN" });
