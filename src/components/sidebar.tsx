@@ -36,11 +36,11 @@ export default function Sidebar({
 
   return (
     <aside
-      className="w-full pt-15 pb-41 h-full bg-black min-h-screen px-8 flex flex-col gap-18"
+      className="w-full pt-15 pb-41 h-full bg-black min-h-screen px-5 flex flex-col gap-18"
       style={{ backgroundImage: `url(${Bg})`, backgroundSize: "cover" }}
     >
       <div className="flex justify-between items-center">
-        <button className="bg-[#02DDEF] text-[28px]/[120%] rounded-full px-6 py-2.5">
+        <button className="bg-[#02DDEF] text-xl/[110%] font-medium rounded-full px-6 py-2.5">
           Get Started
         </button>
         <button

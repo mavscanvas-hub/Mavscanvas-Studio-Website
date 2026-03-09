@@ -79,8 +79,8 @@ export default function LandingLayout() {
 
         <div
           ref={sidebarRef}
-          tabIndex={-1}
-          className={`fixed inset-y-0 left-0 z-120 w-[450px] min-w-full bg-neutral-900 shadow-lg transform transition-transform duration-300 ease-in-out ${
+          // tabIndex={-1}
+          className={`fixed inset-y-0 left-0 z-120 w-full flex-1 bg-neutral-900 shadow-lg transform transition-transform duration-300 ease-in-out ${
             isSidebarOpen ? "-translate-x-0" : "-translate-x-full"
           }`}
           aria-hidden={!isSidebarOpen}
