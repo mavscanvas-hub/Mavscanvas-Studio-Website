@@ -143,8 +143,8 @@ export default function Footer({
                         item.value.includes("@")
                           ? `mailto:${item.value}`
                           : item.value.includes("+")
-                          ? `tel:${item.value}`
-                          : "#"
+                            ? `tel:${item.value}`
+                            : "#"
                       }
                       target={item.value.includes("@") ? "_blank" : "_self"}
                       rel={
@@ -164,13 +164,13 @@ export default function Footer({
           <span className="text-right text-5xl/[120%] max-md:text-[23px]/[120%] max-md:text-center">
             Join Our Newsletter Channel
           </span>
-          <div className="flex flex-col items-center gap-2 pl-10 max-md:pl-0 w-full">
+          <div className="flex flex-col items-center gap-2 pl-10 max-lg:pl-0 w-full">
             <input
               type="email"
               placeholder="Enter your email"
               className="px-6 max-md:px-3.5 py-3 max-md:py-2 rounded-4xl text-base max-md:text-sm border w-full focus-within:outline-0"
             />
-            <div className="flex justify-between items-center gap-5 max-md:gap-3">
+            <div className="flex justify-between items-center gap-5 max-md:gap-3 w-full">
               <Button
                 onClick={() => {
                   console.log("Subscribed");
@@ -186,7 +186,7 @@ export default function Footer({
                     href={item.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-2xl max-md:text-[12px] hover:scale-110 p-2 border rounded-full transition-transform"
+                    className="text-2xl max-md:text-sm hover:scale-110 p-2 border rounded-full transition-transform"
                   >
                     {item.icon}
                   </a>
@@ -198,7 +198,7 @@ export default function Footer({
       </div>
       <div className="flex flex-col justify-center">
         <div className="flex-1 border-b-[1px] max-md:border-b-[0.34px] border-white mb-10 max-md:mb-4" />
-        <span className="text-center max-md:text-[5px]/[120%]">
+        <span className="text-center max-md:text-[8px]/[120%]">
           ©copyright. All rights reserved.
         </span>
       </div>

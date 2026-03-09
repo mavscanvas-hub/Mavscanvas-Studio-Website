@@ -17,7 +17,8 @@
 
 @font-face {
   font-family: "Subito";
-  src: url("./assets/font_face/Subito-Thin_trial.woff2") format("woff2"),
+  src:
+    url("./assets/font_face/Subito-Thin_trial.woff2") format("woff2"),
     url("./assets/font/Subito-Thin_trial.woff") format("woff");
   font-weight: 100;
   font-style: normal;
@@ -25,7 +26,8 @@
 }
 @font-face {
   font-family: "Subito";
-  src: url("./assets/font_face/Subito-ThinItalic_trial.woff2") format("woff2"),
+  src:
+    url("./assets/font_face/Subito-ThinItalic_trial.woff2") format("woff2"),
     url("./assets/font/Subito-ThinItalic_trial.woff") format("woff");
   font-weight: 100;
   font-style: italic;
@@ -33,7 +35,8 @@
 }
 @font-face {
   font-family: "Subito";
-  src: url("./assets/font_face/Subito-Light_trial.woff2") format("woff2"),
+  src:
+    url("./assets/font_face/Subito-Light_trial.woff2") format("woff2"),
     url("./assets/font/Subito-Light_trial.woff") format("woff");
   font-weight: 300;
   font-style: normal;
@@ -41,7 +44,8 @@
 }
 @font-face {
   font-family: "Subito";
-  src: url("./assets/font_face/Subito-LightItalic_trial.woff2") format("woff2"),
+  src:
+    url("./assets/font_face/Subito-LightItalic_trial.woff2") format("woff2"),
     url("./assets/font/Subito-LightItalic_trial.woff") format("woff");
   font-weight: 300;
   font-style: italic;
@@ -49,7 +53,8 @@
 }
 @font-face {
   font-family: "Subito";
-  src: url("./assets/font_face/Subito-Regular_trial.woff2") format("woff2"),
+  src:
+    url("./assets/font_face/Subito-Regular_trial.woff2") format("woff2"),
     url("./assets/font/Subito-Regular_trial.woff") format("woff");
   font-weight: 400;
   font-style: normal;
@@ -57,8 +62,8 @@
 }
 @font-face {
   font-family: "Subito";
-  src: url("./assets/font_face/Subito-RegularItalic_trial.woff2")
-      format("woff2"),
+  src:
+    url("./assets/font_face/Subito-RegularItalic_trial.woff2") format("woff2"),
     url("./assets/font/Subito-RegularItalic_trial.woff") format("woff");
   font-weight: 400;
   font-style: italic;
@@ -66,7 +71,8 @@
 }
 @font-face {
   font-family: "Subito";
-  src: url("./assets/font_face/Subito-Medium_trial.woff2") format("woff2"),
+  src:
+    url("./assets/font_face/Subito-Medium_trial.woff2") format("woff2"),
     url("./assets/font/Subito-Medium_trial.woff") format("woff");
   font-weight: 500;
   font-style: normal;
@@ -74,7 +80,8 @@
 }
 @font-face {
   font-family: "Subito";
-  src: url("./assets/font_face/Subito-MediumItalic_trial.woff2") format("woff2"),
+  src:
+    url("./assets/font_face/Subito-MediumItalic_trial.woff2") format("woff2"),
     url("./assets/font/Subito-MediumItalic_trial.woff") format("woff");
   font-weight: 500;
   font-style: italic;
@@ -82,7 +89,8 @@
 }
 @font-face {
   font-family: "Subito";
-  src: url("./assets/font_face/Subito-Bold_trial.woff2") format("woff2"),
+  src:
+    url("./assets/font_face/Subito-Bold_trial.woff2") format("woff2"),
     url("./assets/font/Subito-Bold_trial.woff") format("woff");
   font-weight: 700;
   font-style: normal;
@@ -90,7 +98,8 @@
 }
 @font-face {
   font-family: "Subito";
-  src: url("./assets/font/Subito-BoldItalic_trial.woff2") format("woff2"),
+  src:
+    url("./assets/font/Subito-BoldItalic_trial.woff2") format("woff2"),
     url("./assets/font/Subito-BoldItalic_trial.woff") format("woff");
   font-weight: 700;
   font-style: italic;
@@ -98,7 +107,8 @@
 }
 @font-face {
   font-family: "Subito";
-  src: url("./assets/font_face/Subito-ExtraBold_trial.woff2") format("woff2"),
+  src:
+    url("./assets/font_face/Subito-ExtraBold_trial.woff2") format("woff2"),
     url("./assets/font/Subito-ExtraBold_trial.woff") format("woff");
   font-weight: 800;
   font-style: normal;
@@ -106,8 +116,8 @@
 }
 @font-face {
   font-family: "Subito";
-  src: url("./assets/font_face/Subito-ExtraBoldItalic_trial.woff2")
-      format("woff2"),
+  src:
+    url("./assets/font_face/Subito-ExtraBoldItalic_trial.woff2") format("woff2"),
     url("./assets/font/Subito-ExtraBoldItalic_trial.woff") format("woff");
   font-weight: 800;
   font-style: italic;
@@ -115,7 +125,8 @@
 }
 @font-face {
   font-family: "Subito";
-  src: url("./assets/font_face/Subito-Black_trial.woff2") format("woff2"),
+  src:
+    url("./assets/font_face/Subito-Black_trial.woff2") format("woff2"),
     url("./assets/font/Subito-Black_trial.woff") format("woff");
   font-weight: 900;
   font-style: normal;
@@ -123,7 +134,8 @@
 }
 @font-face {
   font-family: "Subito";
-  src: url("./assets/font_face/Subito-BlackItalic_trial.woff2") format("woff2"),
+  src:
+    url("./assets/font_face/Subito-BlackItalic_trial.woff2") format("woff2"),
     url("./assets/font/Subito-BlackItalic_trial.woff") format("woff");
   font-weight: 900;
   font-style: italic;
@@ -148,10 +160,8 @@
   background-clip: padding-box, border-box;
   background-origin: border-box;
 
-  background-image: linear-gradient(
-      rgba(255, 255, 255, 0),
-      rgba(255, 255, 255, 0)
-    ),
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)),
     linear-gradient(
       to bottom,
       rgba(255, 255, 255, 0.4) 1%,

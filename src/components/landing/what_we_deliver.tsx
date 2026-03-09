@@ -1,5 +1,3 @@
-import bg from "../../assets/company_op/whatwebg.webp";
-import mask from "../../assets/company_op/deliver_mask.webp";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { useState } from "react";
 import project from "../../assets/service/project_image.png";
@@ -55,100 +53,95 @@ export default function WhatWeDeliver() {
     }
   };
   return (
-    <div
-      className="px-15 py-15 max-md:pt-5 max-md:pb-6 flex flex-col gap-13.5 max-md:gap-3 max-md:px-3.5 bg-bottom-right bg-cover w-full bg-white"
-      style={{
-        backgroundImage: `url(${bg})`,
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-    >
-      <div>
+    <div className="px-15 py-15 max-md:pt-5 max-md:pb-6 max-md:px-3.5  bg-white relative overflow-hidden">
+      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 max-lg:-translate-y-[70%] -rotate-45 blur-[250px] max-lg:blur-[80px]">
+        <div className="lg:w-[500px] lg:h-[500px] w-[200px] h-[200px] rounded-full bg-[#02DDEF]" />
+        <div className="lg:w-[500px] w-[200px] h-[200px] lg:h-[500px] rounded-full bg-[#FA01F0]" />
+      </div>
+
+      <div className="relative flex flex-col gap-13.5 max-md:gap-3 z-10">
         <h1 className="text-[90px]/[120%] max-md:text-[36px]/[120%] text-start text-black leading-[1]">
           <span className="font-cormo italic">What We&nbsp;</span>
           <strong className="font-root font-extrabold not-italic">
             Deliver
           </strong>
         </h1>
-      </div>
-      <div
-        className="bg-black pl-15 max-md:px-4 pr-16 pt-10 max-md:pt-5 pb-16 max-md:pb-5 rounded-4xl max-md:rounded-lg"
-        style={{
-          backgroundImage: `url(${mask})`,
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        {currentValue && (
-          <>
-            <div className="flex items-start justify-start gap-15 max-md:gap-5 h-[645px] max-md:h-auto max-md:flex-col-reverse">
-              <div className="flex flex-col gap-10 max-md:gap-0 min-w-[420px] max-md:min-w-full">
-                <h2 className="text-white text-[62px]/[120%] font-bold max-md:hidden">
-                  {currentValue.title}
-                </h2>
-                <div className="border max-md:bord max-md:rounded-[5px] border-white rounded-3xl p-4 max-md:p-2">
-                  <div
-                    className="bg-gray-100 h-[420px] max-md:h-[220px] rounded-3xl max-md:rounded-[4px]"
-                    style={{
-                      backgroundImage: `url(${currentValue.image})`,
-                      backgroundRepeat: "no-repeat",
-                      backgroundSize: "cover",
-                      backgroundPosition: "center",
-                    }}
-                  />
-                </div>
-                <div className="mt-10.5 max-md:mt-5 md:hidden flex justify-center items-center">
-                  <button className="border max-md:bord border-white text-white py-2.5 max-md:py-1 max-md:px-4 px-10 rounded-full flex gap-3.5 items-center font-medium text-[28px]/[120%] max-md:text-[10px]/[120%] max-md:italic">
-                    <span>View Services</span>
-                    <FaArrowRightLong />
-                  </button>
-                </div>
-              </div>
-              <div className="flex flex-col gap-5 max-md:gap-3 h-full">
-                <div className="flex flex-col items-start gap-5 max-md:gap-3.5 max-md:gap-y-3 mt-10 max-md:mt-0">
-                  <div className="flex gap-3 flex-wrap">
-                    {allValues.map((value) => (
-                      <button
-                        key={value}
-                        onClick={() => handleSetActive(value)}
-                        className={`flex-shrink-0 border border-white cursor-pointer text-xl font-medium max-md:text-[8px]/[120%] py-2.5 max-md:py-1 max-md:px-2.5 px-10 rounded-full ${
-                          currentValue.value === value
-                            ? "bg-[#02DDEF] text-black font-semibold border-none"
-                            : "text-white"
-                        }`}
-                      >
-                        {value.toLocaleUpperCase()}
+        <div className="bg-black pl-15 max-md:px-4 pr-16 pt-10 max-md:pt-5 pb-16 max-md:pb-5 rounded-4xl max-md:rounded-lg relative overflow-hidden">
+          <div className="absolute -bottom-120 max-lg:-translate-y-[70%] -rotate-50 blur-[200px] max-lg:blur-[80px]">
+            <div className="lg:w-[500px] lg:h-[500px] w-[200px] h-[200px] rounded-full bg-[#02DDEF]" />
+            <div className="lg:w-[500px] w-[200px] h-[200px] lg:h-[500px] rounded-full bg-[#FA01F0]" />
+          </div>
+          <div className="relative z-10">
+            {currentValue && (
+              <>
+                <div className="flex items-start justify-start gap-15 max-md:gap-5 h-[645px] max-md:h-auto max-md:flex-col-reverse">
+                  <div className="flex flex-col gap-10 max-md:gap-0 min-w-[420px] max-md:min-w-full">
+                    <h2 className="text-white text-[62px]/[120%] font-bold max-md:hidden">
+                      {currentValue.title}
+                    </h2>
+                    <div className="border max-md:bord max-md:rounded-[5px] border-white rounded-3xl p-4 max-md:p-2">
+                      <div
+                        className="bg-gray-100 h-[420px] max-md:h-[220px] rounded-3xl max-md:rounded-[4px]"
+                        style={{
+                          backgroundImage: `url(${currentValue.image})`,
+                          backgroundRepeat: "no-repeat",
+                          backgroundSize: "cover",
+                          backgroundPosition: "center",
+                        }}
+                      />
+                    </div>
+                    <div className="mt-10.5 max-md:mt-5 md:hidden flex justify-center items-center">
+                      <button className="border max-md:bord border-white text-white py-2.5 max-md:py-1 max-md:px-4 px-10 rounded-full flex gap-3.5 items-center font-medium text-[28px]/[120%] max-md:text-[10px]/[120%] max-md:italic">
+                        <span>View Services</span>
+                        <FaArrowRightLong />
                       </button>
-                    ))}
+                    </div>
                   </div>
-                  <h2 className="text-white max-md:text-[18px]/[120%] max-md:my-3 font-bold md:hidden">
-                    {currentValue.title}
-                  </h2>
+                  <div className="flex flex-col gap-5 max-md:gap-3 h-full">
+                    <div className="flex flex-col items-start gap-5 max-md:gap-3.5 max-md:gap-y-3 mt-10 max-md:mt-0">
+                      <div className="flex gap-3 flex-wrap">
+                        {allValues.map((value) => (
+                          <button
+                            key={value}
+                            onClick={() => handleSetActive(value)}
+                            className={`flex-shrink-0 border border-white cursor-pointer text-xl font-medium max-md:text-[8px]/[120%] py-2.5 max-md:py-1 max-md:px-2.5 px-10 rounded-full ${
+                              currentValue.value === value
+                                ? "bg-[#02DDEF] text-black font-semibold border-none"
+                                : "text-white"
+                            }`}
+                          >
+                            {value.toLocaleUpperCase()}
+                          </button>
+                        ))}
+                      </div>
+                      <h2 className="text-white max-md:text-[18px]/[120%] max-md:my-3 font-bold md:hidden">
+                        {currentValue.title}
+                      </h2>
+                    </div>
+                    <div className="px-3 max-md:px-0">
+                      <p className=" text-white text-[22px]/[120%] font-normal max-md:text-[10px]/[120%]">
+                        {currentValue.content}
+                      </p>
+                    </div>
+                    <div className="mt-10.5 max-md:hidden">
+                      <button
+                        className="border border-white hover:bg-white hover:text-black transition-colors duration-200 cursor-pointer text-white py-2.5 px-10 rounded-full flex gap-3.5 items-center font-medium"
+                        onClick={() => {
+                          navigate("/services");
+                        }}
+                      >
+                        <span className="font-bold italic text-[28px]/[120%] font-subito">
+                          View Services
+                        </span>
+                        <FaArrowRightLong className="text-[28px]/[120%]" />
+                      </button>
+                    </div>
+                  </div>
                 </div>
-                <div className="px-3 max-md:px-0">
-                  <p className=" text-white text-[22px]/[120%] font-normal max-md:text-[10px]/[120%]">
-                    {currentValue.content}
-                  </p>
-                </div>
-                <div className="mt-10.5 max-md:hidden">
-                  <button
-                    className="border border-white hover:bg-white hover:text-black transition-colors duration-200 cursor-pointer text-white py-2.5 px-10 rounded-full flex gap-3.5 items-center font-medium"
-                    onClick={() => {
-                      navigate("/services");
-                    }}
-                  >
-                    <span className="font-bold italic text-[28px]/[120%] font-subito">
-                      View Services
-                    </span>
-                    <FaArrowRightLong className="text-[28px]/[120%]" />
-                  </button>
-                </div>
-              </div>
-            </div>
-          </>
-        )}
+              </>
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );

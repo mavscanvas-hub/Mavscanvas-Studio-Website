@@ -37,7 +37,7 @@ export default function Navbar({
 
   useEffect(() => {
     let sentinel = document.getElementById(
-      "nav-scroll-sentinel"
+      "nav-scroll-sentinel",
     ) as HTMLDivElement | null;
     if (!sentinel) {
       sentinel = document.createElement("div");
@@ -46,7 +46,7 @@ export default function Navbar({
       sentinel.style.top = "0";
       sentinel.style.left = "0";
       sentinel.style.width = "1px";
-      sentinel.style.height = "1px";
+      sentinel.style.height = "200px";
       document.body.prepend(sentinel);
     }
 
@@ -55,7 +55,7 @@ export default function Navbar({
         const entry = entries[0];
         setScrolled(!entry.isIntersecting);
       },
-      { root: null, threshold: 0 }
+      { root: null, threshold: 0 },
     );
 
     observer.observe(sentinel);
@@ -97,7 +97,7 @@ export default function Navbar({
           ref={wrapperRef}
           className={`max-h-[116px] navbar_blur_border max-md:hidden transition-all duration-300 ease-out transform ${
             scrolled
-              ? `fixed top-0 left-0 right-0 w-full z-50 bg-black rounded-none text-white navbar_shadow_black ${
+              ? `fixed top-0 left-0 right-0 w-full z-100 bg-black rounded-none text-white navbar_shadow_black ${
                   navVisible
                     ? "translate-y-0 opacity-100 "
                     : "-translate-y-3 opacity-0 transition-opacity duration-3000"
@@ -130,9 +130,9 @@ export default function Navbar({
                       scrolled
                         ? "text-white"
                         : activeLink.includes("services") ||
-                          activeLink.includes("pricing")
-                        ? "text-black"
-                        : "text-white"
+                            activeLink.includes("pricing")
+                          ? "text-black"
+                          : "text-white"
                     }`}
                   >
                     <Link
@@ -143,11 +143,11 @@ export default function Navbar({
                         scrolled
                           ? ""
                           : link.href === activeLink
-                          ? activeLink.includes("services") ||
-                            activeLink.includes("pricing")
-                            ? "navbar_shadow_white text-black"
-                            : "navbar_shadow_black text-white"
-                          : ""
+                            ? activeLink.includes("services") ||
+                              activeLink.includes("pricing")
+                              ? "navbar_shadow_white text-black"
+                              : "navbar_shadow_black text-white"
+                            : ""
                       }`}
                     >
                       {link.name}
@@ -161,9 +161,9 @@ export default function Navbar({
                   scrolled
                     ? "bg-white text-black"
                     : activeLink.includes("services") ||
-                      activeLink.includes("pricing")
-                    ? "bg-black text-white"
-                    : "bg-white text-black"
+                        activeLink.includes("pricing")
+                      ? "bg-black text-white"
+                      : "bg-white text-black"
                 } py-2.5 px-6 rounded-full font-medium text-2lg`}
                 onClick={handleGetStartedClick}
               >

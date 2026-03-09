@@ -58,7 +58,7 @@ export default function LandingLayout() {
           getStartedModalOpen ? "bg-transparent" : "bg-black"
         } overscroll-contain`}
       >
-        <header className="w-full px-15 max-md:px-4.5 fixed top-10 max-md:top-5 z-50">
+        <header className="w-full px-15 max-md:px-4.5 fixed top-10 max-md:top-5 z-100">
           <Navbar
             setIsSidebarOpen={setIsSidebarOpen}
             isSidebarOpen={isSidebarOpen}
@@ -80,7 +80,7 @@ export default function LandingLayout() {
         <div
           ref={sidebarRef}
           tabIndex={-1}
-          className={`fixed inset-y-0 left-0 z-50 w-[450px] max-w-full bg-neutral-900 shadow-lg transform transition-transform duration-300 ease-in-out ${
+          className={`fixed inset-y-0 left-0 z-120 w-[450px] min-w-full bg-neutral-900 shadow-lg transform transition-transform duration-300 ease-in-out ${
             isSidebarOpen ? "-translate-x-0" : "-translate-x-full"
           }`}
           aria-hidden={!isSidebarOpen}

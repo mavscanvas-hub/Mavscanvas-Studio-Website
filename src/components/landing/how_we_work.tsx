@@ -104,7 +104,9 @@ export default function HowWeWork() {
         ) {
           (container as Element).setPointerCapture(activePointerId);
         }
-      } catch {}
+      } catch {
+        console.warn("Pointer capture not supported");
+      }
       container.classList.add("dragging");
     };
 
@@ -125,7 +127,9 @@ export default function HowWeWork() {
         ) {
           (container as Element).releasePointerCapture(activePointerId);
         }
-      } catch {}
+      } catch {
+        console.warn("Pointer capture not supported");
+      }
       activePointerId = null;
       container.classList.remove("dragging");
     };
@@ -146,7 +150,7 @@ export default function HowWeWork() {
   }, []);
 
   return (
-    <section className="bg-white how-we-work-bg pt-15 max-md:pt-9 max-md:pb-2">
+    <section className="bg-white w-full how-we-work-bg pt-15 max-md:pt-9 max-md:pb-2">
       <div
         className="flex flex-col gap-15 pl-15 max-md:pl-4.5"
         onClick={handleSectionClick}
@@ -239,10 +243,6 @@ export default function HowWeWork() {
                   backgroundRepeat: "no-repeat",
                   backgroundPosition: "center",
                   backgroundSize: "cover",
-                  width:
-                    idx === currentB
-                      ? "calc(100% - 120px) max-md:calc(100% - 30px)"
-                      : "482px max-md:128px",
                 }}
               >
                 <h3 className="font-subito text-[90px]/[120%] max-md:text-[24px]/[120%] text-white">

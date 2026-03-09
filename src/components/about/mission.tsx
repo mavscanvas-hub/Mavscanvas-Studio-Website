@@ -79,7 +79,7 @@ export default function Mission() {
             alt="curved line"
             loading="lazy"
             decoding="async"
-            className="w-full max-md:relative max-md:-top-15"
+            className="w-full min-w-full max-md:relative max-md:-top-15"
           />
           <span className="absolute -top-11 max-md:-top-18.5 max-md:left-[75%] left-[73%] bg-black -translate-x-1/2 px-22.5 max-md:px-5 rounded-full py-7 max-md:py-2">
             <h4 className="bg-[linear-gradient(90deg,#02DDEF_0%,#FA01F0_100%)] text-transparent bg-clip-text text-[40px]/[120%] max-md:text-[10px]/[120%] font-bold">

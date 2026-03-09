@@ -71,7 +71,7 @@ function CountUp({ value, className }: { value: string; className?: string }) {
           }
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.3 },
     );
 
     io.observe(el);
@@ -200,6 +200,7 @@ export default function WeDeliver() {
               Reach Out to Us
             </h3>
           </div>
+
           <div className="flex items-center max-md:flex-col justify-between max-md:gap-7 w-full">
             {contacts.map((contact, idx) => (
               <div
@@ -209,29 +210,44 @@ export default function WeDeliver() {
                 <span className="uppercase text-3xl max-md:text-xs font-medium text-black">
                   {contact.method}
                 </span>
-                <button
-                  className="flex cursor-pointer items-center gap-5 justify-start bg-black px-10 max-md:px-4 max-md:py-3 py-6 rounded-full"
-                  style={{
-                    backgroundImage: `url(${Buttonbg})`,
-                    backgroundRepeat: "no-repeat",
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                  }}
-                  onClick={() => {
-                    if (contact.method === "Email") {
-                      window.location.href = `mailto:${contact.detail}`;
-                    } else if (contact.method === "Phone") {
-                      return;
-                    }
-                  }}
-                >
-                  <span className="text-white text-5xl max-md:text-xl">
-                    {contact.icon}
-                  </span>
-                  <span className="text-white text-4xl/[120%] max-md:text-[20px]/[120%] font-light font-subito">
-                    {contact.detail}
-                  </span>
-                </button>
+
+                {contact.method === "Email" ? (
+                  <a
+                    href={`mailto:${contact.detail}`}
+                    className="flex cursor-pointer items-center gap-5 justify-start bg-black px-10 max-md:px-4 max-md:py-3 py-6 rounded-full"
+                    style={{
+                      backgroundImage: `url(${Buttonbg})`,
+                      backgroundRepeat: "no-repeat",
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                    }}
+                  >
+                    <span className="text-white text-5xl max-md:text-xl">
+                      {contact.icon}
+                    </span>
+                    <span className="text-white text-4xl/[120%] max-md:text-[20px]/[120%] font-light font-subito">
+                      {contact.detail}
+                    </span>
+                  </a>
+                ) : (
+                  <a
+                    href={`tel:${contact.detail}`}
+                    className="flex cursor-pointer items-center gap-5 justify-start bg-black px-10 max-md:px-4 max-md:py-3 py-6 rounded-full"
+                    style={{
+                      backgroundImage: `url(${Buttonbg})`,
+                      backgroundRepeat: "no-repeat",
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                    }}
+                  >
+                    <span className="text-white text-5xl max-md:text-xl">
+                      {contact.icon}
+                    </span>
+                    <span className="text-white text-4xl/[120%] max-md:text-[20px]/[120%] font-light font-subito">
+                      {contact.detail}
+                    </span>
+                  </a>
+                )}
               </div>
             ))}
           </div>
