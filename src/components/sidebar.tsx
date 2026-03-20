@@ -40,7 +40,7 @@ export default function Sidebar({
       style={{ backgroundImage: `url(${Bg})`, backgroundSize: "cover" }}
     >
       <div className="flex justify-between items-center">
-        <button className="bg-[#02DDEF] text-xl/[110%] font-medium rounded-full px-6 py-2.5">
+        <button className="bg-[#02DDEF] text-3xl/[110%] font-subito font-medium rounded-full px-6 py-3">
           Get Started
         </button>
         <button

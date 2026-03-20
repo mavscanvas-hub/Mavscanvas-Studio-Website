@@ -1,41 +1,10 @@
 import Herobg from "../../assets/about/expertbg.png";
-import Team from "../../assets/company_op/team.webp";
 import ProcessBg from "../../assets/about/processbg.png";
 import Zbg from "../../assets/about/zillowbg.png";
 import TeamBG from "../../assets/company_op/teambg.webp";
-
-const team = [
-  {
-    name: "Daniel Kingsley",
-    role: "Social Media Manager",
-    image: Team,
-  },
-  {
-    name: "Stephanie Okolie",
-    role: "Brand specialist",
-    image: Team,
-  },
-  {
-    name: "Ruth Diamond",
-    role: "Virtual assistant",
-    image: Team,
-  },
-  {
-    name: "John Doe",
-    role: "CEO",
-    image: Team,
-  },
-  {
-    name: "John Doe",
-    role: "CEO",
-    image: Team,
-  },
-  {
-    name: "John Doe",
-    role: "CEO",
-    image: Team,
-  },
-];
+import { useTeamContext } from "../../hooks/useTeamContext";
+import { TEAM_COLLECTION_ID } from "../../constant";
+import { useEffect } from "react";
 
 const process = [
   {
@@ -60,6 +29,13 @@ const process = [
 ];
 
 export default function Experts() {
+  const { team, getAllTeamMembers } = useTeamContext();
+
+  useEffect(() => {
+    if (!TEAM_COLLECTION_ID) return;
+    getAllTeamMembers(TEAM_COLLECTION_ID);
+  }, []);
+
   return (
     <section
       className="bg-black pt-22.5 max-md:pt-6 pb-27 max-md:pb-12.5 flex flex-col gap-48 max-md:gap-12 w-full font-subito"
@@ -79,30 +55,43 @@ export default function Experts() {
             Behind the Work
           </h2>
         </div>
-        <div className="grid grid-cols-3 max-md:flex max-md:items-center team-scroll max-md:overflow-scroll gap-18 max-md:gap-3 pt-17 max-md:pt-8 px-15 max-md:px-5">
+        <div
+          className="grid grid-cols-3 justify-items-center items-stretch max-md:flex max-md:items-stretch max-md:overflow-x-auto max-md:overflow-y-hidden max-md:scrollbar-hide gap-16 max-md:gap-3 pt-17 max-md:pt-8 px-15 max-md:px-5"
+          style={{
+            scrollbarWidth: "none",
+            msOverflowStyle: "none",
+          }}
+        >
           {team.map((member, idx) => (
             <div
               key={idx}
-              className="flex flex-col items-center gap-16.5 max-md:gap-6 px-9 max-md:px-3.5 pt-9 max-md:pt-3.5 pb-24 max-md:pb-9 flex-shrink-0 min-w-[300px] max-md:min-w-[150px]"
+              className="flex  flex-col items-center justify-between h-full min-h-[600px] max-md:min-h-[280px] w-full max-md:w-[170px] max-md:min-w-[170px] px-5 max-md:px-3 pt-6 max-md:pt-5 pb-16 max-md:pb-12"
               style={{
                 backgroundImage: `url(${TeamBG})`,
                 backgroundRepeat: "no-repeat",
+                backgroundPosition: "center",
                 backgroundSize: "contain",
               }}
             >
-              <img
-                src={member.image}
-                alt={member.name}
-                loading="lazy"
-                decoding="async"
-                className="w-70 h-70 max-md:w-[124px] max-md:h-[124px] rounded-full object-cover"
-              />
-              <div className="flex flex-col items-center justify-center pb-8 max-md:pb-0 max-w-[262px] gap-3 max-md:gap-1 max-md:w-[96px]">
-                <span className="text-5xl max-md:text-[18px]/[120%] text-white font-medium text-center">
-                  {member.name}
+              {/* Image */}
+              <div className="w-[280px] h-[280px] max-md:w-[120px] max-md:h-[120px] rounded-full overflow-hidden shrink-0">
+                <img
+                  src={member.fieldData.image.url}
+                  alt={member.fieldData.name}
+                  loading="lazy"
+                  decoding="async"
+                  style={{ userSelect: "none" }}
+                  className="block w-full h-full object-cover object-top"
+                />
+              </div>
+
+              {/* Text — justify-between pushes this to the bottom */}
+              <div className="flex flex-col items-center text-center gap-3 max-md:gap-1">
+                <span className="text-5xl max-md:text-[18px] leading-[120%] text-white font-medium">
+                  {member.fieldData["full-name"]}
                 </span>
-                <span className="text-xl max-md:text-[8px]/[120%] text-white font-light">
-                  {member.role}
+                <span className="text-xl max-md:text-[8px] leading-[120%] text-white font-light">
+                  {member.fieldData.role}
                 </span>
               </div>
             </div>

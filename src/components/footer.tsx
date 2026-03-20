@@ -87,7 +87,7 @@ export default function Footer({
     >
       <div className="flex items-start max-md:flex-col-reverse max-md:items-center gap-10 max-md:gap-3.5">
         <div className="pb-34 max-md:pb-4 pt-14 max-md:pt-6">
-          <div className="grid grid-cols-3 gap-8 max-md:gap-x-2">
+          <div className="grid grid-cols-3 gap-8 max-md:gap-1">
             <div className="flex flex-col gap-10 max-md:gap-0">
               <h3 className="text-4xl max-md:text-[15px]/[120%] max-md:font-medium font-semibold mb-4">
                 Menu

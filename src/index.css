@@ -308,9 +308,56 @@
   display: none; /* WebKit */
 }
 
+/* Hide scrollbar while preserving scroll */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 /* -------------------------
    ROOT VARIABLE FOR SUBITO
 -------------------------- */
 :root {
   --font-subito: "Subito", sans-serif;
+}
+
+.team-slider .slick-track {
+  display: flex !important;
+  align-items: stretch !important;
+}
+
+.team-slider .slick-slide {
+  height: inherit !important;
+}
+
+.team-slider .slick-slide > div {
+  height: 100%;
+  padding: 0 12px;
+  box-sizing: border-box;
+}
+
+.team-slider .slick-list {
+  padding: 0 60px !important;
+  overflow: hidden !important;
+}
+
+.team-slider .slick-track > .slick-slide:last-child {
+  margin-right: 80px !important;
+}
+
+@media (max-width: 768px) {
+  .team-slider .slick-slide > div {
+    padding: 0 4px;
+  }
+
+  .team-slider .slick-list {
+    padding: 0 5px !important;
+  }
+
+  .team-slider .slick-track > .slick-slide:last-child {
+    margin-right: 5px !important;
+  }
 }

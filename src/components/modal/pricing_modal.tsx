@@ -145,7 +145,7 @@ export default function PricingModal({
                   <button
                     className={`${
                       plan.id === 1 ? "bg-white" : "bg-[#02DDEF]"
-                    } rounded-full py-5 max-md:py-4 px-15 max-md:px-15 text-[20px]/[120%] font-medium flex gap-6 max-md:gap-0 max-md:justify-between items-center`}
+                    } rounded-full py-5 max-md:py-4 px-15 max-md:px-15 text-[20px]/[120%] font-medium flex gap-6 max-md:gap-0 cursor-pointer max-md:justify-between items-center hover:scale-[1.02] transition-transform duration-100`}
                     onClick={() => {
                       console.log("Logged");
                     }}
@@ -169,12 +169,12 @@ export default function PricingModal({
               </span>
             </div>
             <button
-              className={` bg-black text-white rounded-full py-5 max-md:py-2.5 px-15 max-md:px-20 text-[25px]/[120%] max-md:text-[16px]/[120%] flex gap-6 items-center`}
+              className={` bg-black text-white rounded-full py-5 max-md:py-2.5 px-10 max-md:px-20 text-[1.5rem]/[120%] max-md:text-[16px]/[120%] cursor-pointer flex gap-5 items-center`}
               onClick={() => {
                 console.log("Logged");
               }}
             >
-              Reach Out
+              <span className="">Reach Out</span>
               <HiArrowRight className="text-3xl max-md:text-xl" />
             </button>
           </div>

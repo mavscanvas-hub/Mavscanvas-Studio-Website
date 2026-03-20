@@ -1,10 +1,14 @@
 import displayBg from "../../assets/company_op/discover.webp";
 import displayWide from "../../assets/company_op/discoverwide.webp";
-import Team from "../../assets/company_op/team.webp";
 import TeamBG from "../../assets/company_op/teambg.webp";
 import Button from "../custom/button";
 import { FaArrowRight } from "react-icons/fa6";
-import { useState, useRef, useEffect } from "react";
+import { useEffect, useState } from "react";
+import { TEAM_COLLECTION_ID } from "../../constant";
+import { useTeamContext } from "../../hooks/useTeamContext";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const data1 = [
   {
@@ -31,45 +35,52 @@ const data2 = [
   },
 ];
 
-const team = [
-  {
-    name: "Daniel Kingsley",
-    role: "Social Media Manager",
-    image: Team,
-  },
-  {
-    name: "Stephanie Okolie",
-    role: "Brand specialist",
-    image: Team,
-  },
-  {
-    name: "Ruth Diamond",
-    role: "Virtual assistant",
-    image: Team,
-  },
-  {
-    name: "John Doe",
-    role: "CEO",
-    image: Team,
-  },
-  {
-    name: "John Doe",
-    role: "CEO",
-    image: Team,
-  },
-  {
-    name: "John Doe",
-    role: "CEO",
-    image: Team,
-  },
-];
-
 export default function HowWeWork() {
   const [currentA, setCurrentA] = useState(-1);
   const [currentB, setCurrentB] = useState(-1);
   const [activeA, setActiveA] = useState(false);
   const [activeB, setActiveB] = useState(false);
-  const teamRef = useRef<HTMLDivElement | null>(null);
+  const [teamSlidesToShow, setTeamSlidesToShow] = useState(3);
+  const [teamSlidesToScroll, setTeamSlidesToScroll] = useState(1);
+  const { getAllTeamMembers, getCollectionDetails, team } = useTeamContext();
+
+  useEffect(() => {
+    const updateSliderByScreenSize = () => {
+      const screenWidth = window.innerWidth;
+
+      if (screenWidth <= 768) {
+        setTeamSlidesToShow(2);
+        setTeamSlidesToScroll(1);
+        return;
+      }
+
+      if (screenWidth <= 1024) {
+        setTeamSlidesToShow(2);
+        setTeamSlidesToScroll(1);
+        return;
+      }
+
+      setTeamSlidesToShow(3);
+      setTeamSlidesToScroll(2);
+    };
+
+    updateSliderByScreenSize();
+    window.addEventListener("resize", updateSliderByScreenSize);
+
+    return () => {
+      window.removeEventListener("resize", updateSliderByScreenSize);
+    };
+  }, []);
+
+  const teamSliderSettings = {
+    arrows: false,
+    dots: false,
+    infinite: false,
+    speed: 500,
+    slidesToShow: teamSlidesToShow,
+    slidesToScroll: teamSlidesToScroll,
+    draggable: true,
+  };
 
   const handleSectionClick = (e: React.MouseEvent) => {
     const target = e.target as HTMLElement;
@@ -84,69 +95,8 @@ export default function HowWeWork() {
   };
 
   useEffect(() => {
-    const container = teamRef.current;
-    if (!container) return;
-
-    let isDown = false;
-    let startX = 0;
-    let scrollLeft = 0;
-    let activePointerId: number | null = null;
-
-    const onPointerDown = (e: PointerEvent) => {
-      isDown = true;
-      startX = e.clientX;
-      scrollLeft = container.scrollLeft;
-      activePointerId = e.pointerId;
-      try {
-        if (
-          typeof (container as Element).setPointerCapture === "function" &&
-          activePointerId !== null
-        ) {
-          (container as Element).setPointerCapture(activePointerId);
-        }
-      } catch {
-        console.warn("Pointer capture not supported");
-      }
-      container.classList.add("dragging");
-    };
-
-    const onPointerMove = (e: PointerEvent) => {
-      if (!isDown) return;
-      if (activePointerId !== null && e.pointerId !== activePointerId) return;
-      const x = e.clientX;
-      const walk = startX - x;
-      container.scrollLeft = scrollLeft + walk;
-    };
-
-    const endDrag = () => {
-      isDown = false;
-      try {
-        if (
-          activePointerId !== null &&
-          typeof (container as Element).releasePointerCapture === "function"
-        ) {
-          (container as Element).releasePointerCapture(activePointerId);
-        }
-      } catch {
-        console.warn("Pointer capture not supported");
-      }
-      activePointerId = null;
-      container.classList.remove("dragging");
-    };
-
-    container.addEventListener("pointerdown", onPointerDown);
-    container.addEventListener("pointermove", onPointerMove);
-    container.addEventListener("pointerup", endDrag);
-    container.addEventListener("pointercancel", endDrag);
-    container.addEventListener("pointerleave", endDrag);
-
-    return () => {
-      container.removeEventListener("pointerdown", onPointerDown);
-      container.removeEventListener("pointermove", onPointerMove);
-      container.removeEventListener("pointerup", endDrag);
-      container.removeEventListener("pointercancel", endDrag);
-      container.removeEventListener("pointerleave", endDrag);
-    };
+    getCollectionDetails(TEAM_COLLECTION_ID);
+    getAllTeamMembers(TEAM_COLLECTION_ID);
   }, []);
 
   return (
@@ -265,39 +215,45 @@ export default function HowWeWork() {
             Team
           </strong>
         </h2>
-        <div
-          ref={teamRef}
-          className="flex results-scroll flex-row gap-8 max-md:gap-3 overflow-x-scroll team-scroll pl-15 max-md:pl-4.5 pr-15 max-md:pr-5"
-        >
-          {team.map((member, idx) => (
-            <div
-              key={idx}
-              className="flex flex-col select-none items-center gap-16.5 max-md:gap-6 px-9 max-md:px-3.5 pt-9 max-md:pt-3.5 pb-24 max-md:pb-9 flex-shrink-0 min-w-[300px] max-md:min-w-[150px]"
-              style={{
-                backgroundImage: `url(${TeamBG})`,
-                backgroundRepeat: "no-repeat",
-                backgroundSize: "contain",
-              }}
-            >
-              <img
-                src={member.image}
-                alt={member.name}
-                loading="lazy"
-                decoding="async"
-                draggable={false}
-                style={{ userSelect: "none" }}
-                className="w-70 h-70 max-md:w-[124px] max-md:h-[124px] rounded-full object-cover"
-              />
-              <div className="flex flex-col items-center font-subito justify-center pb-8 max-md:pb-0 max-w-[262px] gap-3 max-md:gap-1 max-md:w-[96px]">
-                <span className="text-5xl/[120%] max-md:text-[18px]/[120%] text-white font-medium text-center">
-                  {member.name}
-                </span>
-                <span className="text-xl/[120%] max-md:text-[8px]/[120%] text-white font-light">
-                  {member.role}
-                </span>
+        <div className="overflow-visible w-full">
+          <Slider
+            key={`${team.length}-${teamSlidesToShow}-${teamSlidesToScroll}`}
+            {...teamSliderSettings}
+            className="team-slider"
+          >
+            {team.map((member, idx) => (
+              <div key={idx} className="h-full">
+                <div
+                  className="flex flex-col select-none items-center justify-start w-full h-full gap-16.5 max-md:gap-10 px-8 max-md:px-2 pt-9 max-md:pt-5 pb-10 max-md:pb-10"
+                  style={{
+                    backgroundImage: `url(${TeamBG})`,
+                    backgroundRepeat: "no-repeat",
+                    backgroundSize: "contain",
+                  }}
+                >
+                  <div className="w-[340px] h-[340px] max-md:w-[140px] max-md:h-[140px] rounded-full overflow-hidden shrink-0">
+                    <img
+                      src={member.fieldData.image.url}
+                      alt={member.fieldData.name}
+                      loading="lazy"
+                      decoding="async"
+                      style={{ userSelect: "none" }}
+                      className="block w-full h-full object-cover object-top"
+                    />
+                  </div>
+                  <div className="flex flex-col items-center font-subito justify-start pb-8 max-md:pb-0 max-w-[262px] gap-3 max-md:gap-1 max-md:w-[96px]">
+                    <span className="text-5xl/[120%] max-md:text-[18px]/[120%] text-white font-medium text-center">
+                      {member.fieldData["full-name"]}
+                    </span>
+                    <span className="text-xl/[120%] max-md:text-[8px]/[120%] text-white font-light">
+                      {member.fieldData.role}
+                    </span>
+                  </div>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+            {/* <div key="spacer" aria-hidden="true" /> */}
+          </Slider>
         </div>
         <div className="flex justify-center my-20 max-md:mt-5 max-md:mb-5">
           <Button

@@ -155,7 +155,6 @@ export default function Navbar({
                   </li>
                 ))}
               </ul>
-
               <Button
                 className={`${
                   scrolled
@@ -179,11 +178,11 @@ export default function Navbar({
         >
           <Link to={"/"}>
             <img
-              src={logo}
+              src={isWhitePage ? logoBlack : logo}
               alt="logo"
               loading="lazy"
               decoding="async"
-              className="h-11 w-11"
+              className={`h-auto ${isWhitePage ? "w-11" : "w-11"}`}
             />
           </Link>
           <Button

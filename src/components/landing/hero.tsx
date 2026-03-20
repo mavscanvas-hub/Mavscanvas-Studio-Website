@@ -38,7 +38,7 @@ export default function Home() {
           <div className="flex flex-col justify-center items-center w-full">
             <span
               className={
-                "text-white font-cormo italic text-[76px]/[120%] max-md:text-[26px]/[120%] transform transition-all duration-700 ease-out " +
+                "text-white font-cormo italic text-[76px]/[120%] max-md:text-[1.625rem]/[120%] transform transition-all duration-700 ease-out " +
                 (bgLoaded
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-8")
@@ -50,7 +50,7 @@ export default function Home() {
 
             <span
               className={
-                "text-white font-subito font-bold text-[76px]/[110%] max-md:text-[26px]/[120%] transform transition-all duration-900 ease-out " +
+                "text-white font-subito font-bold text-[76px]/[110%] max-md:text-[1.5rem]/[120%] transform transition-all duration-900 ease-out text-center" +
                 (bgLoaded
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-12")
