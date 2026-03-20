@@ -1,9 +1,12 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useRef, useEffect, useMemo } from "react";
 import cardBg from "../../assets/company_op/card-bg.webp";
 import sectionBg from "../../assets/company_op/result-bg.webp";
 import Button from "../custom/button";
 import { FaArrowRight } from "react-icons/fa6";
-import { useRef, useEffect } from "react";
+import { useWorkContext } from "../../hooks/useWorkContext";
+import { COLLECTION_ID } from "../../constant";
+import { Link } from "react-router-dom";
 
 const outcomes = [
   {
@@ -32,11 +35,39 @@ const outcomes = [
   },
 ];
 
+const htmlToPlainText = (value: string) =>
+  value
+    .replace(/<[^>]*>/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+
 export default function OurResults() {
   const navigate = useNavigate();
+  const { works, categories, getAllWorks, getCollectionDetails } =
+    useWorkContext();
   const containerRef = useRef<HTMLDivElement | null>(null);
   const cardRefs = useRef<HTMLDivElement[]>([]);
   const rafRef = useRef<number | null>(null);
+
+  const getCategoryName = (categoryId: string) => {
+    return categories?.find((cat) => cat.id === categoryId)?.name || categoryId;
+  };
+
+  const uniqueWorksPerCategory = useMemo(() => {
+    const grouped: Map<string, (typeof works)[1]> = new Map();
+    works.forEach((work) => {
+      const categoryId = work.fieldData.category;
+      if (!grouped.has(categoryId)) {
+        grouped.set(categoryId, work);
+      }
+    });
+    return Array.from(grouped.values());
+  }, [works]);
+
+  useEffect(() => {
+    void getAllWorks(COLLECTION_ID);
+    void getCollectionDetails(COLLECTION_ID);
+  }, [getAllWorks, getCollectionDetails]);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -152,47 +183,61 @@ export default function OurResults() {
         <div className="w-full overflow-x-hidden">
           <div
             ref={containerRef}
-            className="flex flex-row pl-15 max-md:px-5 pr-15 items-center overflow-x-auto results-scroll py-10 max-md:py-5 flex-nowrap"
+            className="flex flex-row pl-15 max-md:px-5 pr-15 items-stretch overflow-x-auto results-scroll py-10 max-md:py-5 flex-nowrap"
           >
-            {Array.from({ length: 5 }).map((_, idx) => (
-              <div
-                key={idx}
-                ref={(el) => {
-                  if (el) cardRefs.current[idx] = el;
-                }}
-                className={`flex flex-col gap-10 max-md:gap-3.5 items-start pt-5 max-md:pt-[7px] max-md:pl-[9px] pl-[30px] pr-10 max-md:pr-[9px] pb-4 bg-white rounded-3xl max-md:rounded-lg shadow-[#000000CC] shadow-2xl transition-transform duration-200 will-change-transform ${
-                  idx !== 0 ? "-rotate-[7deg] z-5" : ""
-                }`}
-                style={{ transform: "translate(0px,0px) rotate(0deg)" }}
-              >
-                <div className="bg-black rounded-full select-none flex items-center justify-center text-white font-medium text-lg max-md:text-[8px]/[120%] px-6 max-md:px-2 py-2 max-md:py-[2.5px]">
-                  WEBSITE DEVELOPMENT
-                </div>
-                <div className="flex flex-col gap-4">
-                  <p className="text-black text-[50px]/[120%] select-none max-md:text-[16px]/[120%] italic font-light">
-                    We Turned a <strong className="font-medium">Website</strong>{" "}
-                    into a{" "}
-                    <strong className="font-medium">Revenue Engine</strong>
-                  </p>
-                  <div
-                    style={{
-                      backgroundImage: `url(${cardBg})`,
-                      backgroundRepeat: "no-repeat",
-                      backgroundSize: "contain",
-                    }}
-                    className="bg-gray-100 max-md:h-[75px] h-[235px] max-md:w-[123px] w-[386px] rounded-xl"
-                  />
-                </div>
-                <Link
-                  to={"/"}
-                  className="mt-1 flex justify-center items-center w-full"
+            {uniqueWorksPerCategory.map((work, idx) => {
+              const categoryName = getCategoryName(work.fieldData.category);
+              const solution = htmlToPlainText(work.fieldData.solution);
+              const problem = htmlToPlainText(work.fieldData.problem);
+              const displayText = solution || problem || work.fieldData.name;
+              const firstImage =
+                work.fieldData["project-images"]?.[0]?.url || cardBg;
+
+              return (
+                <div
+                  key={work.id}
+                  ref={(el) => {
+                    if (el) cardRefs.current[idx] = el;
+                  }}
+                  className={`flex flex-col justify-between gap-10 max-md:gap-3.5 items-start pt-5 max-md:pt-[7px] max-md:pl-[8px] pl-[30px] pr-10 max-md:pr-[8px] pb-4 bg-white rounded-3xl max-md:rounded-lg shadow-[#000000CC] shadow-2xl transition-transform duration-200 will-change-transform ${
+                    idx !== 0 ? "-rotate-[7deg] z-5" : ""
+                  }`}
+                  style={{ transform: "translate(0px,0px) rotate(0deg)" }}
                 >
-                  <span className="text-[#317AE8] text-xl max-md:text-[6px]/[120%]">
-                    see how
-                  </span>
-                </Link>
-              </div>
-            ))}
+                  <div className="bg-black rounded-full select-none flex items-center justify-center text-white font-medium text-lg max-md:text-[8px]/[120%] px-6 max-md:px-2 py-2 max-md:py-[2.5px]">
+                    {categoryName.toUpperCase()}
+                  </div>
+                  <div className="flex flex-col gap-4 w-full flex-1">
+                    <p
+                      className="text-black text-[20px]/[120%] select-none max-md:text-[8px]/[120%] italic font-light overflow-hidden"
+                      style={{
+                        display: "-webkit-box",
+                        WebkitLineClamp: 5,
+                        WebkitBoxOrient: "vertical",
+                      }}
+                    >
+                      {displayText}
+                    </p>
+                    <div
+                      style={{
+                        backgroundImage: `url(${firstImage})`,
+                        backgroundRepeat: "no-repeat",
+                        backgroundSize: "cover",
+                      }}
+                      className="bg-gray-100 max-md:h-[75px] h-[235px] max-md:w-[123px] w-[386px] rounded-xl object-cover object-top"
+                    />
+                  </div>
+                  <Link
+                    to={"/work"}
+                    className="mt-1 flex justify-center items-center w-full"
+                  >
+                    <span className="text-[#317AE8] text-xl max-md:text-[6px]/[120%]">
+                      see how on case study
+                    </span>
+                  </Link>
+                </div>
+              );
+            })}
           </div>
         </div>
 
@@ -301,7 +346,7 @@ function CountUp({ value, className }: { value: string; className?: string }) {
           }
         }
       },
-      { threshold: 0.4 }
+      { threshold: 0.4 },
     );
 
     io.observe(el);

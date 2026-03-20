@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { createContext, useState } from "react";
+import { useCallback } from "react";
 import { apiClient } from "../apiClient";
 
 export interface FieldOption {
@@ -92,7 +93,7 @@ const WorkProvider = ({ children }: { children: React.ReactNode }) => {
   const [categories, setCategories] = useState<FieldOption[]>([]);
   const [works, setWorks] = useState<Work[]>([]);
 
-  const getCollectionDetails = async (id: string) => {
+  const getCollectionDetails = useCallback(async (id: string) => {
     setIsCategoryLoading(true);
     try {
       console.log("Fetching collection details for ID:", id);
@@ -105,42 +106,45 @@ const WorkProvider = ({ children }: { children: React.ReactNode }) => {
       }
 
       const optionFields = res.fields.filter(
-        (field: Field) => field.type === "Option"
+        (field: Field) => field.type === "Option",
       );
       const categoryOptions = optionFields
         .flatMap((field: Field) => field.validations?.options || [])
         .filter((option: FieldOption) => option.name && option.id);
+      console.log("Extracted Category Options:", categoryOptions);
       setCategories(categoryOptions);
     } catch (error) {
       console.error("Error fetching collection details:", error);
     } finally {
       setIsCategoryLoading(false);
     }
-  };
+  }, []);
 
-  const getAllWorks = async (id: string): Promise<WorksResponse> => {
-    setIsLoading(true);
-    try {
-      console.log("Fetching all works for collection ID:", id);
-      const res = await apiClient.get<WorksResponse>(
-        `/collections/${id}/items`
-      );
-      console.log("All Works:", res);
+  const getAllWorks = useCallback(
+    async (id: string): Promise<WorksResponse> => {
+      setIsLoading(true);
+      try {
+        console.log("Fetching all works for collection ID:", id);
+        const res = await apiClient.get<WorksResponse>(
+          `/collections/${id}/items`,
+        );
 
-      if (res && res.items) {
-        setWorks(res.items);
-        return res;
-      } else {
-        console.error("Invalid works response structure:", res);
+        if (res && res.items) {
+          setWorks(res.items);
+          return res;
+        } else {
+          console.error("Invalid works response structure:", res);
+          return { items: [], pagination: { limit: 0, offset: 0, total: 0 } };
+        }
+      } catch (error) {
+        console.error("Error fetching works:", error);
         return { items: [], pagination: { limit: 0, offset: 0, total: 0 } };
+      } finally {
+        setIsLoading(false);
       }
-    } catch (error) {
-      console.error("Error fetching works:", error);
-      return { items: [], pagination: { limit: 0, offset: 0, total: 0 } };
-    } finally {
-      setIsLoading(false);
-    }
-  };
+    },
+    [],
+  );
 
   const value: WorkContextType = {
     isLoading,
