@@ -17,11 +17,11 @@ export default function PrivacyModal({
 
   return (
     <div
-      className="px-20 z-[9999] bg-white/30 backdrop-blur-sm w-full h-screen fixed inset-0 flex items-center justify-center cursor-pointer"
+      className="px-20  max-md:px-5 z-[9999] bg-white/30 backdrop-blur-sm w-full h-screen fixed inset-0 flex items-center justify-center cursor-pointer"
       onClick={() => setPrivacyModal(false)}
     >
       <div
-        className=" bg-white py-10 px-10 w-full cursor-auto flex-col gap-10 flex items-center justify-start rounded-[15px]"
+        className=" bg-white py-10 max-md:pt-5 max-md:pb-2 px-10 max-md:px-2 w-full cursor-auto flex-col gap-10 flex items-center justify-start rounded-[15px]"
         onClick={(e) => e.stopPropagation()}
         style={{
           backgroundImage: `url(${bg})`,
@@ -30,14 +30,16 @@ export default function PrivacyModal({
           backgroundPosition: "center",
         }}
       >
-        <div className="flex flex-row gap-2 items-center justify-center max-w-[584px]">
-          <span className="font-cormo text-[64px]/[120%] italic">Privacy</span>
-          <span className="font-subito font-bold text-[64px]/[120%]">
+        <div className="flex flex-row gap-2 items-center justify-center max-w-[584px] max-md:w-full">
+          <span className="font-cormo text-[64px]/[120%] max-md:text-[40px]/[120%] italic">
+            Privacy
+          </span>
+          <span className="font-subito font-bold text-[64px]/[120%] max-md:text-[40px]/[120%]">
             Policy
           </span>
         </div>
         <div
-          className="flex px-20 pt-15 pb-10 w-full justify-center items-center rounded-[15px] bg-black"
+          className="flex px-20 max-md:px-1 pt-15 max-md:pt-8 max-md:pb-2 pb-10 w-full justify-center items-center rounded-[15px] bg-black"
           style={{
             backgroundImage: `url(${cardbg})`,
             backgroundRepeat: "no-repeat",
@@ -46,7 +48,7 @@ export default function PrivacyModal({
           }}
         >
           <div className=" max-h-[500px] overflow-scroll font-subito text-white flex flex-col gap-10 p-3">
-            <p className="text-[29px]/[120%] font-light">
+            <p className="text-[29px]/[120%] max-md:text-[18px]/[120%] font-light">
               Welcome to MavCanvas (referred to as "MavCanvas," "we," "us," or
               "our"). This Privacy Policy explains how we collect, use,
               disclose, and safeguard your information when you visit our
@@ -58,7 +60,7 @@ export default function PrivacyModal({
               Privacy Policy.
             </p>
 
-            <ol className="list-decimal list-inside space-y-3 mt-3 text-[29px]/[120%] font-light">
+            <ol className="list-decimal list-inside space-y-3 mt-3 text-[29px]/[120%] max-md:text-[18px]/[120%] font-light">
               <li>
                 <strong className="font-semibold">
                   Information We Collect

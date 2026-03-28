@@ -17,11 +17,11 @@ export default function TermsModal({
 
   return (
     <div
-      className="px-20 z-[9999] bg-white/30 cursor-pointer backdrop-blur-sm w-full h-screen fixed inset-0 flex items-center justify-center"
+      className="px-20 max-md:px-5 z-[9999] bg-white/30 cursor-pointer backdrop-blur-sm w-full h-screen fixed inset-0 flex items-center justify-center"
       onClick={() => setTermsModal(false)}
     >
       <div
-        className=" bg-white py-10 px-10 w-full cursor-auto flex-col gap-10 flex items-center justify-start rounded-[15px]"
+        className=" bg-white py-10 max-md:pt-5 max-md:pb-2 max-md:px-2 px-10 w-full cursor-auto flex-col gap-10 flex items-center justify-start rounded-[15px]"
         onClick={(e) => e.stopPropagation()}
         style={{
           backgroundImage: `url(${bg})`,
@@ -31,14 +31,18 @@ export default function TermsModal({
         }}
       >
         <div className="flex flex-row gap-4 items-center justify-center max-w-[584px]">
-          <span className="font-cormo text-[64px]/[120%] italic">Terms</span>
-          <span className="text-[64px]/[120%] italic font-thin">&</span>
-          <span className="font-subito font-bold text-[64px]/[120%]">
+          <span className="font-cormo text-[64px]/[120%] max-md:text-[32px]/[120%] italic">
+            Terms
+          </span>
+          <span className="text-[64px]/[120%] max-md:text-[32px]/[120%] italic font-thin">
+            &
+          </span>
+          <span className="font-subito font-bold text-[64px]/[120%] max-md:text-[32px]/[120%]">
             Conditions
           </span>
         </div>
         <div
-          className="flex px-20 pt-15 pb-10 w-full justify-center items-center rounded-[15px] bg-black"
+          className="flex px-20 max-md:px-2 pt-15 max-md:pt-8 max-md:pb-2 pb-10 w-full justify-center items-center rounded-[15px] bg-black"
           style={{
             backgroundImage: `url(${cardbg})`,
             backgroundRepeat: "no-repeat",
@@ -47,13 +51,13 @@ export default function TermsModal({
           }}
         >
           <div className=" max-h-[500px] overflow-scroll font-subito text-white flex flex-col gap-10 p-3">
-            <p className="text-[29px]/[120%] font-light">
+            <p className="text-[29px]/[120%] max-md:text-[18px]/[120%] font-light">
               Welcome to MavCanvas. These Terms and Conditions ("Terms") govern
               your use of the MavCanvas website and the digital agency solutions
               we provide (collectively, the "Service").
             </p>
 
-            <ol className="list-decimal list-inside space-y-6 mt-3 text-[29px]/[120%] font-light">
+            <ol className="list-decimal list-inside space-y-6 mt-3 text-[29px]/[120%] max-md:text-[18px]/[120%] font-light">
               <li>
                 <strong>Acceptance of Terms</strong>
                 <div className="ml-4 mt-1">
