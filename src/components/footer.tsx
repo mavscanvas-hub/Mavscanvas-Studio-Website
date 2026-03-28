@@ -21,7 +21,7 @@ const support = [
 ];
 const contact = [
   { icon: <IoMdMail />, value: "mavscanvas@gmail.com" },
-  { icon: <IoMdCall />, value: "+234 (0) 9121635235" },
+  { icon: <IoMdCall />, value: "+234 (0) 9031616467" },
 ];
 const socialMedia = [
   {
