@@ -5,6 +5,7 @@ import About from "./pages/about";
 import Service from "./pages/service";
 import Work from "./pages/work";
 import Pricing from "./pages/pricing";
+import NotFound from "./pages/notFound";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
         Component: Pricing,
       },
     ],
+  },
+  {
+    path: "*",
+    Component: NotFound,
   },
 ]);
 

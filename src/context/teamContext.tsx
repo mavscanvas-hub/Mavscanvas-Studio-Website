@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { createContext, useState } from "react";
 import { apiClient } from "../apiClient";
+import { logger } from "../utils/logger";
 
 export interface FieldOption {
   name: string;
@@ -96,12 +97,12 @@ const TeamProvider = ({ children }: { children: React.ReactNode }) => {
   const getCollectionDetails = async (id: string) => {
     setIsCategoryLoading(true);
     try {
-      console.log("Fetching collection details for ID:", id);
+      logger.log("Fetching collection details for ID:", id);
       const res = await apiClient.get<CollectionSchema>(`/collections/${id}`);
-      console.log("Collection Details:", res);
+      logger.log("Collection Details:", res);
 
       if (!res || !res.fields) {
-        console.error("Invalid response structure:", res);
+        logger.error("Invalid response structure:", res);
         return;
       }
 
@@ -113,7 +114,7 @@ const TeamProvider = ({ children }: { children: React.ReactNode }) => {
         .filter((option: FieldOption) => option.name && option.id);
       setCategories(categoryOptions);
     } catch (error) {
-      console.error("Error fetching collection details:", error);
+      logger.error("Error fetching collection details:", error);
     } finally {
       setIsCategoryLoading(false);
     }
@@ -122,21 +123,21 @@ const TeamProvider = ({ children }: { children: React.ReactNode }) => {
   const getAllTeamMembers = async (id: string): Promise<WorksResponse> => {
     setIsLoading(true);
     try {
-      console.log("Fetching all team members for collection ID:", id);
+      logger.log("Fetching all team members for collection ID:", id);
       const res = await apiClient.get<WorksResponse>(
         `/collections/${id}/items`,
       );
-      console.log("All Team Members:", res);
+      logger.log("All Team Members:", res);
 
       if (res && res.items) {
         setTeam(res.items);
         return res;
       } else {
-        console.error("Invalid team members response structure:", res);
+        logger.error("Invalid team members response structure:", res);
         return { items: [], pagination: { limit: 0, offset: 0, total: 0 } };
       }
     } catch (error) {
-      console.error("Error fetching team members:", error);
+      logger.error("Error fetching team members:", error);
       return { items: [], pagination: { limit: 0, offset: 0, total: 0 } };
     } finally {
       setIsLoading(false);

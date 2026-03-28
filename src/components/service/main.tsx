@@ -122,10 +122,13 @@ const clients = [
 
 export default function Main() {
   const [currentImageIndices, setCurrentImageIndices] = useState(
-    clients.reduce((acc, client) => {
-      acc[client.id] = 0;
-      return acc;
-    }, {} as Record<number, number>)
+    clients.reduce(
+      (acc, client) => {
+        acc[client.id] = 0;
+        return acc;
+      },
+      {} as Record<number, number>,
+    ),
   );
 
   const handleNext = (serviceId: number, projectsLength: number) => {
@@ -148,7 +151,7 @@ export default function Main() {
 
   return (
     <section
-      className="bg-white pt-[245px] px-15 max-md:px-4 max-md:pt-[88px] flex flex-col gap-12 max-md:gap-5.5 pb-40 max-md:pb-12 bg-top-left font-subito"
+      className="bg-white pt-[245px] px-15 max-md:px-4 max-md:pt-[100px] flex flex-col gap-12 max-md:gap-5.5 pb-40 max-md:pb-12 bg-top-left font-subito"
       style={{
         backgroundImage: `url(${Herobg})`,
         backgroundSize: "cover",
@@ -263,9 +266,7 @@ export default function Main() {
         <div className="flex justify-center items-center">
           <Button
             className="bg-[#02DDEF] hover:scale-105 rounded-full py-5.5 max-md:py-3 max-md:px-10 px-24 flex gap-6 max-md:gap-2 items-center"
-            onClick={() => {
-              console.log("Logged");
-            }}
+            onClick={() => {}}
           >
             <span className="font-medium text-[28px] text-[28px]/[120%] max-md:text-[14px]/[120%]">
               Start a Project

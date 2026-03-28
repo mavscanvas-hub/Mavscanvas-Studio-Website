@@ -132,9 +132,7 @@ export default function Hero() {
                 className={`${
                   plan.id === 1 ? "bg-white" : "bg-[#02DDEF]"
                 } rounded-full hover:scale-105 cursor-pointer transition-all duration-300 py-5 max-md:py-4 px-15 max-md:px-15 text-[20px]/[120%] font-medium flex gap-6 max-md:gap-0 max-md:justify-between items-center`}
-                onClick={() => {
-                  console.log("Logged");
-                }}
+                onClick={() => {}}
               >
                 Buy Package
                 <HiArrowRight className="text-3xl " />
@@ -155,9 +153,7 @@ export default function Hero() {
         </div>
         <button
           className={` bg-black text-white hover:scale-105 cursor-pointer transition-all duration-300 rounded-full py-5 max-md:py-2.5 px-15 max-md:px-20 text-[25px]/[120%] max-md:text-[16px]/[120%] flex gap-6 items-center`}
-          onClick={() => {
-            console.log("Logged");
-          }}
+          onClick={() => {}}
         >
           Reach Out
           <HiArrowRight className="text-3xl max-md:text-xl" />
@@ -171,9 +167,7 @@ export default function Hero() {
         <div className="flex justify-center items-center">
           <Button
             className="bg-[#02DDEF] hover:scale-105 cursor-pointer transition-all duration-300 rounded-full py-5.5 max-md:py-3 max-md:px-10 px-24 flex gap-6 max-md:gap-5 max-md:justify-between items-center "
-            onClick={() => {
-              console.log("Logged");
-            }}
+            onClick={() => {}}
           >
             <span className="font-medium text-[28px] text-[28px]/[120%] max-md:text-[14px]/[120%]">
               Start a Project

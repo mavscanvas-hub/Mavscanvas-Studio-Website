@@ -74,10 +74,10 @@ export default function ContactModal({
         }}
       >
         <div className="flex flex-col items-center justify-center max-w-[584px]">
-          <span className="font-cormo text-[64px]/[120%] italic">
+          <span className="font-cormo text-[64px]/[120%] max-md:text-[32px]/[120%] max-lg:text-[48px]/[120%] italic">
             For More Inquiries
           </span>
-          <span className="font-subito font-bold text-[64px]/[120%]">
+          <span className="font-subito font-bold text-[64px]/[120%] max-md:text-[32px]/[120%] max-lg:text-[48px]/[120%]">
             Reach Out to Us
           </span>
         </div>

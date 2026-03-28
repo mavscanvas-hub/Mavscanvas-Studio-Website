@@ -1,5 +1,6 @@
 import axios from "axios";
 import { WORKSPACE_TOKEN } from "./constant";
+import { logger } from "./utils/logger";
 
 const isDev = import.meta.env.DEV;
 
@@ -18,11 +19,11 @@ class ApiClient {
     if (!isDev) {
       // In production, use the proxy serverless function
       url = `/api/proxy?path=${encodeURIComponent(
-        endpoint.replace(/^\//, "")
+        endpoint.replace(/^\//, ""),
       )}`;
     }
     const fullUrl = `${baseInstance.defaults.baseURL}${url}`;
-    console.log("API Request:", fullUrl);
+    logger.log("API Request:", fullUrl);
     const response = await baseInstance.get<T>(url);
     return response.data;
   }

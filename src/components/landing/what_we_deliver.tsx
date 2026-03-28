@@ -1,7 +1,6 @@
 import { FaArrowRightLong } from "react-icons/fa6";
 import { useMemo, useState } from "react";
 import project from "../../assets/service/project_image.png";
-import brand from "../../assets/company_op/branding.png";
 import { useNavigate } from "react-router-dom";
 import { useWorkContext } from "../../hooks/useWorkContext";
 import { COLLECTION_ID } from "../../constant";
@@ -36,26 +35,20 @@ const isServiceMatchCategory = (service: ServiceItem, categoryName: string) => {
   );
 };
 
-// const htmlToPlainText = (value: string) =>
-//   value
-//     .replace(/<[^>]*>/g, " ")
-//     .replace(/\s+/g, " ")
-//     .trim();
-
 const data: ServiceItem[] = [
   {
     title: "Web Design & Development",
     value: "website development",
     content:
       "Web design & development service covering discovery to launch: we plan, design, and build a fast, responsive, on-brand site in WordPress or Webflow, including UX/UI (sitemap, wireframes, Figma comps), front-end implementation, basic animations, on-page SEO, Core Web Vitals optimization, WCAG 2.1 AA accessibility, SSL/security hardening, backups, and integrations (GA4, Search Console, CRM/forms, email). Deliverables include the approved designs, a production-ready site with redirects (if redesign), analytics tags, training, documentation, and a 30-day post-launch warranty; typical build runs 3-6 weeks assuming content is ready. Client supplies brand assets, copy/images, timely feedback, and hosting/DNS access.",
-    image: project,
+    image: "",
   },
   {
     title: "Branding Design",
     value: "branding",
     content:
       "Comprehensive branding design service that crafts a unique and compelling brand identity for your business. We work closely with you to understand your vision, values, and target audience, creating a cohesive visual language that resonates with your customers. Our service includes logo design, color palette development, typography selection, and brand guidelines to ensure consistency across all touchpoints. Whether you're launching a new brand or refreshing an existing one, we deliver a distinctive and memorable brand identity that sets you apart in the market.",
-    image: brand,
+    image: "",
   },
   {
     title: "Product Design",
@@ -79,8 +72,9 @@ export default function WhatWeDeliver() {
     useWorkContext();
   const allValues = categories?.map((item) => item.name) || [];
   const [currentValue, setCurrentValue] = useState(data[0]);
-  const [currentImage, setCurrentImage] = useState(data[0].image);
+  const [currentImage, setCurrentImage] = useState("");
   const [activeCategoryName, setActiveCategoryName] = useState<string>("");
+  const [isImageLoading, setIsImageLoading] = useState(false);
 
   useEffect(() => {
     if (!categories?.length) {
@@ -149,27 +143,6 @@ export default function WhatWeDeliver() {
     return imageUrls[0];
   };
 
-  // const selectedCategoryWorks = useMemo(
-  //   () =>
-  //     selectedCategoryId
-  //       ? works.filter((work) => work.fieldData.category === selectedCategoryId)
-  //       : [],
-  //   [works, selectedCategoryId],
-  // );
-
-  // const displayContent = useMemo(() => {
-  //   const firstWork = selectedCategoryWorks[0];
-  //   if (!firstWork) {
-  //     return currentValue.content;
-  //   }
-
-  //   const preferredText =
-  //     htmlToPlainText(firstWork.fieldData.solution) &&
-  //     htmlToPlainText(firstWork.fieldData.problem);
-
-  //   return preferredText || currentValue.content;
-  // }, [selectedCategoryWorks, currentValue.content]);
-
   const handleSetActive = (categoryName: string) => {
     setActiveCategoryName(categoryName);
 
@@ -189,9 +162,11 @@ export default function WhatWeDeliver() {
       return;
     }
 
+    setIsImageLoading(true);
     const imagePreload = new Image();
     imagePreload.onload = () => {
       setCurrentImage(nextImage);
+      setIsImageLoading(false);
     };
     imagePreload.src = nextImage;
   };
@@ -238,9 +213,15 @@ export default function WhatWeDeliver() {
                     </h2>
                     <div className="border max-md:bord max-md:rounded-[5px] border-white rounded-3xl p-4 max-md:p-2">
                       <div
-                        className="bg-gray-100 h-[420px] max-md:h-[220px] rounded-3xl max-md:rounded-[4px]"
+                        className={`h-[420px] max-md:h-[220px] rounded-3xl max-md:rounded-[4px] transition-all duration-300 ${
+                          isImageLoading
+                            ? "bg-gray-400 animate-pulse"
+                            : "bg-gray-50"
+                        }`}
                         style={{
-                          backgroundImage: `url(${currentImage})`,
+                          backgroundImage: isImageLoading
+                            ? "none"
+                            : `url(${currentImage})`,
                           backgroundRepeat: "no-repeat",
                           backgroundSize: "cover",
                           backgroundPosition: "center",
@@ -248,7 +229,12 @@ export default function WhatWeDeliver() {
                       />
                     </div>
                     <div className="mt-10.5 max-md:mt-5 md:hidden flex justify-center items-center">
-                      <button className="border max-md:bord border-white text-white py-2.5 max-md:py-1 max-md:px-4 px-10 rounded-full flex gap-3.5 items-center font-medium text-[28px]/[120%] max-md:text-[10px]/[120%] max-md:italic">
+                      <button
+                        className="border max-md:bord border-white text-white max-md:py-2 max-md:px-4 px-10 rounded-full flex gap-3.5 items-center font-medium text-[28px]/[120%] max-md:text-[10px]/[120%] max-md:italic"
+                        onClick={() => {
+                          navigate("/services");
+                        }}
+                      >
                         <span>View Services</span>
                         <FaArrowRightLong />
                       </button>
@@ -261,7 +247,7 @@ export default function WhatWeDeliver() {
                           <button
                             key={value}
                             onClick={() => handleSetActive(value)}
-                            className={`flex-shrink-0 border ${activeCategoryName !== value && "hover:text-black hover:bg-white"} cursor-pointer text-xl font-medium max-md:text-[8px]/[120%] py-2.5 max-md:py-1 max-md:px-2.5 px-10 rounded-full ${
+                            className={`flex-shrink-0 border ${activeCategoryName !== value && "hover:text-black hover:bg-white"} cursor-pointer text-xl font-medium max-md:text-[8px]/[120%] py-2.5 max-md:py-1.5 max-md:px-2.5 px-10 rounded-full ${
                               activeCategoryName === value
                                 ? "bg-[#02DDEF] text-black  font-semibold border-none"
                                 : "text-white"

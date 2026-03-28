@@ -146,9 +146,7 @@ export default function PricingModal({
                     className={`${
                       plan.id === 1 ? "bg-white" : "bg-[#02DDEF]"
                     } rounded-full py-5 max-md:py-4 px-15 max-md:px-15 text-[20px]/[120%] font-medium flex gap-6 max-md:gap-0 cursor-pointer max-md:justify-between items-center hover:scale-[1.02] transition-transform duration-100`}
-                    onClick={() => {
-                      console.log("Logged");
-                    }}
+                    onClick={() => {}}
                   >
                     Buy a package
                     <HiArrowRight className="text-3xl " />

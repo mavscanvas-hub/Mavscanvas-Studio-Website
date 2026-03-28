@@ -102,7 +102,7 @@ export default function Navbar({
                     ? "translate-y-0 opacity-100 "
                     : "-translate-y-3 opacity-0 transition-opacity duration-3000"
                 }`
-              : "glass_effect translate-y-0 opacity-100"
+              : "glass_effect translate-y-0 rounded-3xl opacity-100"
           }`}
         >
           <ul
@@ -174,28 +174,40 @@ export default function Navbar({
 
         {/* Mobile Nav (keeps same scrolled -> fixed behavior) */}
         <div
-          className={`md:hidden flex justify-between items-center transition-all duration-300 ease-out transform`}
+          className={`md:hidden flex justify-between items-center py-1 pl-2 transition-all duration-300 ease-out transform ${
+            scrolled
+              ? `fixed top-0 left-0 right-0 py-2 w-full z-100 bg-black text-white navbar_shadow_black ${
+                  navVisible
+                    ? "translate-y-0 opacity-100 "
+                    : "-translate-y-3 opacity-0 transition-opacity duration-3000"
+                }`
+              : "glass_effect rounded-3xl translate-y-0 opacity-100"
+          }`}
         >
           <Link to={"/"}>
             <img
-              src={isWhitePage ? logoBlack : logo}
+              src={scrolled ? logo : isWhitePage ? logoBlack : logo}
               alt="logo"
               loading="lazy"
               decoding="async"
-              className={`h-auto ${isWhitePage ? "w-11" : "w-11"}`}
+              className={`h-auto ${isWhitePage && !scrolled ? "w-11" : "w-13"}`}
             />
           </Link>
           <Button
-            className="glass_effect bg-transparent rounded-full p-2 flex items-center justify-center"
+            className={`rounded-full p-2 flex items-center justify-center ${
+              scrolled ? "bg-transparent text-white" : " bg-transparent"
+            }`}
             onClick={() => {}}
           >
             <RxHamburgerMenu
               onClick={() => setIsSidebarOpen(!isSidebarOpen)}
               className={`text-2xl ${
-                activeLink.includes("services") ||
-                activeLink.includes("pricing")
-                  ? "text-black"
-                  : "text-white"
+                scrolled
+                  ? "text-white"
+                  : activeLink.includes("services") ||
+                      activeLink.includes("pricing")
+                    ? "text-black"
+                    : "text-white"
               }`}
             />
           </Button>

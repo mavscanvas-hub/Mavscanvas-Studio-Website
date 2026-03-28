@@ -258,9 +258,7 @@ export default function HowWeWork() {
         <div className="flex justify-center my-20 max-md:mt-5 max-md:mb-5">
           <Button
             variant="secondary"
-            onClick={() => {
-              console.log("View All Case Studies");
-            }}
+            onClick={() => {}}
             className="border hover:bg-black hover:text-white transition-colors duration-100 max-md:border-[0.26px] border-black text-black py-2.5 max-md:py-1 max-md:px-4 px-10 rounded-full flex gap-3.5 items-center font-bold  max-md:italic"
           >
             <span className="text-[28px]/[120%] max-md:text-[10px]/[120%] italic font-subito">

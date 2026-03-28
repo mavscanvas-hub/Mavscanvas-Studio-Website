@@ -2,6 +2,7 @@
 import { createContext, useState } from "react";
 import { useCallback } from "react";
 import { apiClient } from "../apiClient";
+import { logger } from "../utils/logger";
 
 export interface FieldOption {
   name: string;
@@ -96,12 +97,12 @@ const WorkProvider = ({ children }: { children: React.ReactNode }) => {
   const getCollectionDetails = useCallback(async (id: string) => {
     setIsCategoryLoading(true);
     try {
-      console.log("Fetching collection details for ID:", id);
+      logger.log("Fetching collection details for ID:", id);
       const res = await apiClient.get<CollectionSchema>(`/collections/${id}`);
-      console.log("Collection Details:", res);
+      logger.log("Collection Details:", res);
 
       if (!res || !res.fields) {
-        console.error("Invalid response structure:", res);
+        logger.error("Invalid response structure:", res);
         return;
       }
 
@@ -111,10 +112,10 @@ const WorkProvider = ({ children }: { children: React.ReactNode }) => {
       const categoryOptions = optionFields
         .flatMap((field: Field) => field.validations?.options || [])
         .filter((option: FieldOption) => option.name && option.id);
-      console.log("Extracted Category Options:", categoryOptions);
+      logger.log("Extracted Category Options:", categoryOptions);
       setCategories(categoryOptions);
     } catch (error) {
-      console.error("Error fetching collection details:", error);
+      logger.error("Error fetching collection details:", error);
     } finally {
       setIsCategoryLoading(false);
     }
@@ -124,7 +125,7 @@ const WorkProvider = ({ children }: { children: React.ReactNode }) => {
     async (id: string): Promise<WorksResponse> => {
       setIsLoading(true);
       try {
-        console.log("Fetching all works for collection ID:", id);
+        logger.log("Fetching all works for collection ID:", id);
         const res = await apiClient.get<WorksResponse>(
           `/collections/${id}/items`,
         );
@@ -133,11 +134,11 @@ const WorkProvider = ({ children }: { children: React.ReactNode }) => {
           setWorks(res.items);
           return res;
         } else {
-          console.error("Invalid works response structure:", res);
+          logger.error("Invalid works response structure:", res);
           return { items: [], pagination: { limit: 0, offset: 0, total: 0 } };
         }
       } catch (error) {
-        console.error("Error fetching works:", error);
+        logger.error("Error fetching works:", error);
         return { items: [], pagination: { limit: 0, offset: 0, total: 0 } };
       } finally {
         setIsLoading(false);

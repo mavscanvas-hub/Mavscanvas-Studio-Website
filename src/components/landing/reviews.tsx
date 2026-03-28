@@ -46,7 +46,7 @@ export default function Reviews() {
           observer.disconnect();
         }
       },
-      { threshold: [0.5] } // fire when 50% visible
+      { threshold: [0.5] }, // fire when 50% visible
     );
     obs.observe(el);
     return () => obs.disconnect();
@@ -55,7 +55,7 @@ export default function Reviews() {
   return (
     <section
       ref={sectionRef}
-      className="bg-black px-15 pt-15 max-md:pt-5 max-md:px-5 pb-25 flex flex-col gap-20 max-md:gap-8"
+      className="bg-black px-15 pt-15 max-md:pt-5 max-md:px-5 pb-25 max-md:pb-10 flex flex-col gap-20 max-md:gap-8"
       style={{
         backgroundImage: `url(${Review})`,
         backgroundRepeat: "no-repeat",
@@ -218,9 +218,7 @@ export default function Reviews() {
           <div className="flex justify-center items-center">
             <Button
               className="bg-[#02DDEF] hover:scale-105 rounded-full py-5.5 max-md:py-3 max-md:px-10 px-24 flex gap-6 max-md:gap-2 items-center"
-              onClick={() => {
-                console.log("Logged");
-              }}
+              onClick={() => {}}
             >
               <span className="font-medium text-[28px]/[120%] max-md:text-[14px]/[120%]">
                 Start a Project
