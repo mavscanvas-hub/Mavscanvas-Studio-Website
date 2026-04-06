@@ -4,7 +4,7 @@ export default function NotFound() {
   const navigate = useNavigate();
 
   return (
-    <div className="flex flex-col w-full font-subito items-center py-30 justify-start h-screen min-h-screen bg-black px-30 max-md:px-5">
+    <div className="flex flex-col w-full font-subito items-center py-30 max-md:justify-center justify-start h-screen min-h-screen bg-black px-30 max-md:px-5">
       <div className="absolute left-2/5 top-1/2 -translate-x-1/2 -translate-y-1/2 max-lg:-translate-y-[80%] -rotate-60 blur-[200px] max-lg:blur-[100px]">
         <div className="lg:w-[400px] lg:h-[400px] w-[200px] h-[200px] rounded-full bg-[#02DDEF]" />
         <div className="lg:w-[400px] w-[200px] h-[200px] lg:h-[400px] rounded-full bg-[#FA01F0]" />
@@ -25,7 +25,7 @@ export default function NotFound() {
         </p>
         <button
           onClick={() => navigate("/")}
-          className="bg-[#02DDEF] max-md:absolute z-40 max-md:bottom-10 text-black font-subito py-5 max-md:py-4 px-20 max-md:px-15 text-[33px]/[100%] max-md:text-[22px]/[100%] rounded-full max-md:rounded-4xl font-normal cursor-pointer"
+          className="bg-[#02DDEF] z-40 max-md:bottom-10 text-black font-subito py-5 max-md:py-4 px-20 max-md:px-15 text-[33px]/[100%] max-md:text-[22px]/[100%] rounded-full max-md:rounded-4xl font-normal cursor-pointer"
         >
           Back to Home
         </button>

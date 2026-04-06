@@ -64,7 +64,7 @@ export default function ContactModal({
       onClick={() => setContactModal(false)}
     >
       <div
-        className=" bg-white py-10 px-10 cursor-auto flex-col gap-20 flex items-center justify-start rounded-[15px]"
+        className=" bg-white py-10 px-10 cursor-auto flex-col gap-20 max-md:gap-5.5 flex items-center max-md:items-start justify-start rounded-[15px]"
         onClick={(e) => e.stopPropagation()}
         style={{
           backgroundImage: `url(${bg})`,
@@ -73,7 +73,7 @@ export default function ContactModal({
           backgroundPosition: "center",
         }}
       >
-        <div className="flex flex-col items-center justify-center max-w-[584px]">
+        <div className="flex flex-col items-center max-md:items-start justify-center max-w-[584px]">
           <span className="font-cormo text-[64px]/[120%] max-md:text-[32px]/[120%] max-lg:text-[48px]/[120%] italic">
             For More Inquiries
           </span>
