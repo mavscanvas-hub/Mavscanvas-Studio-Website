@@ -365,8 +365,8 @@
 .not_glass_effect {
   position: relative;
   background: hsl(0deg 0% 100% / 0);
-  backdrop-filter: blur(3px) brightness(100%);
-  -webkit-backdrop-filter: blur(3px) brightness(100%);
+  backdrop-filter: blur(4px) brightness(100%);
+  -webkit-backdrop-filter: blur(4px) brightness(100%);
   transition: all 0.3s ease;
   border: 1px solid transparent;
   background-clip: padding-box, border-box;

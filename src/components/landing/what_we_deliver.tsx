@@ -68,9 +68,15 @@ const data: ServiceItem[] = [
 
 export default function WhatWeDeliver() {
   const navigate = useNavigate();
-  const { works, getAllWorks, categories, getCollectionDetails } =
-    useWorkContext();
+  const {
+    works,
+    getAllWorks,
+    categories,
+    getCollectionDetails,
+    isCategoryLoading,
+  } = useWorkContext();
   const allValues = categories?.map((item) => item.name) || [];
+  const categorySkeletons = Array.from({ length: 5 });
   const [currentValue, setCurrentValue] = useState(data[0]);
   const [currentImage, setCurrentImage] = useState("");
   const [activeCategoryName, setActiveCategoryName] = useState<string>("");
@@ -240,44 +246,53 @@ export default function WhatWeDeliver() {
                       </button>
                     </div>
                   </div>
-                  <div className="flex flex-col gap-5 max-md:gap-3 h-full">
-                    <div className="flex flex-col items-start justify-between h-full gap-5 max-md:gap-3.5 max-md:gap-y-3 mt-10 max-md:mt-0">
+                  <div className="flex flex-col gap-5 max-md:gap-3 h-full min-h-0">
+                    <div className="flex flex-col items-start gap-5 max-md:gap-3.5 max-md:gap-y-3 mt-10 max-md:mt-0">
                       <div className="flex gap-3 flex-wrap">
-                        {allValues.map((value) => (
-                          <button
-                            key={value}
-                            onClick={() => handleSetActive(value)}
-                            className={`flex-shrink-0 border ${activeCategoryName !== value && "hover:text-black hover:bg-white"} cursor-pointer text-xl font-medium max-md:text-[8px]/[120%] py-2.5 max-md:py-1.5 max-md:px-2.5 px-10 rounded-full ${
-                              activeCategoryName === value
-                                ? "bg-[#02DDEF] text-black  font-semibold border-none"
-                                : "text-white"
-                            }`}
-                          >
-                            {value.toLocaleUpperCase()}
-                          </button>
-                        ))}
+                        {isCategoryLoading
+                          ? categorySkeletons.map((_, index) => (
+                              <div
+                                key={`category-skeleton-${index}`}
+                                className="h-[50px] max-md:h-[20px] w-[200px] max-md:w-[72px] rounded-full bg-white/20 animate-pulse"
+                              />
+                            ))
+                          : allValues.map((value) => (
+                              <button
+                                key={value}
+                                onClick={() => handleSetActive(value)}
+                                className={`flex-shrink-0 border ${activeCategoryName !== value && "hover:text-black hover:bg-white"} cursor-pointer text-xl font-medium max-md:text-[8px]/[120%] py-2.5 max-md:py-1.5 max-md:px-2.5 px-10 rounded-full ${
+                                  activeCategoryName === value
+                                    ? "bg-[#02DDEF] text-black  font-semibold border-none"
+                                    : "text-white"
+                                }`}
+                              >
+                                {value.toLocaleUpperCase()}
+                              </button>
+                            ))}
                       </div>
                       <h2 className="text-white max-md:text-[18px]/[120%] max-md:my-3 font-bold md:hidden">
                         {currentValue.title}
                       </h2>
                     </div>
-                    <div className="px-3 max-md:px-0">
-                      <p className=" text-white text-[22px]/[120%] font-normal max-md:text-[10px]/[120%]">
-                        {currentValue.content}
-                      </p>
-                    </div>
-                    <div className="mt-10.5 max-md:hidden">
-                      <button
-                        className="border border-white hover:bg-white hover:text-black transition-colors duration-200 cursor-pointer text-white py-2.5 px-10 rounded-full flex gap-3.5 items-center font-medium"
-                        onClick={() => {
-                          navigate("/services");
-                        }}
-                      >
-                        <span className="font-bold italic text-[28px]/[120%] font-subito">
-                          View Services
-                        </span>
-                        <FaArrowRightLong className="text-[28px]/[120%]" />
-                      </button>
+                    <div className="flex flex-col flex-1 min-h-0 items-start justify-between pt-10">
+                      <div className="px-3 max-md:px-0 overflow-y-auto flex-1 min-h-0">
+                        <p className=" text-white text-[22px]/[120%] font-normal max-md:text-[10px]/[120%]">
+                          {currentValue.content}
+                        </p>
+                      </div>
+                      <div className="mt-10.5 max-md:hidden px-3">
+                        <button
+                          className="border border-white hover:bg-white hover:text-black transition-colors duration-200 cursor-pointer text-white py-2.5 px-10 rounded-full flex gap-3.5 items-center font-medium"
+                          onClick={() => {
+                            navigate("/services");
+                          }}
+                        >
+                          <span className="font-bold italic text-[28px]/[120%] font-subito">
+                            View Services
+                          </span>
+                          <FaArrowRightLong className="text-[28px]/[120%]" />
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
