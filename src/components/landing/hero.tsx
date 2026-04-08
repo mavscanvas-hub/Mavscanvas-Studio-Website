@@ -7,11 +7,13 @@ import google from "../../assets/company_op/google.png";
 import samsung from "../../assets/company_op/samsung.png";
 import microsoft from "../../assets/company_op/microsoft.png";
 import amazon from "../../assets/company_op/amazon.webp";
+import { useNavigate } from "react-router-dom";
 
 const logos = [google, adobe, spotify, samsung, microsoft, amazon];
 
 export default function Home() {
   const [bgLoaded, setBgLoaded] = useState(false);
+  const router = useNavigate();
 
   useEffect(() => {
     const t = setTimeout(() => setBgLoaded(true), 60);
@@ -84,7 +86,7 @@ export default function Home() {
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-6")
             }
-            onClick={() => console.log("Logged")}
+            onClick={() => router("/pricing")}
           >
             <span className="font-medium text-[28px]/[120%] max-md:text-[14px]/[120%]">
               Start a Project

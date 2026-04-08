@@ -29,7 +29,7 @@ const data = [
 export default function Hero() {
   return (
     <section
-      className="bg-black pt-[245px] max-md:pt-[80px] px-15 max-md:px-5 flex flex-col gap-20 max-md:gap-8 pb-40 max-md:pb-8 font-subito"
+      className="bg-black pt-[245px] max-md:pt-[120px] px-15 max-md:px-5 flex flex-col gap-20 max-md:gap-8 pb-40 max-md:pb-8 font-subito"
       style={{
         backgroundImage: `url(${Herobg})`,
         backgroundSize: "cover",

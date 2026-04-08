@@ -1,6 +1,6 @@
 import Bg from "../assets/sidebar/bg.png";
 import { IoClose } from "react-icons/io5";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const links = [
   {
@@ -33,6 +33,7 @@ export default function Sidebar({
   isSidebarOpen: boolean;
 }) {
   const location = useLocation();
+  const navigate = useNavigate();
 
   return (
     <aside
@@ -40,7 +41,13 @@ export default function Sidebar({
       style={{ backgroundImage: `url(${Bg})`, backgroundSize: "cover" }}
     >
       <div className="flex justify-between items-center">
-        <button className="bg-[#02DDEF] text-3xl/[110%] font-subito font-medium rounded-full px-6 py-3">
+        <button
+          onClick={() => {
+            navigate("/pricing");
+            setIsSidebarOpen(false);
+          }}
+          className="bg-[#02DDEF] text-3xl/[110%] font-subito font-medium rounded-full px-6 py-3"
+        >
           Get Started
         </button>
         <button

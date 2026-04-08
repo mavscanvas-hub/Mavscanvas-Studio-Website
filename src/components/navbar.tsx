@@ -88,6 +88,7 @@ export default function Navbar({
   const isWhitePage = [
     activeLink.includes("services"),
     activeLink.includes("pricing"),
+    activeLink.includes("checkout"),
   ].some(Boolean);
 
   return (
@@ -117,7 +118,7 @@ export default function Navbar({
                 loading="lazy"
                 decoding="async"
                 className={`h-auto ${
-                  isWhitePage && !scrolled ? "w-16" : "w-18"
+                  isWhitePage && !scrolled ? "w-14" : "w-18"
                 }`}
               />
             </Link>
@@ -130,7 +131,8 @@ export default function Navbar({
                       scrolled
                         ? "text-white"
                         : activeLink.includes("services") ||
-                            activeLink.includes("pricing")
+                            activeLink.includes("pricing") ||
+                            activeLink.includes("checkout")
                           ? "text-black"
                           : "text-white"
                     }`}
@@ -160,7 +162,8 @@ export default function Navbar({
                   scrolled
                     ? "bg-white text-black"
                     : activeLink.includes("services") ||
-                        activeLink.includes("pricing")
+                        activeLink.includes("pricing") ||
+                        activeLink.includes("checkout")
                       ? "bg-black text-white"
                       : "bg-white text-black"
                 } py-2.5 px-6 rounded-full font-medium text-2lg`}
@@ -205,7 +208,8 @@ export default function Navbar({
                 scrolled
                   ? "text-white"
                   : activeLink.includes("services") ||
-                      activeLink.includes("pricing")
+                      activeLink.includes("pricing") ||
+                      activeLink.includes("checkout")
                     ? "text-black"
                     : "text-white"
               }`}

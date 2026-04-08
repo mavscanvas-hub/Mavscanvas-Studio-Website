@@ -3,51 +3,11 @@ import { HiArrowRight } from "react-icons/hi";
 import Herobg from "../../assets/pricing/bg.png";
 import Button from "../custom/button";
 import { FaArrowRightLong } from "react-icons/fa6";
-
-const plans = [
-  {
-    id: 1,
-    name: "Popular",
-    amount: "₦700,000",
-    short_desc: "Best for Startups, small businesses, early-stage projects",
-    benefits: [
-      "Brand identity",
-      "3-page responsive website",
-      "Basic SEO setup",
-      "Social media starter kit",
-    ],
-  },
-  {
-    id: 2,
-    name: "Growth",
-    amount: "₦1,500,000",
-    short_desc: "Best for Startups, small businesses, early-stage projects",
-    benefits: [
-      "Complete brand guidelines",
-      "Full website ",
-      "UI/UX product design",
-      "SEO + content strategy",
-      "Social media management",
-    ],
-  },
-  {
-    id: 3,
-    name: "Pro",
-    amount: "₦5,050,000",
-    short_desc: "Best for Startups, small businesses, early-stage projects",
-    benefits: [
-      "Advanced brand ID",
-      "Full-scale website",
-      "Complete UX/UI design",
-      "Multi-channel digital marketing",
-      "(SEO, PPC, email, CRO)",
-      "Social media management",
-      "Creative production support ",
-    ],
-  },
-];
+import { plans } from "../../utils/data";
+import { useNavigate } from "react-router-dom";
 
 export default function Hero() {
+  const navigate = useNavigate();
   return (
     <section
       className="bg-white font-subito pt-[235px] max-md:pt-25.5 px-15 max-md:px-4 flex flex-col gap-10 max-md:gap-8 pb-20 max-md:pb-11 bg-top-left"
@@ -131,8 +91,10 @@ export default function Hero() {
               <button
                 className={`${
                   plan.id === 1 ? "bg-white" : "bg-[#02DDEF]"
-                } rounded-full hover:scale-105 cursor-pointer transition-all duration-300 py-5 max-md:py-4 px-15 max-md:px-15 text-[20px]/[120%] font-medium flex gap-6 max-md:gap-0 max-md:justify-between items-center`}
-                onClick={() => {}}
+                } rounded-full hover:scale-105 cursor-pointer transition-all duration-300 py-5 max-md:py-4 px-15 max-md:px-15 text-[20px]/[120%] font-medium flex gap-10 max-md:gap-0 justify-between items-center w-full`}
+                onClick={() => {
+                  navigate(`/checkout?plan=${plan.id}`);
+                }}
               >
                 Buy Package
                 <HiArrowRight className="text-3xl " />
