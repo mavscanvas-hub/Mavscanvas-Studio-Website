@@ -10,8 +10,8 @@ import NotFound from "./pages/notFound";
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    Component: LandingLayout,
+    // path: "/",
+    // Component: LandingLayout,
     children: [
       {
         path: "/",
