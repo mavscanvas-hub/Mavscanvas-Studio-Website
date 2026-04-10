@@ -56,7 +56,7 @@ export default function Experts() {
           </h2>
         </div>
         <div
-          className="grid grid-cols-3 justify-items-center items-stretch max-md:flex max-md:items-stretch max-md:overflow-x-auto max-md:overflow-y-hidden max-md:scrollbar-hide gap-16 max-md:gap-3 pt-17 max-md:pt-8 px-15 max-md:px-5"
+          className="grid grid-cols-3 justify-items-center items-start max-md:flex max-md:items-stretch max-md:overflow-x-auto max-md:overflow-y-hidden max-md:scrollbar-hide gap-20 max-md:gap-3 pt-17 max-md:pt-8 px-15 max-md:px-5"
           style={{
             scrollbarWidth: "none",
             msOverflowStyle: "none",
@@ -65,12 +65,12 @@ export default function Experts() {
           {team.map((member, idx) => (
             <div
               key={idx}
-              className="flex  flex-col items-center justify-between h-full min-h-[600px] max-md:min-h-[280px] w-full max-md:w-[170px] max-md:min-w-[170px] px-5 max-md:px-3 pt-6 max-md:pt-5 pb-16 max-md:pb-12"
+              className="flex flex-col items-center justify-between h-full min-h-[600px] max-md:min-h-[280px] 2xl:w-[412px] w-full max-md:w-[170px] max-md:min-w-[170px] px-5 max-md:px-3 pt-6 2xl:pt-12 max-md:pt-5 pb-16 max-md:pb-12"
               style={{
                 backgroundImage: `url(${TeamBG})`,
                 backgroundRepeat: "no-repeat",
                 backgroundPosition: "center",
-                backgroundSize: "contain",
+                backgroundSize: "100% 100%",
               }}
             >
               {/* Image */}
@@ -86,7 +86,7 @@ export default function Experts() {
               </div>
 
               {/* Text — justify-between pushes this to the bottom */}
-              <div className="flex flex-col items-center text-center gap-3 max-md:gap-1">
+              <div className="flex flex-col items-center text-center gap-3 max-md:gap-1 2xl:px-5">
                 <span className="text-5xl max-md:text-[18px] leading-[120%] text-white font-medium">
                   {member.fieldData["full-name"]}
                 </span>

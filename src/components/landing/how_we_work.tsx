@@ -222,13 +222,13 @@ export default function HowWeWork() {
             className="team-slider"
           >
             {team.map((member, idx) => (
-              <div key={idx} className="h-full">
+              <div key={idx} className="h-full flex justify-center">
                 <div
-                  className="flex flex-col select-none items-center justify-start w-full h-full gap-16.5 max-md:gap-10 px-8 max-md:px-2 pt-9 max-md:pt-5 pb-10 max-md:pb-10"
+                  className="flex flex-col select-none items-center justify-start h-full gap-16.5 max-md:gap-10 px-8 max-md:px-2 pt-9 max-md:pt-5 pb-10 max-md:pb-10 w-full max-w-[420px]"
                   style={{
                     backgroundImage: `url(${TeamBG})`,
                     backgroundRepeat: "no-repeat",
-                    backgroundSize: "contain",
+                    backgroundSize: "100% 100%",
                   }}
                 >
                   <div className="w-[340px] h-[340px] max-md:w-[140px] max-md:h-[140px] rounded-full overflow-hidden shrink-0">
