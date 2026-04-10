@@ -93,7 +93,7 @@ export default function Hero() {
                   plan.id === 1 ? "bg-white" : "bg-[#02DDEF]"
                 } rounded-full hover:scale-105 cursor-pointer transition-all duration-300 py-5 max-md:py-4 px-15 max-md:px-15 text-[20px]/[120%] font-medium flex gap-10 max-md:gap-0 justify-between items-center w-full`}
                 onClick={() => {
-                  navigate(`/checkout?plan=${plan.id}`);
+                  navigate(`/checkout?plan=${plan.id}&step=1`);
                 }}
               >
                 Buy Package
@@ -115,7 +115,9 @@ export default function Hero() {
         </div>
         <button
           className={` bg-black text-white hover:scale-105 cursor-pointer transition-all duration-300 rounded-full py-5 max-md:py-2.5 px-15 max-md:px-20 text-[25px]/[120%] max-md:text-[16px]/[120%] flex gap-6 items-center`}
-          onClick={() => {}}
+          onClick={() => {
+            navigate("/checkout?step=2");
+          }}
         >
           Reach Out
           <HiArrowRight className="text-3xl max-md:text-xl" />

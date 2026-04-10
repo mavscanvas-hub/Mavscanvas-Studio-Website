@@ -2,26 +2,59 @@ import { plans } from "../../utils/data";
 import { HiMiniCheckBadge } from "react-icons/hi2";
 import Button from "../custom/button";
 import { useState } from "react";
+import { toast } from "sonner";
 
 interface StepOneProps {
   planId: string;
-  setSteps: (step: number) => void;
 }
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-export default function StepOne({ planId, setSteps }: StepOneProps) {
+export default function StepOne({ planId }: StepOneProps) {
   const plan = plans.find((plan) => plan.id === parseInt(planId || "1"));
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
+  const [isSending, setIsSending] = useState(false);
 
-  const handleStepsIncrement = () => {
+  const handleStepsIncrement = async () => {
     if (!email || !EMAIL_REGEX.test(email)) {
       setEmailError("Please enter a valid email address");
+      toast.error("Please enter a valid email address");
       return;
     }
+
     setEmailError("");
-    setSteps(2);
+
+    try {
+      setIsSending(true);
+
+      const response = await fetch("/api/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: email.trim(),
+          source: "checkout-step-1",
+          planName: plan?.name || null,
+          planPrice: plan?.amount || null,
+          services: plan ? [`${plan.name} Plan`] : [],
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        toast.error(data?.error || "Failed to send email. Please try again.");
+        return;
+      }
+
+      toast.success("Request sent successfully. Continue with your order.");
+    } catch {
+      toast.error("Something went wrong. Please try again.");
+    } finally {
+      setIsSending(false);
+    }
   };
 
   return (
@@ -112,17 +145,20 @@ export default function StepOne({ planId, setSteps }: StepOneProps) {
               className="bg-white w-full py-5 rounded-xl px-4 outline-none"
             />
           </div>
-          {emailError && (
-            <p className="text-red-600 text-[16px]/[120%] font-medium mt-1">
-              {emailError}
-            </p>
-          )}
         </div>
         <Button
           onClick={handleStepsIncrement}
-          className={`bg-black hover:transform text-white hover:scale-102 rounded-xl py-6 text-[24px]/[120%] max-md:text-[18px]/[120%] font-normal flex justify-center gap-6 items-center w-full text-center`}
+          className={`bg-black hover:transform text-white hover:scale-102 rounded-xl py-6 text-[24px]/[120%] max-md:text-[18px]/[120%] font-normal flex justify-center gap-6 items-center w-full text-center ${isSending ? "opacity-70 cursor-not-allowed" : ""}`}
+          disabled={isSending}
         >
-          Proceed
+          {isSending ? (
+            <span className="inline-flex items-center gap-3">
+              <span className="size-5 rounded-full border-2 border-white border-t-transparent animate-spin" />
+              Sending...
+            </span>
+          ) : (
+            "Book Now"
+          )}
         </Button>
       </div>
     </div>

@@ -3,12 +3,17 @@ import { plans } from "../utils/data";
 import { useSearchParams } from "react-router-dom";
 import StepOne from "../components/checkout/stepone";
 import StepTwo from "../components/checkout/steptwo";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Checkout() {
   const [searchParams] = useSearchParams();
   const planId = searchParams.get("plan");
-  const [steps, setSteps] = useState(1);
+  const stepFromQuery = searchParams.get("step") === "2" ? 2 : 1;
+  const [steps, setSteps] = useState(stepFromQuery);
+
+  useEffect(() => {
+    setSteps(stepFromQuery);
+  }, [stepFromQuery]);
 
   const plan = plans.find((plan) => plan.id === parseInt(planId || "1"));
   console.log("Selected Plan:", plan);
@@ -31,7 +36,7 @@ export default function Checkout() {
           Your Order
         </h2>
       </div>
-      {steps === 1 && <StepOne planId={planId || "1"} setSteps={setSteps} />}
+      {steps === 1 && <StepOne planId={planId || "1"} />}
       {steps === 2 && <StepTwo setSteps={setSteps} />}
     </section>
   );

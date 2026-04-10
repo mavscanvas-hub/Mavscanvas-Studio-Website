@@ -6,6 +6,7 @@ import { FaInstagram } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa";
 
 import Button from "./custom/button";
+import { useState } from "react";
 
 const menu = [
   { name: "Home", link: "/" },
@@ -61,6 +62,8 @@ export default function Footer({
   termsModal: boolean;
   setTermsModal: (open: boolean) => void;
 }) {
+  const [email, setEmail] = useState("");
+
   const handleSuportClick = (itemName: string) => {
     if (itemName === "FAQ") {
       setFaqModal(!faqModal);
@@ -168,6 +171,11 @@ export default function Footer({
             <input
               type="email"
               placeholder="Enter your email"
+              value={email}
+              onChange={(event) => {
+                const value = event.target.value;
+                setEmail(value);
+              }}
               className="px-6 max-md:px-3.5 py-3 max-md:py-2 rounded-4xl text-base max-md:text-sm border w-full focus-within:outline-0"
             />
             <div className="flex justify-between items-center gap-5 max-md:gap-3 w-full">
