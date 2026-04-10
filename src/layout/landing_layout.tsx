@@ -101,7 +101,7 @@ export default function LandingLayout() {
           {privacyModal && <PrivacyModal setPrivacyModal={setPrivacyModal} />}
           {termsModal && <TermsModal setTermsModal={setTermsModal} />}
 
-          <div className="flex-1 hidden">
+          <div className="flex-1">
             <Outlet />
           </div>
           <Footer
