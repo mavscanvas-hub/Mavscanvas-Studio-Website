@@ -49,7 +49,7 @@ export default function StepOne({ planId }: StepOneProps) {
         return;
       }
 
-      toast.success("Request sent successfully. Continue with your order.");
+      toast.success("Request sent successfully. We will get to you soon.");
     } catch {
       toast.error("Something went wrong. Please try again.");
     } finally {
