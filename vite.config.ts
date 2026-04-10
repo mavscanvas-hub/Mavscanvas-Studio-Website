@@ -7,15 +7,15 @@ export default defineConfig({
   plugins: [react(), tailwindcss()],
   server: {
     proxy: {
-      "/api": {
-        target: "http://localhost:3000",
-        changeOrigin: true,
-      },
       "/api/v2": {
         target: "https://api.webflow.com/v2",
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api\/v2/, ""),
         secure: false,
+      },
+      "/api": {
+        target: "http://localhost:3000",
+        changeOrigin: true,
       },
     },
   },
