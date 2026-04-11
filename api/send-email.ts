@@ -6,7 +6,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
-  const { email, services, planName, planPrice, source } = req.body || {};
+  const { email, services, planName, planPrice, source, message } =
+    req.body || {};
 
   if (!email) {
     return res.status(400).json({ error: "Email is required" });
@@ -38,6 +39,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       selectedServices.length > 0
         ? selectedServices.map((item) => `- ${item}`).join("\n")
         : "No services selected";
+    const messageText =
+      typeof message === "string" && message.trim().length > 0
+        ? message.trim()
+        : "";
 
     const payloadPreview = JSON.stringify(req.body || {}, null, 2);
     const servicesHtml =
@@ -62,6 +67,14 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
             </div>
       `
       : "";
+    const messageRow = messageText
+      ? `
+              <tr>
+                <td style="padding: 10px; border: 1px solid #e5e7eb; font-weight: 600; background: #f9fafb;">Additional details</td>
+                <td style="padding: 10px; border: 1px solid #e5e7eb; white-space: pre-wrap;">${messageText}</td>
+              </tr>
+      `
+      : "";
 
     const html = `
       <div style="font-family: Arial, sans-serif; background: #f5f7fa; padding: 24px; color: #111827;">
@@ -82,6 +95,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
                 <td style="padding: 10px; border: 1px solid #e5e7eb; font-weight: 600; background: #f9fafb;">Source</td>
                 <td style="padding: 10px; border: 1px solid #e5e7eb;">${"MavsCanvas Website"}</td>
               </tr>
+              ${messageRow}
               ${callRequestServicesRow}
               ${
                 !isCallRequest
@@ -111,8 +125,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       subject: `MavsCanvas - New booking request from ${email}`,
       html,
       text: isCallRequest
-        ? `Thanks for reaching out to MavsCanvas.\n\nEmail: ${email}\nSource: ${source || "N/A"}\n\nSelected services:\n${servicesText}\n\nFull request payload:\n${payloadPreview}\n\nWe will contact you shortly.`
-        : `Thanks for reaching out to MavsCanvas.\n\nEmail: ${email}\nSource: ${source || "N/A"}\nPlan: ${planName || "N/A"}\nPrice: ${planPrice || "N/A"}\n\nSelected services:\n${servicesText}\n\nFull request payload:\n${payloadPreview}\n\nWe will contact you shortly.`,
+        ? `Thanks for reaching out to MavsCanvas.\n\nEmail: ${email}\nSource: ${source || "N/A"}${messageText ? `\nAdditional details: ${messageText}` : ""}\n\nSelected services:\n${servicesText}\n\nFull request payload:\n${payloadPreview}\n\nWe will contact you shortly.`
+        : `Thanks for reaching out to MavsCanvas.\n\nEmail: ${email}\nSource: ${source || "N/A"}\nPlan: ${planName || "N/A"}\nPrice: ${planPrice || "N/A"}${messageText ? `\nAdditional details: ${messageText}` : ""}\n\nSelected services:\n${servicesText}\n\nFull request payload:\n${payloadPreview}\n\nWe will contact you shortly.`,
     });
 
     if (error) {

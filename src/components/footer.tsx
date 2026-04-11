@@ -62,7 +62,7 @@ export default function Footer({
   termsModal: boolean;
   setTermsModal: (open: boolean) => void;
 }) {
-  const [email, setEmail] = useState("");
+  const [emailSub, setEmailSub] = useState("");
 
   const handleSuportClick = (itemName: string) => {
     if (itemName === "FAQ") {
@@ -171,10 +171,10 @@ export default function Footer({
             <input
               type="email"
               placeholder="Enter your email"
-              value={email}
+              value={emailSub}
               onChange={(event) => {
                 const value = event.target.value;
-                setEmail(value);
+                setEmailSub(value);
               }}
               className="px-6 max-md:px-3.5 py-3 max-md:py-2 rounded-4xl text-base max-md:text-sm border w-full focus-within:outline-0"
             />

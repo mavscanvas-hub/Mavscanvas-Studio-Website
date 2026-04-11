@@ -22,6 +22,7 @@ const services = [
 export default function StepTwo({ setSteps }: StepTwoProps) {
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
   const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
   const [isSending, setIsSending] = useState(false);
 
   const handleServiceToggle = (service: string) => {
@@ -50,6 +51,7 @@ export default function StepTwo({ setSteps }: StepTwoProps) {
           email: email.trim(),
           source: "checkout-step-2",
           services: selectedServices,
+          message: message.trim() || null,
         }),
       });
 
@@ -62,6 +64,7 @@ export default function StepTwo({ setSteps }: StepTwoProps) {
 
       toast.success("Request sent successfully. We will contact you soon.");
       setEmail("");
+      setMessage("");
       setSelectedServices([]);
       setSteps(2);
     } catch {
@@ -138,11 +141,23 @@ export default function StepTwo({ setSteps }: StepTwoProps) {
             </ul>
           </div>
         )}
+        <div className="flex flex-col w-full">
+          <textarea
+            id="message"
+            placeholder="What else would you like us to know?"
+            value={message}
+            onChange={(event) => {
+              const value = event.target.value;
+              setMessage(value);
+            }}
+            className="bg-white w-full rounded-xl px-4 py-4 min-h-[220px] outline-none border border-black resize-none"
+          />
+        </div>
         <div className="flex flex-col gap-4 w-full">
           <label htmlFor="email" className="text-[36px]/[120%] font-medium">
             Email Address
           </label>
-          <div className="p-[1px] bg-gradient-to-r from-[#FA01F0] to-[#02DDEF] rounded-xl max-md:py-4 max-md:px-15 text-[20px]/[120%] font-normal w-full flex items-center justify-center">
+          <div className="p-[1px] bg-gradient-to-r from-[#FA01F0] to-[#02DDEF] rounded-xl max-md:py-0.5 max-md:px-0.5 text-[20px]/[120%] font-normal w-full flex items-center justify-center">
             <input
               type="text"
               id="email"
@@ -152,7 +167,7 @@ export default function StepTwo({ setSteps }: StepTwoProps) {
                 const value = event.target.value;
                 setEmail(value);
               }}
-              className="bg-white w-full py-5 rounded-xl px-4 outline-none"
+              className="bg-white w-full py-5 lg:rounded-xl rounded-lg px-4 outline-none"
             />
           </div>
         </div>
