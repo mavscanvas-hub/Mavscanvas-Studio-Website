@@ -1,6 +1,7 @@
 import { plans } from "../../utils/data";
 import { HiMiniCheckBadge } from "react-icons/hi2";
 import Button from "../custom/button";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { toast } from "sonner";
 
@@ -11,6 +12,7 @@ interface StepOneProps {
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export default function StepOne({ planId }: StepOneProps) {
+  const navigate = useNavigate();
   const plan = plans.find((plan) => plan.id === parseInt(planId || "1"));
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
@@ -49,7 +51,8 @@ export default function StepOne({ planId }: StepOneProps) {
         return;
       }
 
-      toast.success("Request sent successfully. We will get to you soon.");
+      // toast.success("Request sent successfully. We will get to you soon.");
+      navigate("/thanks");
     } catch {
       toast.error("Something went wrong. Please try again.");
     } finally {
@@ -124,7 +127,7 @@ export default function StepOne({ planId }: StepOneProps) {
       <div className="w-full max-w-[900px] max-md:w-full flex flex-col gap-8 max-md:gap-4.5">
         <div className="flex flex-col gap-4 max-md:gap-2 w-full">
           <label
-            htmlFor="email"
+            htmlFor="checkout-step1-email"
             className="text-[36px]/[120%] max-md:text-[24px]/[120%] font-medium"
           >
             Email Address
@@ -132,9 +135,11 @@ export default function StepOne({ planId }: StepOneProps) {
           <div className="p-[1px] bg-gradient-to-r from-[#FA01F0] to-[#02DDEF] rounded-xl  text-[20px]/[120%] max-md:text-[16px]/[120%] font-normal w-full flex items-center justify-center">
             <input
               type="text"
-              id="email"
+              id="checkout-step1-email"
+              name="checkoutStepOneEmail"
               required={true}
               placeholder="Enter your email"
+              autoComplete="section-checkout-step1 email"
               onChange={(e) => {
                 const value = e.target.value;
                 setEmail(value);
@@ -154,7 +159,7 @@ export default function StepOne({ planId }: StepOneProps) {
           {isSending ? (
             <span className="inline-flex items-center gap-3">
               <span className="size-5 rounded-full border-2 border-white border-t-transparent animate-spin" />
-              Sending...
+              Submitting...
             </span>
           ) : (
             "Book Now"

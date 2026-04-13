@@ -4,7 +4,6 @@ import { FaFacebookF } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa";
-
 import Button from "./custom/button";
 import { useState } from "react";
 
@@ -63,6 +62,9 @@ export default function Footer({
   setTermsModal: (open: boolean) => void;
 }) {
   const [emailSub, setEmailSub] = useState("");
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setEmailSub(event.target.value);
+  };
 
   const handleSuportClick = (itemName: string) => {
     if (itemName === "FAQ") {
@@ -170,11 +172,13 @@ export default function Footer({
           <div className="flex flex-col items-center gap-2 pl-10 max-lg:pl-0 w-full">
             <input
               type="email"
+              id="newsletter-email"
+              name="newsletterEmail"
               placeholder="Enter your email"
               value={emailSub}
+              autoComplete="section-newsletter email"
               onChange={(event) => {
-                const value = event.target.value;
-                setEmailSub(value);
+                handleInputChange(event);
               }}
               className="px-6 max-md:px-3.5 py-3 max-md:py-2 rounded-4xl text-base max-md:text-sm border w-full focus-within:outline-0"
             />

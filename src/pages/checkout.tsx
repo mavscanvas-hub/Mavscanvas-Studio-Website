@@ -37,7 +37,7 @@ export default function Checkout() {
         </h2>
       </div>
       {steps === 1 && <StepOne planId={planId || "1"} />}
-      {steps === 2 && <StepTwo setSteps={setSteps} />}
+      {steps === 2 && <StepTwo />}
     </section>
   );
 }

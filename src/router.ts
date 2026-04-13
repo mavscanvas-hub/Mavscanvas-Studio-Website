@@ -7,6 +7,7 @@ import Work from "./pages/work";
 import Pricing from "./pages/pricing";
 import Checkout from "./pages/checkout";
 import NotFound from "./pages/notFound";
+import Thanks from "./pages/thank";
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
       {
         path: "/checkout",
         Component: Checkout,
+      },
+      {
+        path: "/thanks",
+        Component: Thanks,
       },
     ],
   },

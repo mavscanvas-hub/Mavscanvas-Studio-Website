@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import logo from "../assets/company_op/logo.webp";
 import logoBlack from "../assets/company_op/logo_black.webp";
 import { RxHamburgerMenu } from "react-icons/rx";
@@ -16,14 +16,15 @@ const links = [
 export default function Navbar({
   setIsSidebarOpen,
   isSidebarOpen,
-  setGetStartedModalOpen,
-  getStartedModalOpen,
+  // setGetStartedModalOpen,
+  // getStartedModalOpen,
 }: {
   setIsSidebarOpen: (open: boolean) => void;
   isSidebarOpen: boolean;
   setGetStartedModalOpen: (open: boolean) => void;
   getStartedModalOpen: boolean;
 }) {
+  const navigate = useNavigate();
   const location = useLocation();
   const [activeLink, setActiveLink] = useState(location.pathname);
   const [scrolled, setScrolled] = useState(false);
@@ -79,9 +80,9 @@ export default function Navbar({
     }
   }, [scrolled]);
 
-  const handleGetStartedClick = () => {
-    setGetStartedModalOpen(!getStartedModalOpen);
-  };
+  // const handleGetStartedClick = () => {
+  //   setGetStartedModalOpen(!getStartedModalOpen);
+  // };
 
   const NAV_HEIGHT_PX = 116;
 
@@ -89,6 +90,7 @@ export default function Navbar({
     activeLink.includes("services"),
     activeLink.includes("pricing"),
     activeLink.includes("checkout"),
+    activeLink.includes("thanks"),
   ].some(Boolean);
 
   return (
@@ -130,9 +132,7 @@ export default function Navbar({
                     className={`${
                       scrolled
                         ? "text-white"
-                        : activeLink.includes("services") ||
-                            activeLink.includes("pricing") ||
-                            activeLink.includes("checkout")
+                        : isWhitePage
                           ? "text-black"
                           : "text-white"
                     }`}
@@ -145,8 +145,7 @@ export default function Navbar({
                         scrolled
                           ? ""
                           : link.href === activeLink
-                            ? activeLink.includes("services") ||
-                              activeLink.includes("pricing")
+                            ? isWhitePage
                               ? "navbar_shadow_white text-black"
                               : "navbar_shadow_black text-white"
                             : ""
@@ -161,13 +160,13 @@ export default function Navbar({
                 className={`${
                   scrolled
                     ? "bg-white text-black"
-                    : activeLink.includes("services") ||
-                        activeLink.includes("pricing") ||
-                        activeLink.includes("checkout")
+                    : isWhitePage
                       ? "bg-black text-white"
                       : "bg-white text-black"
                 } py-2.5 px-6 rounded-full font-medium text-2lg`}
-                onClick={handleGetStartedClick}
+                onClick={() => {
+                  navigate("/pricing");
+                }}
               >
                 Get Started
               </Button>
@@ -207,9 +206,7 @@ export default function Navbar({
               className={`text-2xl ${
                 scrolled
                   ? "text-white"
-                  : activeLink.includes("services") ||
-                      activeLink.includes("pricing") ||
-                      activeLink.includes("checkout")
+                  : isWhitePage
                     ? "text-black"
                     : "text-white"
               }`}

@@ -1,12 +1,8 @@
 import Button from "../custom/button";
 import { useState } from "react";
 import { IoMdClose } from "react-icons/io";
-import "../../index.css";
 import { toast } from "sonner";
-
-interface StepTwoProps {
-  setSteps: (step: number) => void;
-}
+import { useNavigate } from "react-router-dom";
 
 const services = [
   "Brand Identity Design",
@@ -19,7 +15,8 @@ const services = [
   "Product Design",
 ];
 
-export default function StepTwo({ setSteps }: StepTwoProps) {
+export default function StepTwo() {
+  const navigate = useNavigate();
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -62,11 +59,11 @@ export default function StepTwo({ setSteps }: StepTwoProps) {
         return;
       }
 
-      toast.success("Request sent successfully. We will contact you soon.");
+      // toast.success("Request sent successfully. We will contact you soon.");
       setEmail("");
       setMessage("");
       setSelectedServices([]);
-      setSteps(2);
+      navigate("/thanks");
     } catch {
       toast.error("Something went wrong. Please try again.");
     } finally {
@@ -154,15 +151,20 @@ export default function StepTwo({ setSteps }: StepTwoProps) {
           />
         </div>
         <div className="flex flex-col gap-4 w-full">
-          <label htmlFor="email" className="text-[36px]/[120%] font-medium">
+          <label
+            htmlFor="checkout-step2-email"
+            className="text-[36px]/[120%] font-medium"
+          >
             Email Address
           </label>
           <div className="p-[1px] bg-gradient-to-r from-[#FA01F0] to-[#02DDEF] rounded-xl max-md:py-0.5 max-md:px-0.5 text-[20px]/[120%] font-normal w-full flex items-center justify-center">
             <input
               type="text"
-              id="email"
+              id="checkout-step2-email"
+              name="checkoutStepTwoEmail"
               placeholder="Enter your email"
               value={email}
+              autoComplete="section-checkout-step2 email"
               onChange={(event) => {
                 const value = event.target.value;
                 setEmail(value);
