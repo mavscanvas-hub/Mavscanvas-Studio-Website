@@ -98,14 +98,14 @@ export default function Navbar({
       <div ref={wrapperRef} className="w-full">
         <nav
           ref={wrapperRef}
-          className={`max-h-[116px] navbar_blur_border max-md:hidden transition-all duration-300 ease-out  ${
+          className={`max-h-[116px] navbar_blur_border max-md:hidden transition-[transform,opacity,background-color] duration-300 ease-out  ${
             scrolled
               ? `fixed top-0 left-0 right-0 w-full z-100 bg-black rounded-none text-white navbar_shadow_black ${
                   navVisible
                     ? "translate-y-0 opacity-100 "
                     : "-translate-y-3 opacity-0 transition-opacity duration-3000"
                 }`
-              : "glass_effect translate-y-0 rounded-3xl opacity-100"
+              : "glass_effect rounded-3xl"
           }`}
         >
           <ul
@@ -176,14 +176,14 @@ export default function Navbar({
 
         {/* Mobile Nav (keeps same scrolled -> fixed behavior) */}
         <div
-          className={`md:hidden flex justify-between items-center py-1 pl-2 transition-all duration-300 ease-out  ${
+          className={`md:hidden flex justify-between items-center py-1 pl-2 transition-[transform,opacity,background-color] duration-300 ease-out  ${
             scrolled
               ? `fixed top-0 left-0 right-0 py-2 w-full z-100 bg-black text-white navbar_shadow_black ${
                   navVisible
                     ? "translate-y-0 opacity-100 "
                     : "-translate-y-3 opacity-0 transition-opacity duration-3000"
                 }`
-              : "glass_effect rounded-3xl translate-y-0 opacity-100"
+              : "glass_effect rounded-3xl"
           }`}
         >
           <Link to={"/"}>
