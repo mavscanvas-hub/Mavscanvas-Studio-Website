@@ -22,7 +22,7 @@ export default function Home() {
 
   return (
     <div className="relative bg-black overflow-hidden w-full h-screen max-lg:h-full">
-      <div className="absolute flex items-center justify-center w-full h-full pointer-events-none top-5 max-lg:top-0">
+      <div className="absolute flex items-center justify-center w-full h-full pointer-events-none max-lg:top-0">
         <div
           aria-hidden
           className="bg-[conic-gradient(from_90deg,black_0%,black_18%,black_56%,#FA01F0_100%)] w-[50%] h-full"
@@ -35,8 +35,8 @@ export default function Home() {
         />
       </div>
 
-      <div className="min-h-screen max-md:min-h-0 overscroll-hidden pt-40 max-md:pt-20 pb-20 max-lg:pb-16 px-15 max-md:px-3.5 relative z-50">
-        <div className="mt-20 max-md:mt-5 pb-10 max-w-[1106px] max-md:w-full mx-auto max-md:mx-0 flex flex-col max-md:gap-3 gap-5">
+      <div className="max-md:min-h-0 pt-40 max-md:pt-20 pb-40 max-lg:pb-16 px-15 max-md:px-3.5 relative z-50">
+        <div className="mt-14 max-md:mt-5 pb-10 max-w-[1106px] max-md:w-full mx-auto max-md:mx-0 flex flex-col max-md:gap-3 gap-5">
           <div className="flex flex-col justify-center items-center w-full">
             <span
               className={

@@ -55,7 +55,7 @@ export default function LandingLayout() {
   return (
     <WorkProvider>
       <TeamProvider>
-        <section
+        <main
           className={`min-h-screen flex flex-col relative ${
             getStartedModalOpen ? "bg-transparent" : "bg-black"
           } overscroll-contain`}
@@ -114,7 +114,7 @@ export default function LandingLayout() {
             termsModal={termsModal}
             setTermsModal={setTermsModal}
           />
-        </section>
+        </main>
       </TeamProvider>
     </WorkProvider>
   );

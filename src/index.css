@@ -151,14 +151,18 @@
 
 .glass_effect {
   position: relative;
-  background: hsl(0deg 0% 100% / 0);
+  isolation: isolate;
+  background-color: rgba(255, 255, 255, 0.02);
   backdrop-filter: blur(8px) brightness(100%);
   -webkit-backdrop-filter: blur(8px) brightness(100%);
   /* border-radius: 20px; */
   transition: all 0.3s ease;
-  border: 1px solid transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   background-clip: padding-box, border-box;
   background-origin: border-box;
+  /* box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 12px 30px rgba(0, 0, 0, 0.16); */
 
   background-image:
     linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)),
@@ -364,13 +368,17 @@
 
 .not_glass_effect {
   position: relative;
-  background: hsl(0deg 0% 100% / 0);
-  backdrop-filter: blur(8px) brightness(100%);
-  -webkit-backdrop-filter: blur(8px) brightness(100%);
+  isolation: isolate;
+  background-color: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(4px) brightness(100%);
+  -webkit-backdrop-filter: blur(4px) brightness(100%);
   transition: all 0.3s ease;
-  border: 1px solid transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   background-clip: padding-box, border-box;
   background-origin: border-box;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 12px 30px rgba(0, 0, 0, 0.16);
 
   background-image:
     linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)),
