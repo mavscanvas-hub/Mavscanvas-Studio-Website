@@ -131,7 +131,9 @@ export default function Hero() {
         <div className="flex justify-center items-center">
           <Button
             className="bg-[#02DDEF] hover:scale-105 cursor-pointer transition-all duration-300 rounded-full py-5.5 max-md:py-3 max-md:px-10 px-24 flex gap-6 max-md:gap-5 max-md:justify-between items-center "
-            onClick={() => {}}
+            onClick={() => {
+              navigate("/pricing");
+            }}
           >
             <span className="font-medium text-[28px] text-[28px]/[120%] max-md:text-[14px]/[120%]">
               Start a Project

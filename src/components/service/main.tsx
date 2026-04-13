@@ -4,6 +4,7 @@ import projectbg from "../../assets/service/project_bg.png";
 import Button from "../custom/button";
 import { FaArrowRightLong, FaChevronRight } from "react-icons/fa6";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const clients = [
   {
@@ -121,6 +122,7 @@ const clients = [
 ];
 
 export default function Main() {
+  const navigate = useNavigate();
   const [currentImageIndices, setCurrentImageIndices] = useState(
     clients.reduce(
       (acc, client) => {
@@ -195,7 +197,7 @@ export default function Main() {
                 <h3 className="text-[80px]/[120%] max-md:text-[24px]/[120%] max-md:w-[175px] font-bold w-[676px]">
                   {service.category}
                 </h3>
-                <div className="w-[261px] h-[218px] max-md:w-[80px] max-md:h-[60px] glass_effect flex flex-col justify-center items-center">
+                <div className="w-[261px] h-[218px] max-md:w-[80px] max-md:h-[60px] glass_effect flex flex-col justify-center items-center rounded-3xl">
                   <span className="text-[32px]/[120%] max-md:text-[9px]/[120%] font-light font-subito uppercase">
                     Clients
                   </span>
@@ -266,7 +268,9 @@ export default function Main() {
         <div className="flex justify-center items-center">
           <Button
             className="bg-[#02DDEF] hover:scale-105 rounded-full py-5.5 max-md:py-3 max-md:px-10 px-24 flex gap-6 max-md:gap-2 items-center"
-            onClick={() => {}}
+            onClick={() => {
+              navigate("/pricing");
+            }}
           >
             <span className="font-medium text-[28px] text-[28px]/[120%] max-md:text-[14px]/[120%]">
               Start a Project

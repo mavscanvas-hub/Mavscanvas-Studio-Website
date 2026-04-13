@@ -4,8 +4,10 @@ import { FaArrowRightLong } from "react-icons/fa6";
 import { useState, useRef, useEffect } from "react";
 import { useWorkContext } from "../../hooks/useWorkContext";
 import { COLLECTION_ID } from "../../constant";
+import { useNavigate } from "react-router-dom";
 
 export default function Hero() {
+  const navigate = useNavigate();
   const {
     getCollectionDetails,
     categories,
@@ -245,7 +247,7 @@ export default function Hero() {
             <Button
               className="bg-[#02DDEF] hover:scale-105 rounded-full py-5.5 max-md:py-3 max-md:px-10 px-24 flex gap-6 max-md:gap-2 items-center"
               onClick={() => {
-                console.log("Logged");
+                navigate("/pricing");
               }}
             >
               <span className="font-medium text-[28px] text-[28px]/[120%] max-md:text-[14px]/[120%]">

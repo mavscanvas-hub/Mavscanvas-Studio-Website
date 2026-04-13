@@ -41,7 +41,7 @@ export default function Reviews() {
       (entries, observer) => {
         const entry = entries[0];
         // trigger only when ~50% of the section is visible (section near center)
-        if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+        if (entry.isIntersecting && entry.intersectionRatio >= 0.2) {
           setInView(true);
           observer.disconnect();
         }

@@ -1,6 +1,6 @@
 import { IoMail } from "react-icons/io5";
 import { IoMdCall } from "react-icons/io";
-import { FaXTwitter } from "react-icons/fa6";
+import { FaXTwitter, FaArrowRightLong } from "react-icons/fa6";
 import {
   FaInstagram,
   FaLinkedinIn,
@@ -11,9 +11,9 @@ import Buttonbg from "../../assets/about/deliver_btn_bg.png";
 import Socialbg from "../../assets/about/social_bg.png";
 import Deliverbg from "../../assets/about/deliver_bg.png";
 import Button from "../custom/button";
-import { FaArrowRightLong } from "react-icons/fa6";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useRef, useEffect } from "react";
+
 // CountUp component: animates numeric portion of strings like "85%", "2.1x", "3.5x"
 function CountUp({ value, className }: { value: string; className?: string }) {
   const elRef = useRef<HTMLSpanElement | null>(null);
@@ -151,6 +151,7 @@ const socialMedia = [
 ];
 
 export default function WeDeliver() {
+  const navigate = useNavigate();
   return (
     <section
       className="bg-[#FAFAFA] pt-15 max-md:pt-7 px-15 max-md:px-4 pb-40 max-md:pb-12.5 flex flex-col gap-47 max-md:gap-14 font-subito"
@@ -280,7 +281,7 @@ export default function WeDeliver() {
             <Button
               className="bg-[#02DDEF] hover:scale-105 rounded-full py-5.5 max-md:py-3 max-md:px-10 px-24 flex gap-6 max-md:gap-2 items-center"
               onClick={() => {
-                console.log("Logged");
+                navigate("/pricing");
               }}
             >
               <span className="font-medium text-[28px] text-[28px]/[120%] max-md:text-[14px]/[120%]">
