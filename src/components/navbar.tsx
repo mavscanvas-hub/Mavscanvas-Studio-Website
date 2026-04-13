@@ -98,7 +98,7 @@ export default function Navbar({
       <div ref={wrapperRef} className="w-full">
         <nav
           ref={wrapperRef}
-          className={`max-h-[116px] navbar_blur_border max-md:hidden transition-all duration-300 ease-out transform ${
+          className={`max-h-[116px] navbar_blur_border max-md:hidden transition-all duration-300 ease-out  ${
             scrolled
               ? `fixed top-0 left-0 right-0 w-full z-100 bg-black rounded-none text-white navbar_shadow_black ${
                   navVisible
@@ -176,7 +176,7 @@ export default function Navbar({
 
         {/* Mobile Nav (keeps same scrolled -> fixed behavior) */}
         <div
-          className={`md:hidden flex justify-between items-center py-1 pl-2 transition-all duration-300 ease-out transform ${
+          className={`md:hidden flex justify-between items-center py-1 pl-2 transition-all duration-300 ease-out  ${
             scrolled
               ? `fixed top-0 left-0 right-0 py-2 w-full z-100 bg-black text-white navbar_shadow_black ${
                   navVisible
