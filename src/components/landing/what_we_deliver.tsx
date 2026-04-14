@@ -270,11 +270,11 @@ export default function WhatWeDeliver() {
                               </button>
                             ))}
                       </div>
-                      <h2 className="text-white max-md:text-[18px]/[120%] max-md:my-3 font-bold md:hidden">
+                      <h2 className="text-white max-md:text-[18px]/[120%] max-md:my-2 font-bold md:hidden">
                         {currentValue.title}
                       </h2>
                     </div>
-                    <div className="flex flex-col flex-1 min-h-0 items-start justify-between pt-10">
+                    <div className="flex flex-col flex-1 min-h-0 items-start justify-between pt-10 max-md:pt-5">
                       <div className="px-3 max-md:px-0 overflow-y-auto flex-1 min-h-0">
                         <p className=" text-white text-[22px]/[120%] font-normal max-md:text-[10px]/[120%]">
                           {currentValue.content}

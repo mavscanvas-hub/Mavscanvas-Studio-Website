@@ -197,7 +197,7 @@ export default function Main() {
                 <h3 className="text-[80px]/[120%] max-md:text-[24px]/[120%] max-md:w-[175px] font-bold w-[676px]">
                   {service.category}
                 </h3>
-                <div className="w-[261px] h-[218px] max-md:w-[80px] max-md:h-[60px] glass_effect flex flex-col justify-center items-center rounded-3xl">
+                <div className="w-[261px] h-[218px] max-md:w-[80px] max-md:h-[60px] glass_effect flex flex-col justify-center items-center rounded-3xl max-md:rounded-lg">
                   <span className="text-[32px]/[120%] max-md:text-[9px]/[120%] font-light font-subito uppercase">
                     Clients
                   </span>
@@ -218,7 +218,7 @@ export default function Main() {
                     alt={`Project ${service.projects[currentIndex].id}`}
                     className="w-full h-auto max-md:h-[190px] rounded-[20px] max-md:rounded-[5px]"
                   />
-                  <div className="absolute inset-0 group-hover:flex justify-between items-center z-10 hidden">
+                  <div className="absolute inset-0 group-hover:flex max-md:flex justify-between items-center z-10 hidden">
                     <button
                       className="absolute top-1/2 right-5 max-md:right-1 transform -translate-y-1/2 cursor-pointer text-white p-10 max-md:p-2.5 rounded-full flex justify-center items-center"
                       onClick={() =>
