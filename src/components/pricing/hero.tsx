@@ -1,8 +1,8 @@
 import { HiMiniCheckBadge } from "react-icons/hi2";
 import { HiArrowRight } from "react-icons/hi";
 import Herobg from "../../assets/pricing/bg.png";
-import Button from "../custom/button";
-import { FaArrowRightLong } from "react-icons/fa6";
+// import Button from "../custom/button";
+// import { FaArrowRightLong } from "react-icons/fa6";
 import { plans } from "../../utils/data";
 import { useNavigate } from "react-router-dom";
 
@@ -123,7 +123,7 @@ export default function Hero() {
           <HiArrowRight className="text-3xl max-md:text-xl" />
         </button>
       </div>
-      <div className="flex flex-col gap-10 max-md:gap-4 items-center justify-center">
+      {/* <div className="flex flex-col gap-10 max-md:gap-4 items-center justify-center">
         <span className="text-[24px]/[120%] max-md:text-[10px]/[120%] font-light text-center mt-8 max-md:mt-5 block max-w-[800px] max-md:w-[250px] text-black">
           We are prepared to replicate these results for your brand. Are you
           ready to begin?
@@ -141,7 +141,7 @@ export default function Hero() {
             <FaArrowRightLong className="text-2xl max-md:text-[20px]" />
           </Button>
         </div>
-      </div>
+      </div> */}
     </section>
   );
 }
