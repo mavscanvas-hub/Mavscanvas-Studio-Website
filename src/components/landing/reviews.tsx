@@ -6,6 +6,7 @@ import user2 from "../../assets/company_op/revies/2.png";
 import user3 from "../../assets/company_op/revies/3.webp";
 import user4 from "../../assets/company_op/revies/4.webp";
 import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const reviewsData = [
   {
@@ -31,6 +32,7 @@ const reviewsData = [
 ];
 
 export default function Reviews() {
+  const navigate = useNavigate();
   const sectionRef = useRef<HTMLElement | null>(null);
   const [inView, setInView] = useState(false);
 
@@ -218,7 +220,9 @@ export default function Reviews() {
           <div className="flex justify-center items-center">
             <Button
               className="bg-[#02DDEF] hover:scale-105 rounded-full py-5.5 max-md:py-3 max-md:px-10 px-24 flex gap-6 max-md:gap-2 items-center"
-              onClick={() => {}}
+              onClick={() => {
+                navigate("/pricing");
+              }}
             >
               <span className="font-medium text-[28px]/[120%] max-md:text-[14px]/[120%]">
                 Start a Project
